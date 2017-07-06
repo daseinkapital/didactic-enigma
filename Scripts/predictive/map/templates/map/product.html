@@ -1,76 +1,208 @@
-hello
-
-{% load static %}
 <!DOCTYPE html>
-<html lang="en">
 
+<html>
 <head>
-
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Summer Games</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
-
-    <!-- Custom fonts for this template -->
-    <link rel="stylesheet" href="{% static 'vendor/font-awesome/css/font-awesome.min.css' %}">
-    <link rel="stylesheet" href="{% static 'vendor/simple-line-icons/css/simple-line-icons.css' %}">
-    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
-
-    <!-- Plugin CSS -->
-    <link rel="stylesheet" href="{% static 'device-mockups/device-mockups.min.css' %}">
-
-    <!-- Custom styles for this template -->
-    <link href="{% static 'css/new-age.min.css' %}" rel="stylesheet">
-    <link href="{% static 'css/agency.min.css' %}" rel="stylesheet">
-    <link href="{% static 'css/responsive.css' %}" rel="stylesheet">
-    <link href="{% static 'css/style.css' %}" rel="stylesheet">
-    <link href="{% static 'css/styles.min.css' %}" rel="stylesheet">
-
-    <!-- Temporary navbar container fix -->
     <style>
-
-    .navbar-toggler {
-        z-index: 1;
-    }
-    
-    
-    @media (max-width: 576px) {
-        nav > .container {
-            width: 100%;
+        #map {
+                width: 100%;
+                height: 850px;
+                background-color: grey;
+            }
+        .myButton {
+            -moz-box-shadow:inset 0px 1px 0px 0px #97c4fe;
+            -webkit-box-shadow:inset 0px 1px 0px 0px #97c4fe;
+            box-shadow:inset 0px 1px 0px 0px #97c4fe;
+            background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #3d94f6), color-stop(1, #1e62d0));
+            background:-moz-linear-gradient(top, #3d94f6 5%, #1e62d0 100%);
+            background:-webkit-linear-gradient(top, #3d94f6 5%, #1e62d0 100%);
+            background:-o-linear-gradient(top, #3d94f6 5%, #1e62d0 100%);
+            background:-ms-linear-gradient(top, #3d94f6 5%, #1e62d0 100%);
+            background:linear-gradient(to bottom, #3d94f6 5%, #1e62d0 100%);
+            filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#3d94f6', endColorstr='#1e62d0',GradientType=0);
+            background-color:#3d94f6;
+            -moz-border-radius:6px;
+            -webkit-border-radius:6px;
+            border-radius:6px;
+            border:1px solid #337fed;
+            display:inline-block;
+            cursor:pointer;
+            color:#ffffff;
+            font-family:Arial;
+            font-size:15px;
+            font-weight:bold;
+            padding:6px 24px;
+            text-decoration:none;
+            text-shadow:0px 1px 0px #1570cd;
         }
+        .myButton:hover {
+            background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #1e62d0), color-stop(1, #3d94f6));
+            background:-moz-linear-gradient(top, #1e62d0 5%, #3d94f6 100%);
+            background:-webkit-linear-gradient(top, #1e62d0 5%, #3d94f6 100%);
+            background:-o-linear-gradient(top, #1e62d0 5%, #3d94f6 100%);
+            background:-ms-linear-gradient(top, #1e62d0 5%, #3d94f6 100%);
+            background:linear-gradient(to bottom, #1e62d0 5%, #3d94f6 100%);
+            filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#1e62d0', endColorstr='#3d94f6',GradientType=0);
+            background-color:#1e62d0;
+        }
+        .myButton:active {
+            position:relative;
+            top:1px;
+        }
+        
+        .sidenav {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            right: 0;
+            background-color: #111;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+        
+        .sidenav a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #818181;
+            display: block;
+            transition: 0.3s;
+        }
+        
+        .sidenav a:hover, .offcanvas a:focus{
+            color: #f1f1f1;
+        }
+        
+        .sidenav .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+        }
+        
+        @media screen and (max-height: 450px) {
+          .sidenav {padding-top: 15px;}
+          .sidenav a {font-size: 18px;}
+        }
+    </style>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type = "text/javascript">    
+        function openNav(currentElement) {
+            var name = $(currentElement).html();
+            $.ajax({
+                    url : "/map/data/", 
+                    data : {'direction':name},
+                    <!--dataType : 'html',-->
+                    success : function (data) {
+                    $('#mySidenav').empty().append(data);
+                    $("#mySidenav").css("width" , "250px");}
+            });
+            
+        }
+        
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+        }
+        
+        function DateSelect(form, date)
+        {
+                var Data = $('form').serializeArray();
+                $('#date').val(Data[0]['value']);
+        }
+    </script>
+
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-uAlwABgf0eRzXK9duURPQyye0zhEreg&callback=initMap"></script>
+    <script>
+    function initMap() {
+        var points = [
+          {% for district in districts %}
+            {lat: {{district.latitude}}, lng: {{district.longitude}} },
+      {% endfor %}
+      ];
+      var center = {lat: 8.612690, lng: -11.759313};
+      var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 8,
+        center: center,
+        disableDefaultUI: true,
+        mapTypeId: google.maps.MapTypeId.HYBRID
+      });
+        
+      var markerDict = [];
+        for (i = 0; i < points.length; i++){
+           var mark = points[i];
+         markerDict.push({
+                 key: i,
+                 value: mark
+                });
+            var marker = new google.maps.Marker({
+                animation: google.maps.Animation.DROP,
+                  position: mark,
+                map: map,
+              });
+          google.maps.event.addDomListener(marker, 'click', function() {
+          map.setCenter(this.getPosition());
+          var date = $('#date').val();
+          $.ajax({
+                  url : "/map/marker/",
+                  data : {"lat" : this.getPosition().lat(), "lng" : this.getPosition().lng(), "date" : date},
+                  dataType : 'html',
+                  success : function (data) {
+                          $("#mySidenav").empty().append(data);}
+                  });
+          document.getElementById("mySidenav").style.width = "300px";
+          });
+      };
+
+        
     }
-        
-        
+    </script>
+
+
+
+
+
 </head>
 
-    <nav class="navbar fixed-top navbar-toggleable-md navbar-light" id="mainNav">
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarExample" aria-controls="navbarExample" aria-expanded="false" aria-label="Toggle navigation">
-            Menu <i class="fa fa-bars"></i>
-        </button>
-        <div class="container">
-            <a class="navbar-brand" href="#page-top">Predictive26</a>
-            <div class="collapse navbar-collapse" id="navbarExample">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#download">Our Story</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#features">Features</a>
-                    </li>
-                     <li class="nav-item">
-                        <a class="nav-link" href="#about">Team</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contact">Contact</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+<!-- Loop through the points *still have to figure out how to host this-->
+
+
+<!--{% include "map/sidebar.html" %}-->
+<div id=sidebar>
+    <div id="mySidenav" class="sidenav">
+    </div>
+</div>
+
+
+<h4><a href="/map/">Home</a></h4>
+
+<h1>Predictive26 Main Map Page</h1>
+
+<p>Here you can explore cases as a timeline and look at the data we have received about the area. Feel free to look around!</p>
+
+<hr>
+<div width="200px">
+<input type="range" min="0" max="100"></input>
+</div>
+<h3>My Google Maps Demo</h3>
+<form id=dateForm>
+    Exact Date:
+    <input type="date" name="filter-date" id="dateGrab">
+    <!--Start Date:
+    <input type="date" name="start">
+    End Date:
+    <input type="date" name="end">-->
+    <button type="button" onclick="DateSelect(this.form, this.form.filter-date)">Submit</button>
+</form>
+
+
+
+<input type="hidden" id="date">
+<div id="map"></div>
+
+
+</html>
