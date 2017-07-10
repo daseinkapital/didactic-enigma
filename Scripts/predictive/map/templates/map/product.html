@@ -3,10 +3,67 @@
 
 <html>
 <head>
+   <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Summer Games</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link rel="stylesheet" href="{% static 'vendor/font-awesome/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'vendor/simple-line-icons/css/simple-line-icons.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
+    
+    
+
+
+    <!-- Plugin CSS -->
+    <link rel="stylesheet" href="{% static 'device-mockups/device-mockups.min.css' %}">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'css/new-age.min.css' %}" rel="stylesheet">
+
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
-
     <style>
+    @keyframes slideInFromLeft {
+      0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+    @media (min-width: 992px)
+{
+#mainNav {
+    border-color: transparent;
+    background-color: #6e6e6e;
+    animation: 1s ease-out 0s 1 slideInFromLeft;
+    animation-delay: 3.5s;
+  
+}}
+        .navbar-toggler {
+        z-index: 1;
+    }
+        
+    
+    @media (max-width: 576px) {
+        nav > .container {
+            width: 100%;
+        }
+    }
+        
+
+
+        
  
 
         #map {
@@ -93,7 +150,8 @@
           .sidenav {padding-top: 15px;}
           .sidenav a {font-size: 18px;}
         }
-        
+
+
     </style>
     
 
@@ -189,7 +247,31 @@
 </head>
 
 <!-- Loop through the points *still have to figure out how to host this-->
-<body>
+<body background-color= "#C0C0C0">
+<nav class="navbar fixed-top navbar-toggleable-md navbar-light" id="mainNav">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarExample" aria-controls="navbarExample" aria-expanded="false" aria-label="Toggle navigation">
+            Menu <i class="fa fa-bars"></i>
+        </button>
+        <div class="container">
+            <a class="navbar-brand" href="/map/">MapView By Predictive26</a>
+            <div class="collapse navbar-collapse" id="navbarExample">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/map/#download">Our Story</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/map/#features">Features</a>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="/map/#about">Team</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/map/#contact">Social Media</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
 <style>
 
@@ -299,13 +381,9 @@
 </div>
 
 
-<h4><a href="/map/">Home</a></h4>
 
 
 
-<h1>Predictive26 Main Map Page</h1>
-
-<p>Here you can explore cases as a timeline and look at the data we have received about the area. Feel free to look around!</p>
 
 <hr>
 <!--
@@ -325,6 +403,7 @@
 -->
 <head>
 <meta charset="utf-8">
+<hr>
 <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>Get started with SceneView - Create a 3D map</title>
 <style>
@@ -377,11 +456,22 @@ require([
 
 
 <input type="hidden" id="date">
-<div id="map"></div>
 </div>
 <script>
 setTimeout(function(){jQuery('#overlay').fadeOut("slow")},3000);
 
 </script>
 </body>
+
+ <!-- Bootstrap core JavaScript -->
+    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'vendor/tether/tether.min.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="{% static 'js/new-age.min.js' %}"></script>
+    <script>
 </html>
