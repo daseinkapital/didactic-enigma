@@ -185,6 +185,7 @@
 <p>Here you can explore cases as a timeline and look at the data we have received about the area. Feel free to look around!</p>
 
 <hr>
+<!--
 <div width="200px">
 <input type="range" min="0" max="100"></input>
 </div>
@@ -192,17 +193,70 @@
 <form id=dateForm>
     Exact Date:
     <input type="date" name="filter-date" id="dateGrab">
-    <!--Start Date:
+    Start Date:
     <input type="date" name="start">
     End Date:
-    <input type="date" name="end">-->
+    <input type="date" name="end">
     <button type="button" onclick="DateSelect(this.form, this.form.filter-date)">Submit</button>
 </form>
+-->
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Get started with SceneView - Create a 3D map</title>
+<style>
+  html, body, #viewDiv {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+  }
+</style>
+<link rel="stylesheet" href="https://js.arcgis.com/4.4/esri/css/main.css">
+<script src="https://js.arcgis.com/4.4/"></script>
+<script>
+require([
+  "esri/Map",
+  "esri/views/SceneView",
+  "esri/layers/TileLayer",
+  "dojo/domReady!",
+  "dojo/dom",
+  "dojo/on",
+], function(Map, SceneView, TileLayer, dom, on){
 
+    var sierraLeone = new TileLayer({
+            url: "/map/zoom/",
+                id: "sierra",
+                opacity: 0.9
+            });
+    var map = new Map({
+        basemap: "national-geographic",
+        ground: "world-elevation",
+        layers: [sierraLeone]
+    });
+    var view = new SceneView({
+    container: "viewDiv",     // Reference to the scene div created in step 5
+    map: map,                 // Reference to the map object created before the scene
+    //scale: 2500000,           Sets the initial scale to 1:50,000,000
+    center: [-97.5164, 35.4676]   //Sets the center point of view with lon/lat
+  });
+    view.then(function(){
+            sierraLeone.then(function(){
+                    view.goTo(sierraLeone.fullExtent);
+                    });
+            });   
+});
+</script>
+</head>
+<body>
+  <div id="viewDiv"></div>
+</body>
 
 
 <input type="hidden" id="date">
 <div id="map"></div>
+
+
 
 
 </html>
