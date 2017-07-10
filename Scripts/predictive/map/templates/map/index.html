@@ -20,6 +20,9 @@
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
+    
+    
+
 
     <!-- Plugin CSS -->
     <link rel="stylesheet" href="{% static 'device-mockups/device-mockups.min.css' %}">
@@ -91,14 +94,30 @@
 .timeline>li .timeline-image {  
     background-color: #31b0d5;
 }
+.body {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #292b2c;
+    background-color: #d35400;
+}
+section.features {
+        background-color: #fff
+        }
+
 
     </style>
 
 </head>
 
-<body id="page-top">
+
+<body id="page-top" class="body">
 
     <!-- Navigation -->
+    
+<div id="overlay" hidden="True"></div>
+
     <nav class="navbar fixed-top navbar-toggleable-md navbar-light" id="mainNav">
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarExample" aria-controls="navbarExample" aria-expanded="false" aria-label="Toggle navigation">
             Menu <i class="fa fa-bars"></i>
@@ -131,7 +150,7 @@
                     <div class="header-content">
                         <div class="header-content-inner">
                             <h1>Through both internet and non-internet sources, our crowd-sourced web-based platform will collect, standardize, analyze, and map data from local-level healthcare providers.</h1>
-                            <a href="/map/product/" class="btn btn-outline btn-xl">Start Now for Free!</a>
+                            <a href="/map/product/" id="product" class="btn btn-outline btn-xl">Start Now for Free!</a>
                             <a href="#download" class="btn btn-outline btn-xl">Click to Learn More!</a>
                         </div>
                     </div>
@@ -569,6 +588,16 @@
 
     <!-- Custom scripts for this template -->
     <script src="{% static 'js/new-age.min.js' %}"></script>
+    <script>
+    $('#product').click(function(e) {
+e.preventDefault();
+newLocation = this.href;
+$('body').fadeOut('slow', newpage);
+});
+function newpage() {
+window.location = newLocation;
+}
+    </script>
 
 </body>
 
