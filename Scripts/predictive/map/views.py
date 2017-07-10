@@ -1,6 +1,5 @@
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
-# Create your views here.
 
 from datetime import datetime as dt
 from .models import Districts, Reports
@@ -34,7 +33,6 @@ def product(request):
     return render(request, 'map/product.html', context)
 
 def zoom(request):
-    context = {}
     zoom = {
                 "id": "bb2d39b840666ed9",
                 "title": "New_York_Housing_Density",
