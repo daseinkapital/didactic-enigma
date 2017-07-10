@@ -34,6 +34,7 @@ def product(request):
     return render(request, 'map/product.html', context)
 
 def zoom(request):
+    context = {}
     zoom = {
                 "id": "bb2d39b840666ed9",
                 "title": "New_York_Housing_Density",

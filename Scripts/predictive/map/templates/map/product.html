@@ -363,11 +363,11 @@ require([
     //scale: 2500000,           Sets the initial scale to 1:50,000,000
     center: [-97.5164, 35.4676]   //Sets the center point of view with lon/lat
   });
-    view.then(function(){
+    setTimeout(function(){view.then(function(){
             sierraLeone.then(function(){
                     view.goTo(sierraLeone.fullExtent);
                     });
-            });   
+            })}, 3500);   
 });
 </script>
 </head>
@@ -382,12 +382,6 @@ require([
 <script>
 setTimeout(function(){jQuery('#overlay').fadeOut("slow")},3000);
 
-<<<<<<< HEAD
 </script>
 </body>
-=======
-
-
-
->>>>>>> ARCGIS
 </html>
