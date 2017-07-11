@@ -71,50 +71,10 @@
                 height: 850px;
                 background-color: grey;
             }
-        .myButton {
-            -moz-box-shadow:inset 0px 1px 0px 0px #97c4fe;
-            -webkit-box-shadow:inset 0px 1px 0px 0px #97c4fe;
-            box-shadow:inset 0px 1px 0px 0px #97c4fe;
-            background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #3d94f6), color-stop(1, #1e62d0));
-            background:-moz-linear-gradient(top, #3d94f6 5%, #1e62d0 100%);
-            background:-webkit-linear-gradient(top, #3d94f6 5%, #1e62d0 100%);
-            background:-o-linear-gradient(top, #3d94f6 5%, #1e62d0 100%);
-            background:-ms-linear-gradient(top, #3d94f6 5%, #1e62d0 100%);
-            background:linear-gradient(to bottom, #3d94f6 5%, #1e62d0 100%);
-            filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#3d94f6', endColorstr='#1e62d0',GradientType=0);
-            background-color:#3d94f6;
-            -moz-border-radius:6px;
-            -webkit-border-radius:6px;
-            border-radius:6px;
-            border:1px solid #337fed;
-            display:inline-block;
-            cursor:pointer;
-            color:#ffffff;
-            font-family:Arial;
-            font-size:15px;
-            font-weight:bold;
-            padding:6px 24px;
-            text-decoration:none;
-            text-shadow:0px 1px 0px #1570cd;
-        }
-        .myButton:hover {
-            background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #1e62d0), color-stop(1, #3d94f6));
-            background:-moz-linear-gradient(top, #1e62d0 5%, #3d94f6 100%);
-            background:-webkit-linear-gradient(top, #1e62d0 5%, #3d94f6 100%);
-            background:-o-linear-gradient(top, #1e62d0 5%, #3d94f6 100%);
-            background:-ms-linear-gradient(top, #1e62d0 5%, #3d94f6 100%);
-            background:linear-gradient(to bottom, #1e62d0 5%, #3d94f6 100%);
-            filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#1e62d0', endColorstr='#3d94f6',GradientType=0);
-            background-color:#1e62d0;
-        }
-        .myButton:active {
-            position:relative;
-            top:1px;
-        }
-        
+
         .sidenav {
             height: 100%;
-            width: 0;
+            width: 300px;
             position: fixed;
             z-index: 1;
             top: 0;
@@ -173,13 +133,9 @@
                     <!--dataType : 'html',-->
                     success : function (data) {
                     $('#mySidenav').empty().append(data);
-                    $("#mySidenav").css("width" , "250px");}
             });            
         }
-        
-        function closeNav() {
-            document.getElementById("mySidenav").style.width = "0";
-        }
+
         
         function DateSelect(form, date)
         {
@@ -410,7 +366,7 @@
 <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>Get started with SceneView - Create a 3D map</title>
 <style>
-  html, body, #viewDiv {
+  html, body, #map {
     padding: 0;
     margin: 0;
     height: 100%;
@@ -418,43 +374,10 @@
   }
 </style>
 <link rel="stylesheet" href="https://js.arcgis.com/4.4/esri/css/main.css">
-<script src="https://js.arcgis.com/4.4/"></script>
-<script>
-require([
-  "esri/Map",
-  "esri/views/SceneView",
-  "esri/layers/TileLayer",
-  "dojo/domReady!",
-  "dojo/dom",
-  "dojo/on",
-], function(Map, SceneView, TileLayer, dom, on){
 
-    var sierraLeone = new TileLayer({
-            url: "/map/zoom/",
-                id: "sierra",
-                opacity: 0.9
-            });
-    var map = new Map({
-        basemap: "national-geographic",
-        ground: "world-elevation",
-        layers: [sierraLeone]
-    });
-    var view = new SceneView({
-    container: "viewDiv",     // Reference to the scene div created in step 5
-    map: map,                 // Reference to the map object created before the scene
-    //scale: 2500000,           Sets the initial scale to 1:50,000,000
-    center: [-97.5164, 35.4676]   //Sets the center point of view with lon/lat
-  });
-    setTimeout(function(){view.then(function(){
-            sierraLeone.then(function(){
-                    view.goTo(sierraLeone.fullExtent);
-                    });
-            })}, 3500);   
-});
-</script>
 </head>
 <body>
-  <div id="viewDiv"></div>
+  <div id="map"></div>
 </body>
 
 
