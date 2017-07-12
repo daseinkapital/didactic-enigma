@@ -34,14 +34,11 @@ def product(request):
     return render(request, 'map/product.html', context)
 
 def init(request):
-    data = {}
-    districts = Districts.objects.all()
-    i = 1
-    for district in districts:
-        data.update({'id' : i, 'fields' : {'name' : district.name, 'lat' : district.latitude, 'lng' : district.longitude}})
-        i += 1
-    print(data)
-    return JsonResponse(data)
+    pass
+
+def districts(request):
+    data = render(request, 'map/jsonResponse.html')
+    return HttpResponse(data, content_type="application/json")
     
     
         

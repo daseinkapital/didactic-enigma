@@ -181,6 +181,7 @@
             mapTypeId: google.maps.MapTypeId.HYBRID
           });
 
+        map.data.loadGeoJson('/map/districts/');
 
         var points = [
         {% for district in districts %}
