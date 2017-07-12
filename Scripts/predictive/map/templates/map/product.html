@@ -20,15 +20,10 @@
     <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
     
-    
-
-
-    <!-- Plugin CSS -->
-    <link rel="stylesheet" href="{% static 'device-mockups/device-mockups.min.css' %}">
 
     <!-- Custom styles for this template -->
     <link href="{% static 'css/new-age.min.css' %}" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'css/loading.css' %}">
+    <!--<link rel="stylesheet" href="{% static 'css/loading.css' %}">-->
     <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
     
  
@@ -54,16 +49,10 @@
                     data : {'direction':name},
                     <!--dataType : 'html',-->
                     success : function (data) {
-                    $('#mySidenav').empty().append(data);
-            });            
-        }
-
-        
-        function DateSelect(form, date)
-        {
-                var Data = $('form').serializeArray();
-                $('#date').val(Data[0]['value']);
-        }
+                        $('#mySidenav').empty().append(data);
+                    }            
+            })
+        };
         
         
      
@@ -106,7 +95,7 @@
         </div>
     </nav>
 
-
+<!--
 <div id="overlay">
  <div class="sk-folding-cube">
         <div class="sk-cube1 sk-cube"></div>
@@ -116,7 +105,7 @@
         </div>
         <img src="{% static '/img/logo.png' %}"> </div>
 </div>
-
+-->
   
 
 <!--{% include "map/sidebar.html" %}-->
@@ -124,7 +113,6 @@
     <div id="mySidenav" class="sidenav">
     </div>
 </div>
-
 
 
 
@@ -149,8 +137,6 @@
 <head>
 <meta charset="utf-8">
 <hr>
-<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
-<title>Get started with SceneView - Create a 3D map</title>
 <style>
   html, body, #map {
     padding: 0;
@@ -184,6 +170,50 @@
     <script src="{% static 'js/new-age.min.js' %}"></script>
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-uAlwABgf0eRzXK9duURPQyye0zhEreg&callback=initMap"></script>
-    <script src="{% static 'js/gmaps.js' %}"></script>
+    <script>
+    function initMap() {        
+        var center = {lat: 8.612690, lng: -11.759313};
+            
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 8,
+            center: center,
+            disableDefaultUI: true,
+            mapTypeId: google.maps.MapTypeId.HYBRID
+          });
+
+
+        var points = [
+        {% for district in districts %}
+            {lat: {{district.latitude}}, lng: {{district.longitude}} },
+        {% endfor %}
+        ];
+    
+        var markerDict = [];
+        
+        for (i = 0; i < points.length; i++){
+            var mark = points[i];
+            markerDict.push({
+                key: i,
+                value: mark
+            });
+            var marker = new google.maps.Marker({
+                animation: google.maps.Animation.DROP,
+                position: mark,
+                map: map,
+            });
+            google.maps.event.addDomListener(marker, 'click', function() {
+                map.setCenter(this.getPosition());
+                $.ajax({
+                      url : "/map/marker/",
+                      data : {"lat" : this.getPosition().lat(), "lng" : this.getPosition().lng(), "date" : "2014-09-18"},
+                      dataType : 'html',
+                      success : function (data) {
+                          $("#mySidenav").empty().append(data);
+                      }
+                });
+            });
+        };
+    }
+    </script>
   
 </html>
