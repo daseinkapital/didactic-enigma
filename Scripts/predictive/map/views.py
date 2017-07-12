@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
+from django.core import serializers
 
 from datetime import datetime as dt
 from .models import Districts, Reports
@@ -32,23 +33,15 @@ def product(request):
     context.update({'districts':districts})
     return render(request, 'map/product.html', context)
 
-def zoom(request):
-    zoom = {
-                "id": "bb2d39b840666ed9",
-                "title": "New_York_Housing_Density",
-                "fullExtent":
-                    {
-                            "xmin":-13.303505897579,
-                            "ymin":6.91761589036111,
-                            "xmax":-10.2657527921576,
-                            "ymax":10.0004310611446,
-                            "spatialReference":
-                                {
-                                        "wkid":4326,
-                                        "wkt":None
-                                }
-                    }
-            }
-    return JsonResponse(zoom)
+def init(request):
+    data = {}
+    districts = Districts.objects.all()
+    i = 1
+    for district in districts:
+        data.update({'id' : i, 'fields' : {'name' : district.name, 'lat' : district.latitude, 'lng' : district.longitude}})
+        i += 1
+    print(data)
+    return JsonResponse(data)
+    
     
         
