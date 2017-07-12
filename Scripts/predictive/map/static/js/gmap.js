@@ -1,3 +1,6 @@
+
+var iconSize = 0.5;
+
 function initMap() {
     var points = [{lat:10,lng:-13}];
     var center = {lat: 8.612690, lng: -11.759313};
@@ -11,6 +14,15 @@ function initMap() {
       });
         
     var markerDict = [];
+    var icon = {
+        
+        path: "M-20,0a20,20 0 1,0 40,0a20,20 0 1,0 -40,0",
+        fillColor: '#FF0000',
+        fillOpacity: .6,
+        anchor: new google.maps.Point(0,0),
+        strokeWeight: 0,
+        scale: iconSize
+    }
     
     for (i = 0; i < points.length; i++){
         var mark = points[i];
@@ -21,11 +33,10 @@ function initMap() {
         var marker = new google.maps.Marker({
             animation: google.maps.Animation.DROP,
             position: mark,
-             icon: {
-             path: google.maps.SymbolPath.CIRCLE,
-              scale: 10
-    },
             map: map,
+            draggable: false,
+            icon: icon,
+            zIndex : -20
         });
         google.maps.event.addDomListener(marker, 'click', function() {
             map.setCenter(this.getPosition());
