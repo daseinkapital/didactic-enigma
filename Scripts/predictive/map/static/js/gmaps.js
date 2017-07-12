@@ -21,6 +21,10 @@ function initMap() {
         var marker = new google.maps.Marker({
             animation: google.maps.Animation.DROP,
             position: mark,
+             icon: {
+             path: google.maps.SymbolPath.CIRCLE,
+              scale: 10
+    },
             map: map,
         });
         google.maps.event.addDomListener(marker, 'click', function() {
