@@ -1,6 +1,8 @@
-function initMap() {        
+function initMap() {
+    //center the map around Sierra Leone
     var center = {lat: 8.612690, lng: -11.759313};  
     
+    //initialize the map with a zoom for Sierra Leone
     var map = new google.maps.Map(document.getElementById('map'), {
         zoom: 8,
         center: center,
@@ -8,7 +10,27 @@ function initMap() {
         mapTypeId: google.maps.MapTypeId.HYBRID
       });
 
+    //load in district regions as polygons
     map.data.loadGeoJson('/map/districts/');
+    
+    //format district regions
+    map.data.setStyle(
+            {
+                fillColor: "green",
+                strokeColor: "purple"
+            });
+    
+    map.data.addListener('mouseover', function(event){
+            map.data.revertStyle();
+            map.data.overrideStyle(event.feature, {
+                    fillColor: "yellow"
+                    });
+        });
+        
+    map.data.addListener('mouseout', function(event){
+            map.data.revertStyle();
+        });
+        
 
     $.ajax({
             url : "/map/init/",
@@ -20,10 +42,6 @@ function initMap() {
 
                         mark.push({lat : lat1, lng : lng1});
                 };
-                
-                Object.keys(mark).forEach(function(key) {
-                   console.log(key, mark[key]);
-                   });
                         
                         
                 for (i = 0; i < mark.length; i++){
@@ -34,6 +52,7 @@ function initMap() {
                     });
                     google.maps.event.addDomListener(marker, 'click', function() {
                         map.setCenter(this.getPosition());
+                        map.setZoom(10); 
                         $.ajax({
                               url : "/map/marker/",
                               data : {"lat" : this.getPosition().lat(), "lng" : this.getPosition().lng(), "date" : "2014-09-18"},

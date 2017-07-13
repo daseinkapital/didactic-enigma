@@ -37,30 +37,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
-    
-
-
-
-    <script type = "text/javascript">    
-        function openNav(currentElement) {
-            var name = $(currentElement).html();
-            $.ajax({
-                    url : "/map/data/", 
-                    data : {'direction':name},
-                    <!--dataType : 'html',-->
-                    success : function (data) {
-                        $('#mySidenav').empty().append(data);
-                    }            
-            })
-        };
-        
-        
-     
-
-
-    </script>
-
-   
 
 
 
@@ -109,7 +85,7 @@
   
 
 <!--{% include "map/sidebar.html" %}-->
-<div id=sidebar>
+<div id="sidebar">
     <div id="mySidenav" class="sidenav">
     </div>
 </div>
@@ -119,21 +95,7 @@
 
 
 <hr>
-<!--
-<div width="200px">
-<input type="range" min="0" max="100"></input>
-</div>
-<h3>My Google Maps Demo</h3>
-<form id=dateForm>
-    Exact Date:
-    <input type="date" name="filter-date" id="dateGrab">
-    Start Date:
-    <input type="date" name="start">
-    End Date:
-    <input type="date" name="end">
-    <button type="button" onclick="DateSelect(this.form, this.form.filter-date)">Submit</button>
-</form>
--->
+
 <head>
 <meta charset="utf-8">
 <hr>
