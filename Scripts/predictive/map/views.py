@@ -1,9 +1,11 @@
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from django.core import serializers
+import json
 
 from datetime import datetime as dt
 from .models import Districts, Reports
+
 
 def index(request):
     most_north = Districts.objects.order_by('-longitude')[:5]
@@ -26,24 +28,25 @@ def marker(request):
     html = render(request, 'map/sidebar_data.html', context)
     return HttpResponse(html)
     
-def product(request):
-    districts = Districts.objects.all()
-    districtdict = []    
-    for district in districts:
-        report = Reports.objects.filter(distict=district)
-        corddict = {district.name : {'lat' : district.latitude, 'lng' : district.longitude, 'deaths' : report.death_cnfmd}}
-        districtdict.update(corddict)
-    return render(request, 'map/product.html', districtdict)
+def product(request):  
+    most_north = Districts.objects.order_by('-longitude')[:5]
+    context = {'most_north':most_north}
+    return render(request, 'map/product.html', context)
 
 def init(request):
-    data = {}
     districts = Districts.objects.all()
-    i = 1
+    districtdict = {} 
+    i = 0
     for district in districts:
-        data.update({'id' : i, 'fields' : {'name' : district.name, 'lat' : district.latitude, 'lng' : district.longitude}})
-        i += 1
-    print(data)
-    return JsonResponse(data)
-    
+        report = Reports.objects.filter(district=district).first()
+        corddict = {i : {'lat' : str(district.latitude), 'lng' : str(district.longitude), 'deaths' : str(report.death_cnfmd)}}
+        districtdict.update(corddict)
+        i += 1;
+    data = json.dumps(districtdict)
+    return HttpResponse(data, content_type="application/json")
+
+def districts(request):
+    data = render(request, 'map/jsonResponse.html')
+    return HttpResponse(data, content_type="application/json")
     
         

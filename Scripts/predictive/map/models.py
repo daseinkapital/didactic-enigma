@@ -20,6 +20,7 @@ class Districts(models.Model):
             decimal_places=3
         )
     
+    
 
 class Reports(models.Model):
     district = models.ForeignKey(

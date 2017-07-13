@@ -8,15 +8,7 @@ function initMap() {
         disableDefaultUI: true,
         mapTypeId: google.maps.MapTypeId.HYBRID
       });
-     var icon = {
-        
-        path: "M-20,0a20,20 0 1,0 40,0a20,20 0 1,0 -40,0",
-        fillColor: '#FF0000',
-        fillOpacity: .6,
-        anchor: new google.maps.Point(0,0),
-        strokeWeight: 0,
-        scale: iconSize
-    }
+    
 
     map.data.loadGeoJson('/map/districts/');
 
@@ -24,15 +16,39 @@ function initMap() {
             
             url : "/map/init/",
             success : function(data) {
+                var deathcnfm = [];
                 var mark = [];
-                for (var i = 0; i < data.length; i++){
-                        var lat1 = parseFloat(data[i].fields.latitude);
-                        var lng1 = parseFloat(data[i].fields.longitude);
-
+                var count = Object.keys(data).length;
+                
+                
+               
+                for (var i = 0; i < count; i++){
+                        var lat1 = parseFloat(data[i].lat);
+                        var lng1 = parseFloat(data[i].lng);
+                        var deaths = parseInt(data[i].deaths);
+                        
                         mark.push({lat : lat1, lng : lng1});
+                        deathcnfm.push(deaths);
                 };
                                   
                 for (i = 0; i < mark.length; i++){
+                    var iconSize = deathcnfm[i]/50;
+                      
+                        
+                    var icon = {
+        
+                        path: "M-20,0a20,20 0 1,0 40,0a20,20 0 1,0 -40,0",
+                        fillColor: '#FF0000',
+                        fillOpacity: .6,
+                        anchor: new google.maps.Point(0,0),
+                        strokeWeight: 0,
+                        scale: iconSize
+                    }
+                     
+           
+                     
+                    
+                
                     var marker = new google.maps.Marker({
                         animation: google.maps.Animation.DROP,
                         position: mark[i],
