@@ -1,16 +1,37 @@
-var iconSize = 0.5;
-function initMap() {        
+function initMap() {
+    //center the map around Sierra Leone
     var center = {lat: 8.612690, lng: -11.759313};  
     
+    //initialize the map with a zoom for Sierra Leone
     var map = new google.maps.Map(document.getElementById('map'), {
         zoom: 8,
         center: center,
         disableDefaultUI: true,
-        mapTypeId: google.maps.MapTypeId.HYBRID
+        mapTypeId: google.maps.MapTypeId.SATELLITE
       });
     
 
+    //load in district regions as polygons
     map.data.loadGeoJson('/map/districts/');
+    
+    //format district regions
+    map.data.setStyle(
+            {
+                fillColor: "green",
+                strokeColor: "purple"
+            });
+    
+    map.data.addListener('mouseover', function(event){
+            map.data.revertStyle();
+            map.data.overrideStyle(event.feature, {
+                    fillColor: "yellow"
+                    });
+        });
+        
+    map.data.addListener('mouseout', function(event){
+            map.data.revertStyle();
+        });
+        
 
     $.ajax({
             
@@ -18,6 +39,7 @@ function initMap() {
             success : function(data) {
                 var deathcnfm = [];
                 var mark = [];
+
                 var count = Object.keys(data).length;
                 
                 
@@ -25,8 +47,7 @@ function initMap() {
                 for (var i = 0; i < count; i++){
                         var lat1 = parseFloat(data[i].lat);
                         var lng1 = parseFloat(data[i].lng);
-                        var deaths = parseInt(data[i].deaths);
-                        
+                        var deaths = parseInt(data[i].deaths);  
                         mark.push({lat : lat1, lng : lng1});
                         deathcnfm.push(deaths);
                 };
@@ -59,6 +80,7 @@ function initMap() {
                     });
                     google.maps.event.addDomListener(marker, 'click', function() {
                         map.setCenter(this.getPosition());
+                        map.setZoom(10); 
                         $.ajax({
                               url : "/map/marker/",
                               data : {"lat" : this.getPosition().lat(), "lng" : this.getPosition().lng(), "date" : "2014-09-18"},

@@ -23,7 +23,7 @@
 
     <!-- Custom styles for this template -->
     <link href="{% static 'css/new-age.min.css' %}" rel="stylesheet">
-    <!--<link rel="stylesheet" href="{% static 'css/loading.css' %}">-->
+    <link rel="stylesheet" href="{% static 'css/loading.css' %}">
     <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
     
  
@@ -37,30 +37,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
-    
-
-
-
-    <script type = "text/javascript">    
-        function openNav(currentElement) {
-            var name = $(currentElement).html();
-            $.ajax({
-                    url : "/map/data/", 
-                    data : {'direction':name},
-                    <!--dataType : 'html',-->
-                    success : function (data) {
-                        $('#mySidenav').empty().append(data);
-                    }            
-            })
-        };
-        
-        
-     
-
-
-    </script>
-
-   
 
 
 
@@ -95,7 +71,6 @@
         </div>
     </nav>
 
-<!--
 <div id="overlay">
  <div class="sk-folding-cube">
         <div class="sk-cube1 sk-cube"></div>
@@ -105,11 +80,10 @@
         </div>
         <img src="{% static '/img/logo.png' %}"> </div>
 </div>
--->
   
 
 <!--{% include "map/sidebar.html" %}-->
-<div id=sidebar>
+<div id="sidebar">
     <div id="mySidenav" class="sidenav">
     </div>
 </div>
@@ -119,21 +93,7 @@
 
 
 <hr>
-<!--
-<div width="200px">
-<input type="range" min="0" max="100"></input>
-</div>
-<h3>My Google Maps Demo</h3>
-<form id=dateForm>
-    Exact Date:
-    <input type="date" name="filter-date" id="dateGrab">
-    Start Date:
-    <input type="date" name="start">
-    End Date:
-    <input type="date" name="end">
-    <button type="button" onclick="DateSelect(this.form, this.form.filter-date)">Submit</button>
-</form>
--->
+
 <head>
 <meta charset="utf-8">
 <hr>
@@ -166,10 +126,9 @@
   
 
     <!-- Custom scripts for this template -->
-    <script src="{% static 'js/product.js' %}"></script>
     <script src="{% static 'js/new-age.min.js' %}"></script>
+    <script src="{% static 'js/loading.js' %}"></script>
+    <script src="{% static 'js/gmaps.js' %}"></script>
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-uAlwABgf0eRzXK9duURPQyye0zhEreg&callback=initMap"></script>
-    <script src={% static 'js/gmaps.js' %}></script>
- 
 </html>
