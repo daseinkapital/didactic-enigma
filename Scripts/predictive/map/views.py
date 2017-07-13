@@ -27,11 +27,13 @@ def marker(request):
     return HttpResponse(html)
     
 def product(request):
-    report_dates = Reports.objects.order_by('date').distinct('date')
-    context = {'report_dates' : report_dates}
     districts = Districts.objects.all()
-    context.update({'districts':districts})
-    return render(request, 'map/product.html', context)
+    districtdict = []    
+    for district in districts:
+        report = Reports.objects.filter(distict=district)
+        corddict = {district.name : {'lat' : district.latitude, 'lng' : district.longitude, 'deaths' : report.death_cnfmd}}
+        districtdict.update(corddict)
+    return render(request, 'map/product.html', districtdict)
 
 def init(request):
     data = {}
