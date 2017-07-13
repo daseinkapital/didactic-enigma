@@ -23,7 +23,7 @@
 
     <!-- Custom styles for this template -->
     <link href="{% static 'css/new-age.min.css' %}" rel="stylesheet">
-    <!--<link rel="stylesheet" href="{% static 'css/loading.css' %}">-->
+    <link rel="stylesheet" href="{% static 'css/loading.css' %}">
     <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
     
  
@@ -71,7 +71,6 @@
         </div>
     </nav>
 
-<!--
 <div id="overlay">
  <div class="sk-folding-cube">
         <div class="sk-cube1 sk-cube"></div>
@@ -81,7 +80,6 @@
         </div>
         <img src="{% static '/img/logo.png' %}"> </div>
 </div>
--->
   
 
 <!--{% include "map/sidebar.html" %}-->
@@ -128,10 +126,10 @@
   
 
     <!-- Custom scripts for this template -->
-    <script src="{% static 'js/product.js' %}"></script>
     <script src="{% static 'js/new-age.min.js' %}"></script>
+    <script src="{% static 'js/loading.js' %}"></script>
+    <script src="{% static 'js/gmaps.js' %}"></script>
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-uAlwABgf0eRzXK9duURPQyye0zhEreg&callback=initMap"></script>
-    <script src={% static 'js/gmaps.js' %}></script>
   
 </html>

@@ -7,7 +7,7 @@ function initMap() {
         zoom: 8,
         center: center,
         disableDefaultUI: true,
-        mapTypeId: google.maps.MapTypeId.HYBRID
+        mapTypeId: google.maps.MapTypeId.SATELLITE
       });
 
     //load in district regions as polygons
