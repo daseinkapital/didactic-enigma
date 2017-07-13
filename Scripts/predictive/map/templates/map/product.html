@@ -170,51 +170,6 @@
     <script src="{% static 'js/new-age.min.js' %}"></script>
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-uAlwABgf0eRzXK9duURPQyye0zhEreg&callback=initMap"></script>
-    <script>
-    function initMap() {        
-        var center = {lat: 8.612690, lng: -11.759313};
-            
-        var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 8,
-            center: center,
-            disableDefaultUI: true,
-            mapTypeId: google.maps.MapTypeId.HYBRID
-          });
-
-        map.data.loadGeoJson('/map/districts/');
-
-        var points = [
-        {% for district in districts %}
-            {lat: {{district.latitude}}, lng: {{district.longitude}} },
-        {% endfor %}
-        ];
-    
-        var markerDict = [];
-        
-        for (i = 0; i < points.length; i++){
-            var mark = points[i];
-            markerDict.push({
-                key: i,
-                value: mark
-            });
-            var marker = new google.maps.Marker({
-                animation: google.maps.Animation.DROP,
-                position: mark,
-                map: map,
-            });
-            google.maps.event.addDomListener(marker, 'click', function() {
-                map.setCenter(this.getPosition());
-                $.ajax({
-                      url : "/map/marker/",
-                      data : {"lat" : this.getPosition().lat(), "lng" : this.getPosition().lng(), "date" : "2014-09-18"},
-                      dataType : 'html',
-                      success : function (data) {
-                          $("#mySidenav").empty().append(data);
-                      }
-                });
-            });
-        };
-    }
-    </script>
+    <script src={% static 'js/gmaps.js' %}></script>
   
 </html>

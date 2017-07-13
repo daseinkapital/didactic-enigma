@@ -34,7 +34,9 @@ def product(request):
     return render(request, 'map/product.html', context)
 
 def init(request):
-    pass
+    districts = Districts.objects.all()
+    data = serializers.serialize('json', districts)
+    return HttpResponse(data, content_type="application/json")
 
 def districts(request):
     data = render(request, 'map/jsonResponse.html')
