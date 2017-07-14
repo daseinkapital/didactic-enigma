@@ -38,7 +38,8 @@ def init(request):
     districtdict = {} 
     i = 0
     for district in districts:
-        report = Reports.objects.filter(district=district).first()
+        date = dt.strptime("2014-09-18","%Y-%m-%d")
+        report = Reports.objects.filter(district=district).filter(date = date).first()
         corddict = {i : {'lat' : str(district.latitude), 'lng' : str(district.longitude), 'deaths' : str(report.death_cnfmd)}}
         districtdict.update(corddict)
         i += 1;

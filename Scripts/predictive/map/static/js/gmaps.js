@@ -54,8 +54,7 @@ function initMap() {
                                   
                 for (i = 0; i < mark.length; i++){
                     var iconSize = deathcnfm[i]/50;
-                      
-                        
+                       
                     var icon = {
         
                         path: "M-20,0a20,20 0 1,0 40,0a20,20 0 1,0 -40,0",
@@ -63,7 +62,9 @@ function initMap() {
                         fillOpacity: .6,
                         anchor: new google.maps.Point(0,0),
                         strokeWeight: 0,
-                        scale: iconSize
+                        scale: iconSize,
+                        
+                        
                     }
                      
            

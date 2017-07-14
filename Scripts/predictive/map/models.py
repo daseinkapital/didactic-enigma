@@ -5,6 +5,7 @@ from django.db import models
 name_length = 250
 
 
+
 class Districts(models.Model):
     name = models.CharField(
             max_length=name_length
