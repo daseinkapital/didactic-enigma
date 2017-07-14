@@ -7,5 +7,6 @@ urlpatterns = [
         url(r'marker', views.marker, name='marker'),
         url(r'product', views.product, name='product'),
         url(r'init', views.init, name='init'),
-        url(r'districts', views.districts, name='districts')
+        url(r'districts', views.districts, name='districts'),
+        url(r'region/(?P<district>([A-Z])\w+(\s)?(([A-Z])\w+)?(\s)?(([A-Z])\w+)?)', views.region, name='regions')
     ]

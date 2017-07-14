@@ -1,4 +1,4 @@
 {% for report in reports %}
-<a href="#">{{report.district.name}}</a>
+<a href="/map/region/{{report.district.name}}">{{report.district.name}}</a>
 <a href="#">Deaths confirmed: {{report.death_cnfmd}}</a>
 {% endfor %}

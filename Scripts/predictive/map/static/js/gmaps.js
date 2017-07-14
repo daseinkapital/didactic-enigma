@@ -1,6 +1,6 @@
 function initMap() {
-    //center the map around Sierra Leone
-    var center = {lat: 8.612690, lng: -11.759313};  
+    //center the map around Sierra Leone  
+    var center = {lat: 8.612690, lng: -10.95635};
     
     //initialize the map with a zoom for Sierra Leone
     var map = new google.maps.Map(document.getElementById('map'), {
@@ -19,8 +19,15 @@ function initMap() {
             {
                 fillColor: "green",
                 strokeColor: "purple"
-            });
-    
+            });   
+        
+//    map.setOptions({
+//            draggable: false,
+//            scrollwheel: false,
+//            disableDoubleClickZoom: true
+//            });
+        
+        
     map.data.addListener('mouseover', function(event){
             map.data.revertStyle();
             map.data.overrideStyle(event.feature, {
@@ -53,7 +60,7 @@ function initMap() {
                 };
                                   
                 for (i = 0; i < mark.length; i++){
-                    var iconSize = deathcnfm[i]/50;
+                    var iconSize = deathcnfm[i] ;
                       
                         
                     var icon = {
@@ -65,10 +72,6 @@ function initMap() {
                         strokeWeight: 0,
                         scale: iconSize
                     }
-                     
-           
-                     
-                    
                 
                     var marker = new google.maps.Marker({
                         animation: google.maps.Animation.DROP,

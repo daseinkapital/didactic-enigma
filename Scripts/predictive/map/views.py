@@ -3,6 +3,7 @@ from django.http import HttpResponse, JsonResponse
 from django.core import serializers
 import json
 
+from math import log, ceil as log, ceil
 from datetime import datetime as dt
 from .models import Districts, Reports
 
@@ -39,7 +40,10 @@ def init(request):
     i = 0
     for district in districts:
         report = Reports.objects.filter(district=district).first()
-        corddict = {i : {'lat' : str(district.latitude), 'lng' : str(district.longitude), 'deaths' : str(report.death_cnfmd)}}
+        if report.death_cnfmd != 0:
+            corddict = {i : {'lat' : str(district.latitude), 'lng' : str(district.longitude), 'deaths' : str(ceil((log(report.death_cnfmd)/4)/log(4)))}}
+        else:
+            corddict = {i : {'lat' : str(district.latitude), 'lng' : str(district.longitude), 'deaths' : str(report.death_cnfmd)}}            
         districtdict.update(corddict)
         i += 1;
     data = json.dumps(districtdict)
@@ -48,5 +52,7 @@ def init(request):
 def districts(request):
     data = render(request, 'map/jsonResponse.html')
     return HttpResponse(data, content_type="application/json")
-    
+
+def region(request, district):
+    return render(request, 'map/region.html', {'district_name' : district})
         
