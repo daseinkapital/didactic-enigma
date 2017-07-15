@@ -38,19 +38,21 @@ def init(request):
     districts = Districts.objects.all()
     districtdict = {} 
     i = 0
+    date = dt.strptime("2014-09-18","%Y-%m-%d")
     for district in districts:
-        report = Reports.objects.filter(district=district).first()
-        if report.death_cnfmd != 0:
-            corddict = {i : {'lat' : str(district.latitude), 'lng' : str(district.longitude), 'deaths' : str(ceil((log(report.death_cnfmd)/4)/log(4)))}}
-        else:
-            corddict = {i : {'lat' : str(district.latitude), 'lng' : str(district.longitude), 'deaths' : str(report.death_cnfmd)}}            
+        report = Reports.objects.filter(district=district).filter(date = date).first()
+        corddict = {i : {'lat' : str(district.latitude), 'lng' : str(district.longitude), 'deaths' : str(ceil((log(report.death_cnfmd)/4)/log(4)))}}
         districtdict.update(corddict)
-        i += 1;
+        i += 1
     data = json.dumps(districtdict)
     return HttpResponse(data, content_type="application/json")
 
 def districts(request):
     data = render(request, 'map/jsonResponse.html')
+    return HttpResponse(data, content_type="application/json")
+
+def indDistricts(request):
+    data = render(request, 'map/districtJson.html')
     return HttpResponse(data, content_type="application/json")
 
 def region(request, district):

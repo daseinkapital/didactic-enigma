@@ -5,6 +5,7 @@ from django.db import models
 name_length = 250
 
 
+
 class Districts(models.Model):
     name = models.CharField(
             max_length=name_length
@@ -20,6 +21,17 @@ class Districts(models.Model):
             decimal_places=3
         )
     
+#    zoom = models.IntegerField()
+#    
+#    latBnd = models.DecimalField(
+#            max_digits=6,
+#            decimal_places=3
+#        )
+#    
+#    lngBnd = models.DecimalField(
+#            max_digits=6,
+#            decimal_places=3
+#        )
     
 
 class Reports(models.Model):

@@ -8,5 +8,6 @@ urlpatterns = [
         url(r'product', views.product, name='product'),
         url(r'init', views.init, name='init'),
         url(r'districts', views.districts, name='districts'),
+        url(r'indDistricts', views.indDistricts, name='indDistricts'),
         url(r'region/(?P<district>([A-Z])\w+(\s)?(([A-Z])\w+)?(\s)?(([A-Z])\w+)?)', views.region, name='regions')
     ]
