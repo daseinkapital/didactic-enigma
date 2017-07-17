@@ -28,15 +28,17 @@ function initMap_district() {
         if (feature.getProperty('ADM2_NAME') !== district_name){
             return{
                 visible: false,
-                fillColor: "black",
-                fillOpacity: 1,
-                strokeColor: "black"
+                fillColor: "gray",
+                fillOpacity: 0.5,
+                strokeColor: "gray"
             };
         } else {
                 return{
                         visible: true,
-                        fillColor: "black",
-                        fillOpacity: 1
+                        fillColor: "gray",
+                        fillOpacity: 0.7,
+                        strokeColor: "gray",
+                        strokeWeight: 0
                       };
                 //var innercoord = feature.getGeometry().get();
                 //alert(innercoord);
