@@ -23,15 +23,9 @@ class Districts(models.Model):
     
 #    zoom = models.IntegerField()
 #    
-#    latBnd = models.DecimalField(
-#            max_digits=6,
-#            decimal_places=3
-#        )
+#    latBnd = models.FloatField()
 #    
-#    lngBnd = models.DecimalField(
-#            max_digits=6,
-#            decimal_places=3
-#        )
+#    lngBnd = models.FloatField()
     
 
 class Reports(models.Model):
