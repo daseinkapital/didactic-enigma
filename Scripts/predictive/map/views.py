@@ -34,17 +34,31 @@ def product(request):
     context = {'most_north':most_north}
     return render(request, 'map/product.html', context)
 
-def init(request):
+def init_main(request):
     districts = Districts.objects.all()
     districtdict = {} 
     i = 0
     date = dt.strptime("2014-09-18","%Y-%m-%d")
+    size_scale = [10, 100, 1000, 10000]
     for district in districts:
         report = Reports.objects.filter(district=district).filter(date = date).first()
-        corddict = {i : {'lat' : str(district.latitude), 'lng' : str(district.longitude), 'deaths' : str(ceil((log(report.death_cnfmd)/4)/log(4)))}}
+        s = 1
+        for size in size_scale:
+            if report.death_cnfmd > size:
+                s += 1
+            else:
+                break
+        corddict = {i : {'name': district.name, 'lat' : str(district.latitude), 'lng' : str(district.longitude), 'deaths' : str(report.death_cnfmd), 'size' : s}}
         districtdict.update(corddict)
         i += 1
     data = json.dumps(districtdict)
+    return HttpResponse(data, content_type="application/json")
+
+def init_dist(request):
+    dist_name = request.GET.get('name')
+    districts = Districts.objects.filter(name=dist_name).first()
+    map_data = {'zoom' : 10, 'lat' : str(districts.latitude), 'lng' : str(districts.longitude)}
+    data = json.dumps(map_data)
     return HttpResponse(data, content_type="application/json")
 
 def districts(request):

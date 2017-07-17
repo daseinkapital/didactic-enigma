@@ -12,25 +12,23 @@ function initMap_district() {
         mapTypeId: google.maps.MapTypeId.SATELLITE
     });
     
+    $.ajax({
+    url : '/map/init_dist/',
+    data : {'name' : document.title},
+    success : function(data) {
+        map.setZoom(data.zoom);
+        map.setCenter({lat : parseFloat(data.lat), lng : (parseFloat(data.lng) - 0.5)})
+        }
+    });
+    
     //load in district regions as polygons
     map.data.loadGeoJson('/map/indDistricts/');
     
 
-    
-    //format district regions
-    map.data.setStyle(
-            {
-                fillColor: "green",
-                strokeColor: "purple"
-            });
-               
     map.data.setStyle(function(feature) {
         if (feature.getProperty('ADM2_NAME') !== district_name){
             return{
                 visible: false,
-                fillColor: "gray",
-                fillOpacity: 0.5,
-                strokeColor: "gray"
             };
         } else {
                 return{
@@ -40,10 +38,8 @@ function initMap_district() {
                         strokeColor: "gray",
                         strokeWeight: 0
                       };
-                //var innercoord = feature.getGeometry().get();
-                //alert(innercoord);
-                //map.data.add({geometry: new google.maps.Data.Polygon([outercoord, innercoord])})
         };
     });
+    
 
 };
