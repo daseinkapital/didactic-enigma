@@ -2,3 +2,20 @@
 <a href="#">{{report.district.name}}</a>
 <a href="#">Deaths confirmed: {{report.death_cnfmd}}</a>
 {% endfor %}
+
+    <script type="text/javascript" src="cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>
+    <script type="text/javascript" src="cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="cdn.jsdelivr.net/bootstrap/3/css/bootstrap.css" />
+ 
+<!-- Include Date Range Picker -->
+    <script type="text/javascript" src="cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+    <link rel="stylesheet" type="text/css" href="cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
+    
+    <input type="text" name="daterange" value="01/01/2015 - 01/31/2015" />
+
+<input type="text" name="daterange" value="01/01/2015 - 01/31/2015" />
+<script type="text/javascript">
+$(function() {
+    $('input[name="daterange"]').daterangepicker();
+});
+</script>

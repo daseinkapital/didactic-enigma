@@ -1,4 +1,5 @@
 {% load static %}
+{% load render_bundle from webpack_loader %}
 <!DOCTYPE html>
 
 <html>
@@ -25,7 +26,7 @@
     <link href="{% static 'css/new-age.min.css' %}" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/loading.css' %}">
     <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.0/themes/smoothness/jquery-u‌​i.css">
+
      <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" media="screen"
      href="http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-datetimepicker.min.css">
@@ -42,6 +43,9 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
     
+    
+
+
     
   
 
@@ -116,13 +120,19 @@
 </head>
 <body>
   <div id="map"></div>
- 
+
+
+  
 
  
-    
-
 
 </body>
+<div id="container"> 
+{% render_bundle 'main' %}  
+</div>  
+
+
+ 
 
 
 
@@ -144,6 +154,7 @@
     <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 <script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
     <script src="{% static 'js/new-age.min.js' %}"></script>
+
     <script src="{% static 'js/loading.js' %}"></script>
     <script src="{% static 'js/gmaps.js' %}"></script>
     <script async defer
