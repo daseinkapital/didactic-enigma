@@ -5,7 +5,6 @@ from django.db import models
 name_length = 250
 
 
-
 class Districts(models.Model):
     name = models.CharField(
             max_length=name_length
@@ -21,6 +20,11 @@ class Districts(models.Model):
             decimal_places=3
         )
     
+#    zoom = models.IntegerField()
+#    
+#    NWBnd = models.FloatField()
+#    
+#    SEBnd = models.FloatField()
     
 
 class Reports(models.Model):
