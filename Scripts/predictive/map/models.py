@@ -7,24 +7,16 @@ name_length = 250
 
 class Districts(models.Model):
     name = models.CharField(
-            max_length=name_length
+            max_length=name_length,
+            primary_key=True
         )
     
-    longitude = models.DecimalField(
-            max_digits=6,
-            decimal_places=3
-        )
+    lng = models.FloatField()
     
-    latitude = models.DecimalField(
-            max_digits=6,
-            decimal_places=3
-        )
+    lat = models.FloatField()
     
-#    zoom = models.IntegerField()
-#    
-#    NWBnd = models.FloatField()
-#    
-#    SEBnd = models.FloatField()
+    #can we change this?
+    zoom = models.IntegerField()
     
 
 class Reports(models.Model):
@@ -38,10 +30,108 @@ class Reports(models.Model):
             auto_now_add=False,
         )
     
-    population = models.IntegerField()
+    phone_number = models.ForeignKey(
+            'Phones',
+            on_delete=models.CASCADE
+        )
     
-    new_cnfmd = models.IntegerField()
+    disease = models.CharField(
+            null=False,
+            max_length = name_length
+        )
     
-    cum_cnfmd = models.IntegerField()
+    case_count = models.IntegerField(
+            null=True
+        )
     
-    death_cnfmd = models.IntegerField()
+    death_count = models.IntegerField(
+            null=True
+        )
+    
+    report_num = models.AutoField(
+            primary_key=True,
+        )
+
+
+class LHCP(models.Model):
+    name = models.CharField(
+            max_length = name_length
+        )
+    
+    lat = models.FloatField(
+            null=False
+        )
+    
+    lng = models.FloatField(
+            null=False
+        )
+    
+    district = models.ForeignKey(
+            'Districts',
+            on_delete=models.CASCADE
+        )
+    
+    code = models.AutoField(
+            primary_key=True
+        )
+    
+    alert = models.ForeignKey(
+            'Alerts',
+            on_delete=models.CASCADE
+        )
+    
+    
+class Phones(models.Model):
+    number = models.CharField(
+            primary_key=True,
+            max_length = name_length
+        )
+    
+    hospital = models.ForeignKey(
+            'LHCP',
+            on_delete=models.CASCADE
+        )
+    
+    
+class Alerts(models.Model):
+    disease = models.ForeignKey(
+            'Diseases',
+            on_delete=models.CASCADE
+        )
+    
+    district = models.ForeignKey(
+            'Districts',
+            on_delete=models.CASCADE
+        )
+    
+    lat = models.FloatField(
+            null=False
+        )
+    
+    lng = models.FloatField(
+            null=False
+        )
+    
+    alert_num = models.AutoField(
+            primary_key=True
+        )
+    
+    
+class Diseases(models.Model):
+    name = models.CharField(
+            primary_key=True,
+            max_length = name_length
+        )
+    
+
+class AltDiseases(models.Model):
+    alt_name = models.CharField(
+            primary_key=True,
+            max_length = name_length
+        )
+    
+    official_name = models.ForeignKey(
+            'Diseases',
+            on_delete=models.CASCADE
+        )
+    
