@@ -75,11 +75,6 @@ class LHCP(models.Model):
             primary_key=True
         )
     
-    alert = models.ForeignKey(
-            'Alerts',
-            on_delete=models.CASCADE
-        )
-    
     
 class Phones(models.Model):
     number = models.CharField(
