@@ -1,9 +1,17 @@
 var React = require('react')
 var ReactDOM = require('react-dom')
-var App = require('./app')
-var Test = require('./testing')
+var Hello = require('./app')
+var Search = require('./testing')
+import Calendar from './date-range-picker'
 
 
-ReactDOM.render(<App />, document.getElementById('react-app'))
-ReactDOM.render(<Test />, document.getElementById('testing'))
+$(document).ready(function () {
+ReactDOM.render(<Hello />, document.getElementById('react-app'))
+ReactDOM.render(<Search />, document.getElementById('testing'))
+ReactDOM.render(<Calendar />, document.getElementById('Calendar'))
+
+});
+
+
+
 

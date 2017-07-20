@@ -21,11 +21,15 @@
     <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
     
-
+    
     <!-- Custom styles for this template -->
+    
+    
     <link href="{% static 'css/new-age.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/react-select.css' %}" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/loading.css' %}">
     <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+    <link rel="stylesheet" href="{% static 'css/daterange-picker.css' %}">
 
 
      <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" rel="stylesheet">
@@ -105,10 +109,14 @@
  
 
 </body>
+
 <div id="react-app"> 
 {% render_bundle 'main' %}  
 </div>  
 <div id="testing"> 
+{% render_bundle 'main' %}  
+</div>  
+<div id="Calendar"> 
 {% render_bundle 'main' %}  
 </div>  
 
