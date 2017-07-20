@@ -1,11 +1,13 @@
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from django.core import serializers
+from django.views.decorators.csrf import csrf_exempt
 import json
 
 from math import log, ceil as log, ceil
 from datetime import datetime as dt
 from .models import Districts, Reports
+from twilio import twiml
 
 
 def index(request):
@@ -71,4 +73,12 @@ def indDistricts(request):
 
 def region(request, district):
     return render(request, 'map/region.html', {'district_name' : district})
-        
+
+@csrf_exempt
+def sms(request):
+    message = request.POST.get('Body')
+    from_number = request.POST.get('From')
+    print(message)
+    print(from_number)
+    return HttpResponse('<h1>Nice</h1>')
+    

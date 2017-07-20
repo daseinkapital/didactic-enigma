@@ -10,5 +10,6 @@ urlpatterns = [
         url(r'init_dist', views.init_dist, name='init_dist'),
         url(r'districts', views.districts, name='districts'),
         url(r'indDistricts', views.indDistricts, name='indDistricts'),
-        url(r'region/(?P<district>([A-Z])\w+(\s)?(([A-Z])\w+)?(\s)?(([A-Z])\w+)?)', views.region, name='regions')
+        url(r'region/(?P<district>([A-Z])\w+(\s)?(([A-Z])\w+)?(\s)?(([A-Z])\w+)?)', views.region, name='regions'),
+        url(r'sms', views.sms, name='sms')
     ]

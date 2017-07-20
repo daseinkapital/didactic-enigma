@@ -4,6 +4,7 @@ from map.models import LHCP, Phones, Diseases
 from datetime import datetime as dt
 import random
 import csv
+import os
 
 class Command(BaseCommand):
     args = '<none>'
@@ -27,11 +28,12 @@ class Command(BaseCommand):
             report_type = head_count_or_deaths()
             cases = case_count_generator(report_type)
             message_body = report_type + "; " + disease + "; " + str(cases)
-            date = dt.today()
+            date = dt.today().strftime('%Y-%m-%d')
             data.append([phone.number, message_body, date])
         
-        date_now = dt.now().strftime('%m-%d-%Y %I-%M')
-        with open('test-data'+date_now+'.csv', 'w', newline='') as outfile:
+        os.chdir(os.getcwd() + '\\testdata')
+        date_now = dt.now().strftime('%m%d%Y%I%M%S%f')
+        with open('test-data-'+date_now+'.csv', 'w', newline='') as outfile:
             outwriter = csv.writer(outfile, delimiter=',')
             outwriter.writerows(data)         
         

@@ -20,11 +20,6 @@ class Districts(models.Model):
     
 
 class Reports(models.Model):
-    district = models.ForeignKey(
-            'Districts',
-            on_delete=models.CASCADE
-        )
-    
     date = models.DateField(
             auto_now=False,
             auto_now_add=False,
