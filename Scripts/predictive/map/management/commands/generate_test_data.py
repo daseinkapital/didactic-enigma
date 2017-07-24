@@ -2,6 +2,7 @@ from django.core.management.base import BaseCommand
 from map.models import LHCP, Phones, Diseases
 
 from datetime import datetime as dt
+from datetime import timedelta as td
 import random
 import csv
 import os
@@ -10,6 +11,11 @@ class Command(BaseCommand):
     args = '<none really>'
     help = 'Generates test data'
     
+    #This is a global format for date parsing. If the date ever changes, change it here and it will
+    #be reflected all through out the document
+    date_format = '%Y-%m-%d'
+    
+    #allow the user to specify switches for the mgmt command
     def add_arguments(self, parser):
         parser.add_argument(
                 '--days',
@@ -23,14 +29,15 @@ class Command(BaseCommand):
                 '--date',
                 nargs=1,
                 type=str,
-                help='Pick a specific day to generate data on (strf %Y-%m-%d)'
+                default = dt.today().strftime(Command.date_format),
+                help='Pick a specific day to generate data on (strf '+Command.date_format+')'
             )
         
         parser.add_argument(
                 '--dates',
                 nargs=2,
                 type=str,
-                help = 'Choose two days to generate a range of data from (strf %Y-%m-%d)'
+                help = 'Choose two days to generate a range of data from (strf '+Command.date_format+')'
             )
         
         parser.add_argument(
@@ -45,40 +52,74 @@ class Command(BaseCommand):
                 '--random-data',
                 nargs=2,
                 type=int,
-                help='Generate a random number of test data lines (enter a lower, then an upper int bound)'
+                help='Generate a random number of test data lines (enter a lower and upper int bound)'
             )
         
     
+    #main function control
     def handle(self, *args, **options):
+            #save test data to a testdata folder    
             os.chdir(os.getcwd() + '\\testdata')
-            if options['date'] or options['dates']:
+            
+            #if dates are specified, override any day/single date option
+            if options['dates']:
                 options['days'] = None
-            if options['random-data']:
+                options['date'] = None 
+                
+            #if the random switch is used, remove any given count
+            if options['random_data']:
                 options['count'] = None
-            else:
-                count = options['count']
+                options.update({'lower': min(options['random_data']), 'upper': max(options['random_data'])})
             
-            
-            
-            if options['days']:
-                if options['count']:
-                    for i in range(options['days']):
-                        write_test_data(count)
+            #if multiple dates option is selected, parse the dates and determine how many times
+            #to create data
+            if options['dates']:
+                dates = options['dates']
+                start_date = dt.strptime(dates[0], Command.date_format)
+                end_date = dt.strptime(dates[1], Command.date_format)
+                delta = end_date - start_date
+                num_days = delta.days + 1
+                loop_days(start_date, num_days, options)
+
+            #if the number of days are specified, generate enough points for the number specified
+            elif options['days']:
+                #if the date option is the default value (today), create data going back the number
+                #of days specified to today (-1s added for date adjustments)
+                if options['date'] == dt.today().strftime(Command.date_format):
+                    start_date = dt.today() - td(days=options['days'] - 1)
+                    num_days = options['days'][0] - 1
+                    loop_days(start_date, num_days, options)
+                
+                #if the date switch was specified then start at that date, and create an appropriate
+                #number of files as specified 
                 else:
-                    for i in range(options['days']):
-                        write_test_data(count)
-                    else:
-                        lower, upper = options['random-data'].split()
-                        count = random.randint(lower, upper)
-                        write_test_data(count)
-            else:
-                if options['date']:
-                    date = dt.date(options['date']).strptime('%Y-%m-%d')
-                    print(date)
+                    date_str = options['date']
+                    start_date = dt.strptime(date_str[0], Command.date_format)
+                    num_days = options['days'][0] - 1
+                    loop_days(start_date, num_days, options)
+            
+            print('Done.')
+
+#generate test data with the given options from the start date. Start date must be a datetime object,
+#num_days is an integer (0 if only 1 day) and options is the list of options generated by the mgmt
+#command
+def loop_days(start_date, num_days, options):
+    for i in range(num_days + 1):
+        day = start_date + td(days=i)
+        day_str = day.strftime(Command.date_format)
+        #if random is selected, generate a random count of data points to be created that
+        #day before calling the function
+        if options['random_data']:
+            count = random.randint(options['lower'], options['upper'])
+            write_test_data(count, day_str)
+            
+        #if random wasn't select, default to the count
+        else:
+            write_test_data(options['count'], day_str)
                     
                     
 #save the test data to the file
-def write_test_data(count, **kwargs):
+def write_test_data(count, data_date):
     Phones.objects.all().delete()
         
     phone_list = generate_phone_numbers(count)
@@ -96,7 +137,7 @@ def write_test_data(count, **kwargs):
         report_type = head_count_or_deaths()
         cases = case_count_generator(report_type)
         message_body = report_type + "; " + disease + "; " + str(cases)
-        date = dt.today().strftime('%Y-%m-%d')
+        date = data_date
         data.append([phone.number, message_body, date])
     
     date_now = dt.now().strftime('%m%d%Y%I%M%S%f')
