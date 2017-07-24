@@ -30,9 +30,9 @@ class Reports(models.Model):
             on_delete=models.CASCADE
         )
     
-    disease = models.CharField(
-            null=False,
-            max_length = name_length
+    disease = models.ForeignKey(
+            'Diseases',
+            on_delete=models.CASCADE
         )
     
     case_count = models.IntegerField(
@@ -84,22 +84,9 @@ class Phones(models.Model):
     
     
 class Alerts(models.Model):
-    disease = models.ForeignKey(
-            'Diseases',
-            on_delete=models.CASCADE
-        )
-    
-    district = models.ForeignKey(
-            'Districts',
-            on_delete=models.CASCADE
-        )
-    
-    lat = models.FloatField(
-            null=False
-        )
-    
-    lng = models.FloatField(
-            null=False
+    lhcp = models.ForeignKey(
+            'LHCP',
+            on_delete = models.CASCADE
         )
     
     alert_num = models.AutoField(

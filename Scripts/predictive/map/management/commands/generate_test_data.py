@@ -7,36 +7,103 @@ import csv
 import os
 
 class Command(BaseCommand):
-    args = '<none>'
+    args = '<none really>'
     help = 'Generates test data'
     
+    def add_arguments(self, parser):
+        parser.add_argument(
+                '--days',
+                nargs=1,
+                type=int,
+                default=1,
+                help='Create data for a specified number of days (int)'
+            )
+        
+        parser.add_argument(
+                '--date',
+                nargs=1,
+                type=str,
+                help='Pick a specific day to generate data on (strf %Y-%m-%d)'
+            )
+        
+        parser.add_argument(
+                '--dates',
+                nargs=2,
+                type=str,
+                help = 'Choose two days to generate a range of data from (strf %Y-%m-%d)'
+            )
+        
+        parser.add_argument(
+                '--count',
+                action='store',
+                type=int,
+                default=500,
+                help = 'Specify the number of randomly generated data points for each day (defaults to 500)'
+            )
+        
+        parser.add_argument(
+                '--random-data',
+                nargs=2,
+                type=int,
+                help='Generate a random number of test data lines (enter a lower, then an upper int bound)'
+            )
+        
+    
     def handle(self, *args, **options):
-        Phones.objects.all().delete()
+            os.chdir(os.getcwd() + '\\testdata')
+            if options['date'] or options['dates']:
+                options['days'] = None
+            if options['random-data']:
+                options['count'] = None
+            else:
+                count = options['count']
+            
+            
+            
+            if options['days']:
+                if options['count']:
+                    for i in range(options['days']):
+                        write_test_data(count)
+                else:
+                    for i in range(options['days']):
+                        write_test_data(count)
+                    else:
+                        lower, upper = options['random-data'].split()
+                        count = random.randint(lower, upper)
+                        write_test_data(count)
+            else:
+                if options['date']:
+                    date = dt.date(options['date']).strptime('%Y-%m-%d')
+                    print(date)
+                    
+                    
+#save the test data to the file
+def write_test_data(count, **kwargs):
+    Phones.objects.all().delete()
         
-        phone_list = generate_phone_numbers(500)
-        hosp_choices = LHCP.objects.all().count() - 1
-        disease_list = Diseases.objects.all().count()
-        
-        for phone_num in phone_list:
-            associate_phone_location(phone_num, hosp_choices)
-        
-        test_phones = phones_for_data(500)
-        
-        data = []
-        for phone in test_phones:
-            disease = get_disease(disease_list)
-            report_type = head_count_or_deaths()
-            cases = case_count_generator(report_type)
-            message_body = report_type + "; " + disease + "; " + str(cases)
-            date = dt.today().strftime('%Y-%m-%d')
-            data.append([phone.number, message_body, date])
-        
-        os.chdir(os.getcwd() + '\\testdata')
-        date_now = dt.now().strftime('%m%d%Y%I%M%S%f')
-        with open('test-data-'+date_now+'.csv', 'w', newline='') as outfile:
-            outwriter = csv.writer(outfile, delimiter=',')
-            outwriter.writerows(data)         
-        
+    phone_list = generate_phone_numbers(count)
+    hosp_choices = LHCP.objects.all().count() - 1
+    disease_list = Diseases.objects.all().count()
+    
+    for phone_num in phone_list:
+        associate_phone_location(phone_num, hosp_choices)
+    
+    test_phones = phones_for_data(count)
+    
+    data = []
+    for phone in test_phones:
+        disease = get_disease(disease_list)
+        report_type = head_count_or_deaths()
+        cases = case_count_generator(report_type)
+        message_body = report_type + "; " + disease + "; " + str(cases)
+        date = dt.today().strftime('%Y-%m-%d')
+        data.append([phone.number, message_body, date])
+    
+    date_now = dt.now().strftime('%m%d%Y%I%M%S%f')
+    with open('test-data-'+date_now+'.csv', 'w', newline='') as outfile:
+        outwriter = csv.writer(outfile, delimiter=',')
+        outwriter.writerows(data) 
+
         
 #ensures that the necessary number of random phone numbers exists
 def generate_phone_numbers(data_point_count):
