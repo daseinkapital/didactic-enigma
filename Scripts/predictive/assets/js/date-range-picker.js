@@ -1,6 +1,8 @@
 import React from 'react';
 import DatetimeRangePicker from 'react-bootstrap-datetimerangepicker';
 import moment from 'moment';
+var PropTypes = require('prop-types'); 
+
 
 
 import {
@@ -35,7 +37,58 @@ class DateRangePicker extends React.Component {
       startDate: picker.startDate,
       endDate: picker.endDate,
     });
+      var start = this.state.startDate.format('YYYY-MM-DD').toString();
+      var end = this.state.endDate.format('YYYY-MM-DD').toString();
+      $.ajax({
+                              url : "/map/changedate/",
+                              data : {"startdate" : start, "enddate" : end},
+                    
+                              success : function (data) {
+                                  vectorSource.clear();
+                                  var deathcnfm = [];
+                            var mark = [];
+                            var size = [];
+                            var names = [];
+            
+                            var count = Object.keys(data).length;
+                            
+                            
+                           
+                            for (var i = 0; i < count; i++){
+                                    var name = data[i].name;
+                                    var lat1 = parseFloat(data[i].lat);
+                                    var lng1 = parseFloat(data[i].lng);
+                                    var deaths = parseInt(data[i].deaths); 
+                                    var mark_size = parseInt(data[i].size);
+                                    mark.push([lat1, lng1]);
+                                    deathcnfm.push(deaths);
+                                    size.push(mark_size);
+                                    names.push(name);
+                            };
+                            
+                            
+                            for (i = 0; i < mark.length; i++){
+                                    var link = '/map/region/' + names[i];
+                                
+                                    var feature = new ol.Feature({
+                                    geometry: new ol.geom.Point(ol.proj.fromLonLat(mark[i])),
+            
+                                    
+                                });
+                                
+                                feature.setStyle(iconStyle);
+                                vectorSource.addFeature(feature);
+            
+                            };
+                             Object.keys(vectorSource).forEach(function(key) {
+                            console.log(key, vectorSource[key]);
+                            map.render();
+                            });               
+                                            
+                     }
+                        });      
   }
+    
 
   render() {
     let start = this.state.startDate.format('MMM DD, YYYY');

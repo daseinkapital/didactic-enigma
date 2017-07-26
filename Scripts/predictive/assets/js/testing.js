@@ -2,6 +2,8 @@ var React = require('react')
 var createClass = require('create-react-class')
 var PropTypes = require('prop-types')
 var Select = require('react-select')
+var PropTypes = require('prop-types')
+var createReactClass = require('create-react-class');
 
 const FLAVOURS = [
 	{ label: 'Cancer', value: 'chocolate' },
@@ -16,7 +18,7 @@ const WHY_WOULD_YOU = [
 	{ label: 'Chocolate (are you crazy?)', value: 'chocolate', disabled: true },
 ].concat(FLAVOURS.slice(1));
 
-var MultiSelectField = createClass({
+var MultiSelectField = createReactClass({
 	displayName: 'MultiSelectField',
 	propTypes: {
 		label: PropTypes.string,
