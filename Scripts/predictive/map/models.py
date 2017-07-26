@@ -35,16 +35,19 @@ class Reports(models.Model):
             on_delete=models.CASCADE
         )
     
-    case_count = models.IntegerField(
-            null=True
-        )
-    
-    death_count = models.IntegerField(
-            null=True
-        )
-    
     report_num = models.AutoField(
             primary_key=True,
+        )
+    
+
+class HeadReports(Reports):
+    count = models.IntegerField(
+            null=False
+        )
+    
+class DeathReports(Reports):
+    count = models.IntegerField(
+            null=False
         )
 
 
@@ -83,15 +86,15 @@ class Phones(models.Model):
         )
     
     
-class Alerts(models.Model):
-    lhcp = models.ForeignKey(
-            'LHCP',
-            on_delete = models.CASCADE
-        )
-    
-    alert_num = models.AutoField(
-            primary_key=True
-        )
+#class Alerts(models.Model):
+#    lhcp = models.ForeignKey(
+#            'LHCP',
+#            on_delete = models.CASCADE
+#        )
+#    
+#    alert_num = models.AutoField(
+#            primary_key=True
+#        )
     
     
 class Diseases(models.Model):
