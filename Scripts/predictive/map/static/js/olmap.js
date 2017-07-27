@@ -183,7 +183,7 @@
         if(document.getElementById("info").innerHTML != "none") {
         $.ajax({
                               url : "/map/marker/",
-                              data : {"name" : document.getElementById("info").innerHTML, "date" : "2014-09-18"},
+                              data : {"name" : document.getElementById("info").innerHTML, "date" : "2017-07-27"},
                               dataType : 'html',
                               success : function (data) {
                                   $("#mySidenav").empty().append(data);

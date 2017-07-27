@@ -1,6 +1,8 @@
  .mapol {
         height: 100%;
-        width: 100%;
+        width: 70%;
         position: absolute;
         left: 30%;
+        top: 0;
+        bottom: 0;
       }

@@ -2,10 +2,11 @@ from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from django.core import serializers
 from django.views.decorators.csrf import csrf_exempt
+from django.db.models import Avg, Sum
 import json
 
 from datetime import datetime as dt
-from .models import Districts, Reports
+from .models import Districts, HeadReports, DeathReports
 
 
 def index(request):
@@ -22,10 +23,12 @@ def index(request):
 def marker(request):
     districtName, date_string = request.GET.get('name'),request.GET.get('date')
     district = Districts.objects.filter(name=districtName)
-    context = {'district':district}
+    context = {'district':districtName}
     Date = dt.strptime(date_string, '%Y-%m-%d')
-    reports = Reports.objects.filter(date=Date).filter(district=district)
-    context.update({'reports':reports})
+    headReports = HeadReports.objects.filter(date=Date).filter(phone_number__hospital__district=district).aggregate(Sum('count'))
+    deathReports = DeathReports.objects.filter(date=Date).filter(phone_number__hospital__district=district)
+    context.update({'reports': headReports['count__sum']})
+    print(context)
     html = render(request, 'map/sidebar_data.html', context)
     return HttpResponse(html)
     
@@ -38,17 +41,17 @@ def init_main(request):
     districts = Districts.objects.all()
     districtdict = {} 
     i = 0
-    date = dt.strptime("2014-09-18","%Y-%m-%d")
+    Date = dt.strptime("2014-09-18","%Y-%m-%d")
     size_scale = [10, 100, 1000, 10000]
     for district in districts:
-        report = Reports.objects.filter(district=district).filter(date = date).first()
+        report = HeadReports.objects.filter(date=Date).filter(phone_number__hospital__district=district)
         s = 1
         for size in size_scale:
-            if report.death_cnfmd > size:
+            if report.count() > size:
                 s += 1
             else:
                 break
-        corddict = {i : {'name': district.name, 'lat' : str(district.latitude), 'lng' : str(district.longitude), 'deaths' : str(report.death_cnfmd), 'size' : s}}
+        corddict = {i : {'name': district.name, 'lat' : str(district.lat), 'lng' : str(district.lng), 'deaths' : str(report.count()), 'size' : s}}
         districtdict.update(corddict)
         i += 1
     data = json.dumps(districtdict)
@@ -88,7 +91,7 @@ def changedate(request):
     i = 0
     size_scale = [10, 100, 1000, 10000]
     for district in districts:
-        report = Reports.objects.filter(district=district).filter(date__gte=startDate).first()
+        report = HeadReports.objects.filter(date__gte=startDate).filter(phone_number__hospital__district=district)
         if report:
             s = 1
             for size in size_scale:

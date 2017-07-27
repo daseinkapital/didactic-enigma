@@ -25,29 +25,13 @@ class Command(BaseCommand):
                 if lat[idx] != "":
                     if lng[idx] != "":
                         if district[idx] != "":
-                            if 'Urban' or 'Rural' in district[idx]:
-                                if 'Urban' in district[idx]:
-                                    LHCP.objects.create(
-                                            name = center_id[idx],
-                                            lat = lat[idx],
-                                            lng = lng[idx],
-                                            district = Districts.objects.filter(name__icontains="Urban").first(),
-                                        )
-                                else:
-                                    LHCP.objects.create(
-                                            name = center_id[idx],
-                                            lat = lat[idx],
-                                            lng = lng[idx],
-                                            district = Districts.objects.filter(name__icontains="Rural").first(),
-                                        )
-
-                            else:
-                                LHCP.objects.create(
-                                        name = center_id[idx],
-                                        lat = lat[idx],
-                                        lng = lng[idx],
-                                        district = Districts.objects.filter(name=district[idx]).first(),
-                                    )
+                            LHCP.objects.create(
+                                    name = center_id[idx],
+                                    lat = lat[idx],
+                                    lng = lng[idx],
+                                    district = Districts.objects.filter(name=district[idx]).first(),
+                                )
+                                
                         else:
                             pass
                     else:

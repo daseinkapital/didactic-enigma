@@ -21,7 +21,7 @@ class Command(BaseCommand):
                 '--days',
                 nargs=1,
                 type=int,
-                default=1,
+                default=[1],
                 help='Create data for a specified number of days (int)'
             )
         
@@ -44,7 +44,7 @@ class Command(BaseCommand):
                 '--count',
                 action='store',
                 type=int,
-                default=500,
+                default=[500],
                 help = 'Specify the number of randomly generated data points for each day (defaults to 500)'
             )
         
@@ -111,8 +111,8 @@ class Command(BaseCommand):
                 #if the date option is the default value (today), create data going back the number
                 #of days specified to today (-1s added for date adjustments)
                 if options['date'] == dt.today().strftime(Command.date_format):
-                    start_date = dt.today() - td(days=options['days'] - 1)
-                    num_days = options['days'] - 1
+                    start_date = dt.today() - td(days=options['days'][0] - 1)
+                    num_days = options['days'][0] - 1
                     loop_days(start_date, num_days, options)
                 
                 #if the date switch was specified then start at that date, and create an appropriate
@@ -120,7 +120,7 @@ class Command(BaseCommand):
                 else:
                     date_str = options['date']
                     start_date = dt.strptime(date_str[0], Command.date_format)
-                    num_days = options['days'] - 1
+                    num_days = options['days'][0] - 1
                     loop_days(start_date, num_days, options)
             if not options['test-supress']:
                 print('Done.')
@@ -142,7 +142,7 @@ def loop_days(start_date, num_days, options):
             
         #if random wasn't select, default to the count
         else:
-            write_test_data(options['count'], day_str)
+            write_test_data(options['count'][0], day_str)
             if not options['supress']:
                 print("Data created for "+ day.strftime(Command.date_format))
                     

@@ -1,10 +1,10 @@
 {% load render_bundle from webpack_loader %}
 
-{% for report in reports %}
 
-<a href="/map/region/{{report.district.name}}">{{report.district.name}}</a>
-<a href="#">Deaths confirmed: {{report.death_cnfmd}}</a>
-{% endfor %}
+
+<a href="/map/region/{{district}}">{{district}}</a>
+<a href="#">Deaths confirmed: {{reports}}</a>
+
 
 
 <body>
