@@ -4,10 +4,8 @@ from django.core import serializers
 from django.views.decorators.csrf import csrf_exempt
 import json
 
-from math import log, ceil as log, ceil
 from datetime import datetime as dt
 from .models import Districts, Reports
-from twilio import twiml
 
 
 def index(request):
