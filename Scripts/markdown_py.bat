@@ -1,0 +1,1 @@
+@"c:\users\591524\documents\predictive\scripts\python.exe" "c:\users\591524\documents\predictive\Scripts\markdown_py" %*

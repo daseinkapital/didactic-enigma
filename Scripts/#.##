@@ -1,0 +1,9 @@
+predictive@0.0.5 C:\Users\591524\Documents\predictive\Scripts
++-- moment@2.18.1 
++-- react@15.6.1 
+| `-- fbjs@0.8.12
+|   `-- ua-parser-js@0.7.14 
++-- react-addons-shallow-compare@15.6.0 
++-- react-dates@12.2.4 
+`-- react-dom@15.6.1 
+

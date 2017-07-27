@@ -22,8 +22,8 @@ def index(request):
     return render(request, 'map/index.html', context)
 
 def marker(request):
-    lat, lng, date_string = round(float(request.GET.get('lat', None)),3), round(float(request.GET.get('lng', None)),3), request.GET.get('date')
-    district = Districts.objects.filter(latitude=lat).filter(longitude=lng)
+    districtName, date_string = request.GET.get('name'),request.GET.get('date')
+    district = Districts.objects.filter(name=districtName)
     context = {'district':district}
     Date = dt.strptime(date_string, '%Y-%m-%d')
     reports = Reports.objects.filter(date=Date).filter(district=district)
@@ -82,3 +82,24 @@ def sms(request):
     print(from_number)
     return HttpResponse('<h1>Nice</h1>')
     
+def changedate(request):
+    startDate, endDate = dt.strptime(request.GET.get('startdate'), '%Y-%m-%d'), dt.strptime(request.GET.get('enddate'), '%Y-%m-%d')
+    print(startDate)
+    districts = Districts.objects.all()
+    districtdict = {} 
+    i = 0
+    size_scale = [10, 100, 1000, 10000]
+    for district in districts:
+        report = Reports.objects.filter(district=district).filter(date__gte=startDate).first()
+        if report:
+            s = 1
+            for size in size_scale:
+                if report.death_cnfmd > size:
+                    s += 1
+                else:
+                    break
+            corddict = {i : {'name': district.name, 'lat' : str(district.latitude), 'lng' : str(district.longitude), 'deaths' : str(report.death_cnfmd), 'size' : s}}
+            districtdict.update(corddict)
+            i += 1
+    data = json.dumps(districtdict)
+    return HttpResponse(data, content_type="application/json")
