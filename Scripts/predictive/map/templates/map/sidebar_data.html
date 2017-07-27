@@ -1,4 +1,26 @@
+{% load render_bundle from webpack_loader %}
+
 {% for report in reports %}
+
 <a href="/map/region/{{report.district.name}}">{{report.district.name}}</a>
 <a href="#">Deaths confirmed: {{report.death_cnfmd}}</a>
 {% endfor %}
+
+
+<body>
+
+
+<div id="testing"> 
+{% render_bundle 'main' %}  
+</div>  
+<div id="react-app"> 
+{% render_bundle 'main' %}  
+</div>  
+<div id="testing"> 
+{% render_bundle 'main' %}  
+</div>  
+<div id="Calendar"> 
+{% render_bundle 'main' %}  
+</div>
+
+</body>

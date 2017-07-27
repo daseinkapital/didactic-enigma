@@ -1,13 +1,10 @@
 {
-  "name": "please-wait-test",
+  "name": "predictive",
   "module": "please-wait",
-  "author": "Pathgather",
-  "license": "UNLICENSED",  "description": "Display a nice loading screen while your app loads",
+  "author": "Pathgather <tech@pathgather.com>",
+  "license": "UNLICENSED",
+  "description": "Display a nice loading screen while your app loads",
   "homepage": "https://github.com/Pathgather/please-wait",
-  "author": {
-    "name": "Pathgather",
-    "email": "tech@pathgather.com"
-  },
   "repository": {
     "type": "git",
     "url": "git://github.com/Pathgather/please-wait.git"
@@ -15,20 +12,60 @@
   "main": "build/please-wait.js",
   "version": "0.0.5",
   "devDependencies": {
+    "awesome-typescript-loader": "^3.2.1",
+    "babel-core": "^6.25.0",
+    "babel-loader": "^7.1.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babelify": "^7.3.0",
+    "global": "^4.3.2",
     "grunt": "~0.4.5",
+    "grunt-coffeelint": "~0.0.13",
+    "grunt-contrib-clean": "~0.6.0",
+    "grunt-contrib-coffee": "~0.12.0",
+    "grunt-contrib-compass": "~1.0.1",
+    "grunt-contrib-concat": "~0.5.0",
+    "grunt-contrib-jasmine": "~0.8.1",
     "grunt-contrib-jshint": "~0.10.0",
     "grunt-contrib-uglify": "~0.5.0",
-    "grunt-contrib-compass": "~1.0.1",
-    "grunt-coffeelint": "~0.0.13",
-    "grunt-contrib-coffee": "~0.12.0",
-    "grunt-contrib-clean": "~0.6.0",
-    "grunt-contrib-concat": "~0.5.0",
-    "grunt-contrib-jasmine": "~0.8.1"
+    "jquery": "^3.2.1",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "source-map-loader": "^0.2.1",
+    "typescript": "^2.4.2",
+    "webpack": "^2.1.0-beta.22",
+    "webpack-bundle-tracker": "^0.2.0"
   },
   "licenses": [
     {
       "type": "MIT",
       "url": "http://opensource.org/licenses/mit-license.php"
     }
-  ]
+  ],
+  "dependencies": {
+    "@types/react": "^15.0.38",
+    "@types/react-dom": "^15.5.1",
+    "babel-core": "^6.25.0",
+    "babel-loader": "^7.1.1",
+    "babel-preset-react": "^6.24.1",
+    "bootstrap-daterangepicker": "^2.1.25",
+    "create-react-class": "^15.6.0",
+    "file-saver": "^1.3.3",
+    "moment": "^2.18.1",
+    "ol-react": "^0.1.5",
+    "prop-types": "^15.5.10",
+    "react": "^15.6.1",
+    "react-addons-shallow-compare": "^15.6.0",
+    "react-bootstrap-datetimerangepicker": "^2.0.4",
+    "react-dates": "^12.2.4",
+    "react-dom": "^15.6.1",
+    "react-moment": "^0.6.0",
+    "react-select": "^1.0.0-rc.5"
+  },
+  "bugs": {
+    "url": "https://github.com/Pathgather/please-wait/issues"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
 }

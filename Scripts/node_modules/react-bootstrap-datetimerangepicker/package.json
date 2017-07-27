@@ -1,0 +1,133 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "react-bootstrap-datetimerangepicker",
+        "scope": null,
+        "escapedName": "react-bootstrap-datetimerangepicker",
+        "name": "react-bootstrap-datetimerangepicker",
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
+      },
+      "C:\\Users\\591524\\Documents\\predictive\\Scripts\\predictive"
+    ]
+  ],
+  "_from": "react-bootstrap-datetimerangepicker@latest",
+  "_id": "react-bootstrap-datetimerangepicker@2.0.4",
+  "_inCache": true,
+  "_location": "/react-bootstrap-datetimerangepicker",
+  "_nodeVersion": "5.7.1",
+  "_npmOperationalInternal": {
+    "host": "packages-12-west.internal.npmjs.com",
+    "tmp": "tmp/react-bootstrap-datetimerangepicker-2.0.4.tgz_1489201986476_0.9868805597070605"
+  },
+  "_npmUser": {
+    "name": "luqin",
+    "email": "luqinx@gmail.com"
+  },
+  "_npmVersion": "3.10.6",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "react-bootstrap-datetimerangepicker",
+    "scope": null,
+    "escapedName": "react-bootstrap-datetimerangepicker",
+    "name": "react-bootstrap-datetimerangepicker",
+    "rawSpec": "",
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/react-bootstrap-datetimerangepicker/-/react-bootstrap-datetimerangepicker-2.0.4.tgz",
+  "_shasum": "ef167d66178ba75a2640bfa189526229f046aef3",
+  "_shrinkwrap": null,
+  "_spec": "react-bootstrap-datetimerangepicker",
+  "_where": "C:\\Users\\591524\\Documents\\predictive\\Scripts\\predictive",
+  "bugs": {
+    "url": "https://github.com/luqin/react-bootstrap-datetimerangepicker/issues"
+  },
+  "dependencies": {
+    "babel-runtime": "^5.8.38",
+    "classnames": "^2.2.3"
+  },
+  "description": "React date & time range picker component base on bootstrap-daterangepicker. This date range picker component for Bootstrap creates a dropdown menu from which a user can select a range of dates. Features include limiting the selectable date range, localiza",
+  "devDependencies": {
+    "babel": "5.8.29",
+    "babel-core": "5.8.29",
+    "babel-eslint": "^4.1.1",
+    "babel-plugin-object-assign": "^1.1.0",
+    "bootstrap": "3.3.5",
+    "bootstrap-daterangepicker": "^2.1.19",
+    "cheerio": "^0.19.0",
+    "eslint": "^1.10.3",
+    "eslint-config-airbnb": "2.1.1",
+    "eslint-config-onefe": "0.2.0",
+    "eslint-plugin-react": "^3.11.3",
+    "font-awesome": "^4.5.0",
+    "gulp": "^3.9.0",
+    "history": "1.13.x",
+    "jquery": "^2.1.4",
+    "moment": "^2.12.0",
+    "node-sass": "3.4.2",
+    "react": "^0.14.3",
+    "react-bootstrap": "^0.28.1",
+    "react-dom": "^0.14.3",
+    "react-pack": "^0.3.0",
+    "react-router": "1.0.2",
+    "react-router-bootstrap": "^0.19.3",
+    "request": "^2.67.0",
+    "webpack": "1.12.6",
+    "webpack-dev-server": "1.12.1"
+  },
+  "directories": {},
+  "dist": {
+    "shasum": "ef167d66178ba75a2640bfa189526229f046aef3",
+    "tarball": "https://registry.npmjs.org/react-bootstrap-datetimerangepicker/-/react-bootstrap-datetimerangepicker-2.0.4.tgz"
+  },
+  "gitHead": "0019b333952e3a002b0a4228d11d9dbc551513e2",
+  "homepage": "https://github.com/luqin/react-bootstrap-datetimerangepicker#readme",
+  "keywords": [
+    "react",
+    "react-dom",
+    "ui",
+    "react-component",
+    "bootstrap",
+    "date",
+    "range",
+    "picker",
+    "selector",
+    "datetime"
+  ],
+  "license": "ISC",
+  "main": "lib/index.js",
+  "maintainers": [
+    {
+      "name": "luqin",
+      "email": "h-io@qq.com"
+    }
+  ],
+  "name": "react-bootstrap-datetimerangepicker",
+  "optionalDependencies": {},
+  "peerDependencies": {
+    "jquery": ">=1.11.3",
+    "react": ">=0.14.0",
+    "bootstrap-daterangepicker": "^2.1.19"
+  },
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luqin/react-bootstrap-datetimerangepicker.git"
+  },
+  "scripts": {
+    "build": "babel ./src -d lib",
+    "gh-pages": "gulp publish:examples",
+    "lint": "eslint src examples/src",
+    "prepublish": "npm run build",
+    "start": "gulp dev",
+    "test": "npm run lint"
+  },
+  "version": "2.0.4"
+}
