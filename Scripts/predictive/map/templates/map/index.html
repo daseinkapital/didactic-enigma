@@ -28,20 +28,23 @@
     <link rel="stylesheet" href="{% static 'device-mockups/device-mockups.min.css' %}">
 
     <!-- Custom styles for this template -->
-    <link href="{% static 'css/new-age.min.css' %}" rel="stylesheet">
-    <link href="{% static 'css/agency.min.css' %}" rel="stylesheet">
-    <link href="{% static 'css/responsive.css' %}" rel="stylesheet">
-    <link href="{% static 'css/style.css' %}" rel="stylesheet">
-    <link href="{% static 'css/styles.min.css' %}" rel="stylesheet">
+    <link href="{% static '/css/new-age.min.css' %}" rel="stylesheet">
+    <link href="{% static '/css/agency.min.css' %}" rel="stylesheet">
+    <link href="{% static '/css/responsive.css' %}" rel="stylesheet">
+    <link href="{% static '/css/style.css' %}" rel="stylesheet">
+    <link href="{% static '/css/styles.min.css' %}" rel="stylesheet">
+    <link href="{% static '/css/animation.css' %}" rel="stylesheet">
 
     <!-- Temporary navbar container fix -->
-    <style>
 
-    .navbar-toggler {
+
+</head>
+<style>
+.navbar-toggler {
         z-index: 1;
-    }
+        }
     
-    @media (max-width: 576px) {
+@media (max-width: 576px) {
         nav > .container {
             width: 100%;
         }
@@ -166,10 +169,7 @@ section.features {
 	animation-iteration-count: infinite;
 	animation-timing-function: linear;
 }
-
-    </style>
-
-</head>
+</style>
 
 
 <body id="page-top" class="body">

@@ -1,0 +1,29 @@
+{% load static %}
+<html>
+<title>{{district_name}}</title>
+
+<body>
+    <div>
+        <div id="mySidenav" class="sidenav">
+            <a href="#">{{district_name}}</a>
+        </div>
+
+        <div id="map" class="district-map">
+        </div>
+    </div>
+</body>
+
+<!--Stylesheets by Predictive26-->
+<link rel="stylesheet" href="{% static 'css/district-map.css' %}">
+<link rel="stylesheet" href="{% static 'css/sidebar.css' %}">
+
+<!--Javascript Libraries-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
+
+<!--Javascript by Predictive26-->
+<script src="{% static 'js/gmaps_District.js' %}"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-uAlwABgf0eRzXK9duURPQyye0zhEreg&callback=initMap_district"></script>
+
+
+</html>
