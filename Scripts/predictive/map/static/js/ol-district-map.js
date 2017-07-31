@@ -15,7 +15,7 @@
       rome.setStyle(iconStyle);
       $.ajax({
             
-            url : "/map/init_main/",
+            url : "/map/init_map/",
             success : function(data) {
                 var deathcnfm = [];
                 var mark = [];
@@ -24,8 +24,6 @@
 
                 var count = Object.keys(data).length;
                 
-                
-               
                 for (var i = 0; i < count; i++){
                         var name = data[i].name;
                         var lat1 = parseFloat(data[i].lat);
