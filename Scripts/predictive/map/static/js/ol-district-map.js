@@ -86,15 +86,15 @@
                 format: new ol.format.GeoJSON()
               }),
 
-              style: new ol.style.Style({
-                fill: new ol.style.Fill({
-                  color: 'rgba(255, 255, 255, 0.6)'
-                }),
+              style: function(feature, res){
+                      if(feature.get('ADM2_NAME') == document.title) {
+                              return new ol.style.Style({
                 stroke: new ol.style.Stroke({
                   color: '#319FD3',
                   width: 1
                 }),
-            })
+                zIndex: 1
+            });}}
         }) 
          });
         

@@ -46,7 +46,7 @@ def addcases(request):
         lat = report.phone_number.hospital.lat
         lng = report.phone_number.hospital.lng
         deaths = report.count
-        zval = reports.count() - i
+        zval = reports.count() - i + 2
         markerinfo = {i : {'hospitalName': str(hospitalName), 'lat' : str(lat), 'lng' : str(lng), 'deaths' : str(deaths), 'zval': str(zval)}}
         reportsdict.update(markerinfo)
         i += 1
