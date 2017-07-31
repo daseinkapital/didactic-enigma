@@ -5,7 +5,7 @@
       });
        
       var vectorSource = new ol.source.Vector([]);
-      var iconStyle = new ol.style.Style({
+    var iconStyle = new ol.style.Style({
         image: new ol.style.Icon(/** @type {olx.style.IconOptions} */ ({
           color: '#8959A8',
           crossOrigin: 'anonymous',
@@ -13,7 +13,7 @@
         }))
       });
       rome.setStyle(iconStyle);
-     
+      
       
       $.ajax({
             
@@ -24,6 +24,7 @@
                 var mark = [];
                 var size = [];
                 var names = [];
+                var zindex = [];
                 var count = Object.keys(data).length;
                 
 
@@ -31,24 +32,34 @@
                         var name = data[i].hospitalName;
                         var lat1 = parseFloat(data[i].lat);
                         var lng1 = parseFloat(data[i].lng);
-                        var deaths = parseInt(data[i].deaths); 
+                        var deaths = parseInt(data[i].deaths);
+                        var zval = parseInt(data[i].zval);
                         mark.push([lng1, lat1]);
                         deathcnfm.push(deaths);
                         names.push(name);
+                        zindex.push(zval);
                 };
                 Object.keys(mark).forEach(function(key) {
                 console.log(key, mark[key]);
                 });
                 
                 for (i = 0; i < mark.length; i++){
-                      
-                        var feature = new ol.Feature({
-                        geometry: new ol.geom.Point(ol.proj.fromLonLat(mark[i])),
-
+                        var icon = new ol.style.Icon(/** @type {olx.style.IconOptions} */ ({
+                              color: '#8959A8',
+                              crossOrigin: 'anonymous',
+                              src: 'https://openlayers.org/en/v4.2.0/examples/data/dot.png',
+                              scale: deathcnfm[i]/100
+                            }))  ;
+                        var newiconStyle = new ol.style.Style({
+                            image: icon,
+                            zIndex: zindex[i]
+                          });                      
                         
-                    });
-                    
-                    feature.setStyle(iconStyle);
+                        var feature = new ol.Feature({
+                            geometry: new ol.geom.Point(ol.proj.fromLonLat(mark[i]))                        
+                        });
+        
+                    feature.setStyle(newiconStyle);
                     vectorSource.addFeature(feature);
 
                 };
@@ -82,25 +93,50 @@
                 stroke: new ol.style.Stroke({
                   color: '#319FD3',
                   width: 1
-                })
+                }),
             })
         }) 
          });
-                        
+        
+                  
 
+      var distView = new ol.View({
+          center:  ol.proj.fromLonLat([parseFloat(document.getElementById('lng').text), parseFloat(document.getElementById('lat').text)]),
+          zoom: parseFloat(document.getElementById('zoom').text)
+      });
+                        
       var map = new ol.Map({
         layers: [rasterLayer, vectorLayer, districtLayer],
         
         target: document.getElementById('map'),
-        view: new ol.View({
-          center:  ol.proj.transform([8.4606, 11.7799],'EPSG:4326', 'EPSG:3857'),
-          zoom: 7
-        })
-      
+        view: distView
        });
-    
 
-                    
+// WE NEED TO FIX THE BOUNDS OF ZOOM AND HOW THE GEOJSON DISPLAYS
+//    for (i=0; i < features.length; i++) {
+//            alert(features[i]);
+//            if (features[i].get('ADM2_NAME') === document.title){
+//                          map.setView(new ol.View({
+//                              center: map.getView().getCenter(),
+//                              boundingExtent: features[i].getGeometry().A,
+//                              zoom: map.getView().getZoom(),
+//                              minZoom: map.getView().getZoom()
+//                            })); 
+//                        alert('Found'); 
+//                    } else {
+//                            alert('Not Found');
+//                            features[i].style = { display: 'none' };
+//                    }
+//            };
+
+              
+       map.setView(new ol.View({
+          center: map.getView().getCenter(),
+          extent: map.getView().calculateExtent(map.getSize()),
+          zoom: map.getView().getZoom(),
+          minZoom: map.getView().getZoom()
+        }));             
+                                       
                         
         var featureOverlay = new ol.layer.Vector({
         source: new ol.source.Vector(),

@@ -30,7 +30,6 @@ def marker(request):
     Date = dt.strptime(date_string, '%Y-%m-%d')
     headReports = HeadReports.objects.filter(date=Date).filter(phone_number__hospital__district=district).aggregate(Sum('count'))
     context.update({'reports': headReports['count__sum']})
-    print(context)
     html = render(request, 'map/sidebar_data.html', context)
     return HttpResponse(html)
 
@@ -41,17 +40,17 @@ def addcases(request):
     district = Districts.objects.filter(name=districtName).first()
     i = 0
     Date = dt.strptime("2017-07-27","%Y-%m-%d")
-    reports = HeadReports.objects.filter(date=Date).filter(phone_number__hospital__district=district)
+    reports = HeadReports.objects.filter(date=Date).filter(phone_number__hospital__district=district).order_by('count')
     for report in reports:
         hospitalName = report.phone_number.hospital.name
         lat = report.phone_number.hospital.lat
         lng = report.phone_number.hospital.lng
         deaths = report.count
-        markerinfo = {i : {'hospitalName': str(hospitalName), 'lat' : str(lat), 'lng' : str(lng), 'deaths' : str(deaths)}}
+        zval = reports.count() - i
+        markerinfo = {i : {'hospitalName': str(hospitalName), 'lat' : str(lat), 'lng' : str(lng), 'deaths' : str(deaths), 'zval': str(zval)}}
         reportsdict.update(markerinfo)
         i += 1
     data = json.dumps(reportsdict)
-    print(data)
     return HttpResponse(data, content_type="application/json")
     
 def product(request):  
@@ -82,7 +81,7 @@ def init_main(request):
 def init_dist(request):
     dist_name = request.GET.get('name')
     districts = Districts.objects.filter(name=dist_name).first()
-    map_data = {'zoom' : 10, 'lat' : str(districts.latitude), 'lng' : str(districts.longitude)}
+    map_data = {'zoom' : str(districts.zoom), 'lat' : str(districts.lat), 'lng' : str(districts.lng)}
     data = json.dumps(map_data)
     return HttpResponse(data, content_type="application/json")
 
@@ -95,7 +94,8 @@ def indDistricts(request):
     return HttpResponse(data, content_type="application/json")
 
 def region(request, district):
-    return render(request, 'map/region.html', {'district_name' : district})
+    dist_obj = Districts.objects.filter(name__iexact=district).first()
+    return render(request, 'map/region.html', {'district_name' : district, 'dist': dist_obj})
 
 @csrf_exempt
 def sms(request):

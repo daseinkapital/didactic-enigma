@@ -13,30 +13,41 @@ class Command(BaseCommand):
                 action='store_true',
                 dest='override',
                 default=False,
-                help='Override existing models with new data if the models already exist.')
+                help='Override existing models with new data if the models already exist.'
+            )
+        
+        parser.add_argument(
+                '--update-zoom',
+                action='store_true',
+                dest='zoom',
+                default=False,
+                help='Updates only the zoom from the csv.'
+            )
     
     def handle(self, *args, **options):
-        Districts.objects.all().delete()
         with open('district_info.csv', 'r', newline='') as csvfile:
-                reader = csv.DictReader(csvfile, delimiter=',')
-                for row in reader:
-                    exists = Districts.objects.filter(name=row['Name']).first()
-                    if options['override']:
-                        if exists:
-                            exists.delete()
-                        Districts.objects.create(
-                            name = row['Name'],
-                            lat = row['Lat'],
-                            lng = row['Lng'],
-                            zoom = row['Zoom']
-                            )
+            reader = csv.DictReader(csvfile, delimiter=',')
+            for row in reader:
+                exists = Districts.objects.filter(name=row['Name']).first()
+                if options['override']:
+                    if exists:
+                        exists.delete()
+                    Districts.objects.create(
+                        name = row['Name'],
+                        lat = row['Lat'],
+                        lng = row['Lng'],
+                        zoom = row['Zoom']
+                        )
+                elif options['zoom']:
+                    if exists:
+                        exists.zoom = row['Zoom']
+                else:
+                    if exists:
+                        pass                        
                     else:
-                        if exists:
-                            pass                        
-                        else:
-                            Districts.objects.create(
-                                    name = row['Name'],
-                                    lat = row['Lat'],
-                                    lng = row['Lng'],
-                                    zoom = row['Zoom']
-                                    )
+                        Districts.objects.create(
+                                name = row['Name'],
+                                lat = row['Lat'],
+                                lng = row['Lng'],
+                                zoom = row['Zoom']
+                                )
