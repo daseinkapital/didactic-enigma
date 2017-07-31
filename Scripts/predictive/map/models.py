@@ -15,8 +15,7 @@ class Districts(models.Model):
     
     lat = models.FloatField()
     
-    #can we change this?
-    zoom = models.IntegerField()
+    zoom = models.FloatField()
     
 
 class Reports(models.Model):
