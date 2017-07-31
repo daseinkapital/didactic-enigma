@@ -6,3 +6,27 @@
         top: 0;
         bottom: 0;
       }
+.graphs {
+        height: 100%;
+        width: 70%;
+        position: absolute;
+        left: 30%;
+        top: 0;
+        bottom: 0;
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+
+.main-chart-container {
+      float: left;
+      position: relative;
+      left: 50%;
+      top: 10%;
+    }
+
+.chart {
+      padding: 15px;
+      float: left;
+      position: relative;
+      left: -50%;
+    }
