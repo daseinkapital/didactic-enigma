@@ -3,10 +3,11 @@ from django.http import HttpResponse, JsonResponse
 from django.core import serializers
 from django.views.decorators.csrf import csrf_exempt
 from django.db.models import Avg, Sum
+from .fusioncharts import FusionCharts
 import json
 
 from datetime import datetime as dt
-from .models import Districts, HeadReports, DeathReports
+from .models import Districts, HeadReports, DeathReports, Diseases
 
 
 def index(request):
