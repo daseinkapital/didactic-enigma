@@ -13,35 +13,35 @@
         }))
       });
       rome.setStyle(iconStyle);
+     
+      
       $.ajax({
             
-            url : "/map/init_map/",
+            url : "/map/addcases/",
+            data: {"name" : document.title},
             success : function(data) {
                 var deathcnfm = [];
                 var mark = [];
                 var size = [];
                 var names = [];
-
                 var count = Object.keys(data).length;
                 
+
                 for (var i = 0; i < count; i++){
-                        var name = data[i].name;
+                        var name = data[i].hospitalName;
                         var lat1 = parseFloat(data[i].lat);
                         var lng1 = parseFloat(data[i].lng);
                         var deaths = parseInt(data[i].deaths); 
-                        var mark_size = parseInt(data[i].size);
-                        mark.push([lat1, lng1]);
+                        mark.push([lng1, lat1]);
                         deathcnfm.push(deaths);
-                        size.push(mark_size);
                         names.push(name);
                 };
-                Object.keys(names).forEach(function(key) {
-                console.log(key, names[key]);
+                Object.keys(mark).forEach(function(key) {
+                console.log(key, mark[key]);
                 });
                 
                 for (i = 0; i < mark.length; i++){
-                        var link = '/map/region/' + names[i];
-                    
+                      
                         var feature = new ol.Feature({
                         geometry: new ol.geom.Point(ol.proj.fromLonLat(mark[i])),
 
