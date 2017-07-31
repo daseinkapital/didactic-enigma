@@ -54,104 +54,6 @@ def addcases(request):
     return HttpResponse(data, content_type="application/json")
     
 def product(request):  
-    most_north = Districts.objects.order_by('-longitude')[:5]
-    context = {'most_north':most_north}
-    return render(request, 'map/product.html', context)
-
-##loads the main map from ajax call
-def init_main(request):
-    districts = Districts.objects.all()
-    districtdict = {} 
-    i = 0
-    Date = dt.strptime("2014-09-18","%Y-%m-%d")
-    size_scale = [10, 100, 1000, 10000]
-    for district in districts:
-        report = HeadReports.objects.filter(date=Date).filter(phone_number__hospital__district=district)
-        s = 1
-        for size in size_scale:
-            if report.count() > size:
-                s += 1
-            else:
-                break
-        corddict = {i : {'name': district.name, 'lat' : str(district.lat), 'lng' : str(district.lng), 'deaths' : str(report.count()), 'size' : s}}
-        districtdict.update(corddict)
-        i += 1
-    data = json.dumps(districtdict)
-    return HttpResponse(data, content_type="application/json")
-
-def pop_region(request):
-    districtName = request.GET.get('name')
-    district = Districts.objects.filter(name=districtName).first()
-    districtdict = {}
-    i = 0
-    Date = dt.strptime("2014-09-18","%Y-%m-%d")
-    size_scale = [10, 100, 1000, 10000]
-    reports = HeadReports.objects.filter(date=Date).filter(phone_number__hospital__district=district)
-    for report in reports:    
-        s = 1
-        for size in size_scale:
-            if report.count() > size:
-                s += 1
-            else:
-                break
-        corddict = {i : {'name': district.name, 'lat' : str(district.lat), 'lng' : str(district.lng), 'deaths' : str(report.count()), 'size' : s}}
-        districtdict.update(corddict)
-        i += 1
-    data = json.dumps(districtdict)
-    return HttpResponse(data, content_type="application/json")
-    
-
-def init_dist(request):
-    dist_name = request.GET.get('name')
-    districts = Districts.objects.filter(name=dist_name).first()
-    map_data = {'zoom' : str(districts.zoom), 'lat' : str(districts.lat), 'lng' : str(districts.lng)}
-    data = json.dumps(map_data)
-    return HttpResponse(data, content_type="application/json")
-
-def districts(request):
-    data = render(request, 'map/jsonResponse.html')
-    return HttpResponse(data, content_type="application/json")
-
-def indDistricts(request):
-    data = render(request, 'map/districtJson.html')
-    return HttpResponse(data, content_type="application/json")
-
-def region(request, district):
-    dist_obj = Districts.objects.filter(name__iexact=district).first()
-    return render(request, 'map/region.html', {'district_name' : district, 'dist': dist_obj})
-
-@csrf_exempt
-def sms(request):
-    message = request.POST.get('Body')
-    from_number = request.POST.get('From')
-    print(message)
-    print(from_number)
-    return HttpResponse('<h1>Nice</h1>')
-
-##sending json data to ajax for react calendar    
-def changedate(request):
-    startDate, endDate = dt.strptime(request.GET.get('startdate'), '%Y-%m-%d'), dt.strptime(request.GET.get('enddate'), '%Y-%m-%d')
-    print(startDate)
-    districts = Districts.objects.all()
-    districtdict = {} 
-    i = 0
-    size_scale = [10, 100, 1000, 10000]
-    for district in districts:
-        report = HeadReports.objects.filter(date__gte=startDate).filter(phone_number__hospital__district=district)
-        if report:
-            s = 1
-            for size in size_scale:
-                if report.count > size:
-                    s += 1
-                else:
-                    break
-            corddict = {i : {'name': district.name, 'lat' : str(district.latitude), 'lng' : str(district.longitude), 'deaths' : str(report.count), 'size' : s}}
-            districtdict.update(corddict)
-            i += 1
-    data = json.dumps(districtdict)
-    return HttpResponse(data, content_type="application/json")
-
-def graphs(request):
     dataSource = {}
     
     dataSource["chart"] = {
@@ -191,7 +93,7 @@ def graphs(request):
     dataSource['dataset'] = dataset
     print(dataSource)
     
-    col2D = FusionCharts("mscolumn3d", "ex1" , "600", "400", "chart-1", "json", dataSource)
+    col2D = FusionCharts("mscolumn3d", "ex1" , "400", "300", "chart-1", "json", dataSource)
     
         
     zoom_line_chart_details = {
@@ -277,10 +179,100 @@ def graphs(request):
     }
     print(zoom_line_chart_input)
     
-    zoom_line = FusionCharts("zoomline", "ex2" , "600", "400", "chart-2", "json", zoom_line_chart_input)
-    return render(request, 'map/graphs.html', {'output_2dcol': col2D.render(), 'output_zoom_line': zoom_line.render()})
+    zoom_line = FusionCharts("zoomline", "ex2" , "400", "300", "chart-2", "json", zoom_line_chart_input)
+    context = {'output_2dcol': col2D.render(), 'output_zoom_line': zoom_line.render()}
+    return render(request, 'map/product.html', context)
+    return render(request, 'map/product.html', context)
 
-def make_dataset_zoom_line(Reports):
+##loads the main map from ajax call
+def init_main(request):
+    districts = Districts.objects.all()
+    districtdict = {} 
+    i = 0
+    Date = dt.strptime("2014-09-18","%Y-%m-%d")
+    size_scale = [10, 100, 1000, 10000]
+    for district in districts:
+        report = HeadReports.objects.filter(date=Date).filter(phone_number__hospital__district=district)
+        s = 1
+        for size in size_scale:
+            if report.count() > size:
+                s += 1
+            else:
+                break
+        corddict = {i : {'name': district.name, 'lat' : str(district.lat), 'lng' : str(district.lng), 'deaths' : str(report.count()), 'size' : s}}
+        districtdict.update(corddict)
+        i += 1
+    data = json.dumps(districtdict)
+    return HttpResponse(data, content_type="application/json")
 
+def pop_region(request):
+    districtName = request.GET.get('name')
+    district = Districts.objects.filter(name=districtName).first()
+    districtdict = {}
+    i = 0
+    Date = dt.strptime("2014-09-18","%Y-%m-%d")
+    size_scale = [10, 100, 1000, 10000]
+    reports = HeadReports.objects.filter(date=Date).filter(phone_number__hospital__district=district)
+    for report in reports:    
+        s = 1
+        for size in size_scale:
+            if report.count() > size:
+                s += 1
+            else:
+                break
+        corddict = {i : {'name': district.name, 'lat' : str(district.lat), 'lng' : str(district.lng), 'deaths' : str(report.count()), 'size' : s}}
+        districtdict.update(corddict)
+        i += 1
+    data = json.dumps(districtdict)
+    return HttpResponse(data, content_type="application/json")
     
-    pass
+
+def init_dist(request):
+    dist_name = request.GET.get('name')
+    districts = Districts.objects.filter(name=dist_name).first()
+    map_data = {'zoom' : str(districts.zoom), 'lat' : str(districts.lat), 'lng' : str(districts.lng)}
+    data = json.dumps(map_data)
+    return HttpResponse(data, content_type="application/json")
+
+def districts(request):
+    data = render(request, 'map/jsonResponse.html')
+    return HttpResponse(data, content_type="application/json")
+
+def indDistricts(request):
+    data = render(request, 'map/districtJson.html')
+    return HttpResponse(data, content_type="application/json")
+
+def region(request, district):
+    dist_obj = Districts.objects.filter(name__iexact=district).first()
+    return render(request, 'map/region.html', {'district_name' : district, 'dist': dist_obj})
+
+@csrf_exempt
+def sms(request):
+    message = request.POST.get('Body')
+    from_number = request.POST.get('From')
+    print(message)
+    print(from_number)
+    return HttpResponse('<h1>Nice</h1>')
+
+##sending json data to ajax for react calendar    
+def changedate(request):
+    startDate = dt.strptime(request.GET.get('startdate'), '%Y-%m-%d'), dt.strptime(request.GET.get('enddate'), '%Y-%m-%d')
+    print(startDate)
+    districts = Districts.objects.all()
+    districtdict = {} 
+    i = 0
+    size_scale = [10, 100, 1000, 10000]
+    for district in districts:
+        report = HeadReports.objects.filter(date__gte=startDate).filter(phone_number__hospital__district=district)
+        if report:
+            s = 1
+            for size in size_scale:
+                if report.count > size:
+                    s += 1
+                else:
+                    break
+            corddict = {i : {'name': district.name, 'lat' : str(district.latitude), 'lng' : str(district.longitude), 'deaths' : str(report.count), 'size' : s}}
+            districtdict.update(corddict)
+            i += 1
+    data = json.dumps(districtdict)
+    return HttpResponse(data, content_type="application/json")

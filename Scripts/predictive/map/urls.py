@@ -14,6 +14,5 @@ urlpatterns = [
         url(r'region/(?P<district>([A-Z])\w+(\s)?(([A-Z])\w+)?(\s)?(([A-Z])\w+)?)', views.region, name='regions'),
         url(r'sms', views.sms, name='sms'),
         url(r'changedate', views.changedate, name='changedate'),
-        url(r'graphs', views.graphs, name='graphs'),
         url(r'addcases', views.addcases, name='addcases')
     ]

@@ -3,14 +3,8 @@
 <html class='no-js'>
     <head>
         <title>FC-python wrapper</title>
-        		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-        <script type="text/javascript" src="{% static 'fusioncharts/fusioncharts.js' %}"></script>
-        <script type="text/javascript" src="{% static 'fusioncharts/themes/fusioncharts.theme.fint.js' %}"></script>
-<!--        <script type="text/javascript" src="{% static 'js/transitions.js' %}"></script>-->
-        <script type="text/javascript" src="{% static 'pagetransitions/js/modernizr.custom.js' %}"></script>
+
         
-        
-<!--        <link rel="stylesheet" href="{% static 'css/transitions.css' %}" type="text/css">-->
     </head>
     <body>
 <!--
@@ -23,38 +17,17 @@
             </div>
         </div>
         -->
-        <div class="codrops-top clearfix">
-			<a class="codrops-icon codrops-icon-prev" href="http://tympanus.net/Tutorials/AutomaticFigureNumbering/"><span>Previous Demo</span></a>
-			<span class="right"><a class="codrops-icon codrops-icon-drop" href="http://tympanus.net/codrops/?p=15001"><span>Back to the Codrops Article</span></a></span>
-		</div>
 
-		<div class="pt-triggers">
-			<button id="iterateEffects" class="pt-touch-button">Slide left</button>
-         <button id="iterateEffects2" class="pt-touch-button">Slide right</button>
-		</div><!-- /triggers -->
-    		<div id="pt-main" class="pt-perspective">
-    
-                <div class="pt-page pt-page-1">
-                    <div id="chart-2">{{ output_2dcol|safe }}</div>
-                </div>
-                <div class="pt-page pt-page-2">
-                    <div id="chart-1">{{ output_zoom_line|safe }}</div>
-                </div>
-    
-    		</div>
+
+
 		<div class="pt-message">
 			<p>Your browser does not support CSS animations.</p>
 		</div>
 
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-        <script type="text/javascript" src="{% static 'pagetransitions/js/jquery.dlmenu.js' %}"></script>
-                <script type="text/javascript" src="{% static 'pagetransitions/js/pagetransitions.js' %}"></script>
-
-
-        <link rel="stylesheet" href="{% static 'pagetransitions/css/animations.css' %}" type="text/css">
-        <link rel="stylesheet" href="{% static 'pagetransitions/css/component.css' %}" type="text/css">
-        <link rel="stylesheet" href="{% static 'pagetransitions/css/default.css' %}" type="text/css">
-        <link rel="stylesheet" href="{% static 'pagetransitions/css/multilevelmenu.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'pagetransitions/css/animations.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'pagetransitions/css/component.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'pagetransitions/css/default.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'pagetransitions/css/multilevelmenu.css' %}" type="text/css">
 	</body>
     </body>
 </html> 
