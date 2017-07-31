@@ -11,6 +11,14 @@ import json
 from datetime import datetime as dt
 from .models import Districts, HeadReports, Diseases
 
+def about(request): 
+    return render(request,'map/about.html')
+def service(request):
+    return render(request, 'map/service.html')
+def contact(request):
+    return render(request, 'map/contact.html')
+def blog(request):
+    return render(request, 'map/blog.html')
 
 def index(request):
     most_north = Districts.objects.order_by('-longitude')[:5]
