@@ -3,13 +3,10 @@ from django.http import HttpResponse, JsonResponse
 from django.core import serializers
 from django.views.decorators.csrf import csrf_exempt
 from django.db.models import Avg, Sum
-
-from .fusioncharts import FusionCharts
-
 import json
 
 from datetime import datetime as dt
-from .models import Districts, HeadReports, Diseases
+from .models import Districts, HeadReports, DeathReports
 
 
 def index(request):
@@ -23,6 +20,7 @@ def index(request):
     context.update({'most_east':most_east})
     return render(request, 'map/index.html', context)
 
+##recieves ajax calls to populate sidebar
 def marker(request):
     districtName, date_string = request.GET.get('name'),request.GET.get('date')
     district = Districts.objects.filter(name=districtName)
@@ -40,6 +38,7 @@ def product(request):
     context = {'most_north':most_north}
     return render(request, 'map/product.html', context)
 
+##loads the main map from ajax call
 def init_main(request):
     districts = Districts.objects.all()
     districtdict = {} 
@@ -59,6 +58,28 @@ def init_main(request):
         i += 1
     data = json.dumps(districtdict)
     return HttpResponse(data, content_type="application/json")
+
+def pop_region(request):
+    districtName = request.GET.get('name')
+    district = Districts.objects.filter(name=districtName).first()
+    districtdict = {}
+    i = 0
+    Date = dt.strptime("2014-09-18","%Y-%m-%d")
+    size_scale = [10, 100, 1000, 10000]
+    reports = HeadReports.objects.filter(date=Date).filter(phone_number__hospital__district=district)
+    for report in reports:    
+        s = 1
+        for size in size_scale:
+            if report.count() > size:
+                s += 1
+            else:
+                break
+        corddict = {i : {'name': district.name, 'lat' : str(district.lat), 'lng' : str(district.lng), 'deaths' : str(report.count()), 'size' : s}}
+        districtdict.update(corddict)
+        i += 1
+    data = json.dumps(districtdict)
+    return HttpResponse(data, content_type="application/json")
+    
 
 def init_dist(request):
     dist_name = request.GET.get('name')
@@ -85,7 +106,8 @@ def sms(request):
     print(message)
     print(from_number)
     return HttpResponse('<h1>Nice</h1>')
-    
+
+##sending json data to ajax for react calendar    
 def changedate(request):
     startDate, endDate = dt.strptime(request.GET.get('startdate'), '%Y-%m-%d'), dt.strptime(request.GET.get('enddate'), '%Y-%m-%d')
     print(startDate)
@@ -98,115 +120,12 @@ def changedate(request):
         if report:
             s = 1
             for size in size_scale:
-                if report.death_cnfmd > size:
+                if report.count > size:
                     s += 1
                 else:
                     break
-            corddict = {i : {'name': district.name, 'lat' : str(district.latitude), 'lng' : str(district.longitude), 'deaths' : str(report.death_cnfmd), 'size' : s}}
+            corddict = {i : {'name': district.name, 'lat' : str(district.latitude), 'lng' : str(district.longitude), 'deaths' : str(report.count), 'size' : s}}
             districtdict.update(corddict)
             i += 1
     data = json.dumps(districtdict)
     return HttpResponse(data, content_type="application/json")
-
-def graphs(request):
-    dataSource = {}
-    
-    dataSource["chart"] = {
-        "caption": "Ebola by District",
-        "subCaption": "Sierra Leone",
-        "xAxisName": "District",
-        "yAxisName": "Case Reports",
-        "theme": "zune",
-        "placevaluesInside": "1",
-        "showCanvasBg": "1",
-        "showCanvasBase": "1",
-        "canvasBaseDepth": "14",
-        "canvasBgDepth": "5",
-        "canvasBaseColor": "#aaaaaa",
-        "canvasBgColor": "#eeeeee"
-    }
-    
-    date = dt.strptime('2017-07-27', '%Y-%m-%d')
-    categories_list = []
-    dataset = [{'seriesname':'2017-07-27'}]
-    dataset_list = []
-    districts = Districts.objects.all()
-    reports = HeadReports.objects.filter(date=date).filter(disease__name='Ebola')
-    for district in districts:
-        categories_list.append({'label':district.name})
-        data = reports.filter(phone_number__hospital__district=district).aggregate(Sum('count'))['count__sum']
-        if data != None:
-            dataset_list.append({'value':data})
-        else:
-            dataset_list.append({'value':0})
-    dataset[0].update({'data':dataset_list})
-    
-    dataSource['categories'] = [{
-            "category": categories_list
-        }]
-    
-    dataSource['dataset'] = dataset
-    print(dataSource)
-    
-    col2D = FusionCharts("mscolumn3d", "ex1" , "600", "400", "chart-1", "json", dataSource)
-    
-        
-    zoom_line_chart_details = {
-                "caption": "Disease Levels",
-                "subcaption": "Last 100 Days",
-                "yaxisname": "Case Count",
-                "xaxisname": "Date",
-                "yaxisminValue": "0",
-                "yaxismaxValue": "3000",
-                "pixelsPerPoint": "0",
-                "pixelsPerLabel": "30",
-                "lineThickness": "1",
-                "compactdatamode": "1",
-                "dataseparator": "|",
-                "labelHeight": "30",
-                "theme": "fint"
-            }
-    
-    reports = HeadReports.objects.all().order_by('date')
-    dates = []
-    date_objs = []
-    for row in reports:
-        if row.date.strftime('%b %d') not in dates:
-            dates.append(row.date.strftime('%b %d'))
-            date_objs.append(row.date)
-    
-    
-    categories = ""
-    for date in dates:
-        categories += date + "|"
-    categories = categories[:-1]
-    
-    zoom_line_chart_categories = [
-            {
-                "category": categories
-            }
-        ]
-    
-    datasets = []
-    diseases = Diseases.objects.all()
-    for disease in diseases:
-        data = ""
-        for date in date_objs:
-            point = reports.filter(disease__name=disease.name).filter(date=date).aggregate(Sum('count'))['count__sum']
-            data += str(point) + "|"
-        data = data[:-1]
-        datasets.append({'seriesname':disease.name, 'data':data})
-    
-        
-    
-    zoom_line_chart_input = {'chart' : zoom_line_chart_details, 'categories': zoom_line_chart_categories, 'dataset':datasets}
-
-    print(zoom_line_chart_input)
-    
-    zoom_line = FusionCharts("zoomline", "ex2" , "600", "400", "chart-2", "json", zoom_line_chart_input)
-    return render(request, 'map/graphs.html', {'output_2dcol': col2D.render(), 'output_zoom_line': zoom_line.render()})
-
-def make_dataset_zoom_line(Reports):
-
-    
-    pass
