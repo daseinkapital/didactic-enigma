@@ -5,6 +5,14 @@
 body {
   font-family: 'Roboto', sans-serif;
 }
+#logo{
+      position: relative;
+      padding-top: 35%;
+      right: 40%;
+      float: right;
+      width: 180%;
+      overflow: auto;
+      }
 h1,
 h2,
 h3,
@@ -251,7 +259,8 @@ a:hover {
   margin-bottom: 35px;
 }
 #about .block img {
-  max-width: 100%;
+  max-width: 150%;
+  max-height: 120%;
 }
 .works {
   padding: 80px 0;
@@ -403,7 +412,7 @@ figure figcaption p {
 #feature .icon {
   text-decoration: none;
   color: #fff;
-  background-color: #02bdd5;
+  background-color: #f67280;
   height: 100px;
   text-align: center;
   width: 100px;
