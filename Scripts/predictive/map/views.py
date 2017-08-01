@@ -7,7 +7,7 @@ from .fusioncharts import FusionCharts
 import json
 
 from datetime import datetime as dt
-from .models import Districts, HeadReports, DeathReports, Diseases
+from .models import Districts, HeadReports, DeathReports, Diseases, Phones
 
 
 def index(request):
@@ -40,16 +40,28 @@ def addcases(request):
     district = Districts.objects.filter(name=districtName).first()
     i = 0
     Date = dt.strptime("2017-07-27","%Y-%m-%d")
-    reports = HeadReports.objects.filter(date=Date).filter(phone_number__hospital__district=district).order_by('count')
+    reports = HeadReports.objects.filter(date=Date).filter(phone_number__hospital__district=district)
+    hospitals = []
     for report in reports:
-        hospitalName = report.phone_number.hospital.name
-        lat = report.phone_number.hospital.lat
-        lng = report.phone_number.hospital.lng
-        deaths = report.count
-        zval = reports.count() - i + 2
-        markerinfo = {i : {'hospitalName': str(hospitalName), 'lat' : str(lat), 'lng' : str(lng), 'deaths' : str(deaths), 'zval': str(zval)}}
-        reportsdict.update(markerinfo)
+        if report.phone_number.hospital.name not in hospitals:
+            hospitals.append(report.phone_number.hospital.name)
+    
+    data = []
+    for hospital in hospitals:
+        report = reports.filter(phone_number__hospital__name=hospital)
+        hospitalName = hospital
+        lat = report.first().phone_number.hospital.lat
+        lng = report.first().phone_number.hospital.lng
+        case_count = report.aggregate(Sum('count'))['count__sum']
+        data.append([hospitalName, lat, lng, case_count])
+    
+    data.sort(key=lambda x: x[3])
+    j = len(data)
+    for row in data:
+        reportsdict.update({i : {'hospitalName': row[0], 'lat' : str(row[1]), 'lng' : str(row[2]), 'deaths' : str(row[3]), 'zval': str(j)}})
         i += 1
+        j -= 1
+    
     data = json.dumps(reportsdict)
     return HttpResponse(data, content_type="application/json")
     
@@ -257,7 +269,6 @@ def sms(request):
 ##sending json data to ajax for react calendar    
 def changedate(request):
     startDate = dt.strptime(request.GET.get('startdate'), '%Y-%m-%d'), dt.strptime(request.GET.get('enddate'), '%Y-%m-%d')
-    print(startDate)
     districts = Districts.objects.all()
     districtdict = {} 
     i = 0
@@ -276,3 +287,24 @@ def changedate(request):
             i += 1
     data = json.dumps(districtdict)
     return HttpResponse(data, content_type="application/json")
+
+def hosp_overview(request):
+    hosp_code = request.GET.get('code')
+    reports = HeadReports.objects.filter(phone_number__hospital__name=hosp_code).filter(date='2017-07-27')
+    diseases = Diseases.objects.all()
+    phones = Phones.objects.filter(hospital__name=hosp_code)
+    nums = []
+    for phone in phones:
+        nums.append(phone.number)
+        
+    disease_counts = []
+    for disease in diseases:
+        count = reports.filter(disease__name=disease.name).aggregate(Sum('count'))['count__sum']
+        if count:
+            disease_counts.append({'name':disease.name, 'count':count})
+    data = {'hosp_code':hosp_code,'diseases':disease_counts, 'numbers':nums}
+    return HttpResponse(render(request, 'map/report_listings.html', data))
+    
+    
+    
+    

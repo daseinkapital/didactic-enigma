@@ -39,16 +39,15 @@
                         names.push(name);
                         zindex.push(zval);
                 };
-                Object.keys(mark).forEach(function(key) {
-                console.log(key, mark[key]);
-                });
-                
+
+
                 for (i = 0; i < mark.length; i++){
+                        var svg = "PD94bWwgdmVyc2lvbj0iMS4wIj8+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4wLy9FTiIgCiAgICAgICAgICAgICAgImh0dHA6Ly93d3cudzMub3JnL1RSLzIwMDEvUkVDLVNWRy0yMDAxMDkwNC9EVEQvc3ZnMTAuZHRkIj4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMzUiIGhlaWdodD0iMjk2Ij4KICA8ZyBzdHlsZT0iZmlsbC1vcGFjaXR5OjAuNzsiPgogICAgPGNpcmNsZSBjeD0iNTAlIiBjeT0iNTAlIiByPSIxNDUiIHN0eWxlPSJmaWxsOnJlZDsgc3Ryb2tlOmJsYWNrOyBzdHJva2Utd2lkdGg6MiIgLz4KICA8L2c+Cjwvc3ZnPgo=";               
                         var icon = new ol.style.Icon(/** @type {olx.style.IconOptions} */ ({
-                              color: '#8959A8',
-                              crossOrigin: 'anonymous',
-                              src: 'https://openlayers.org/en/v4.2.0/examples/data/dot.png',
-                              scale: deathcnfm[i]/100
+                              src: 'data:image/svg+xml;base64,'+svg,
+                              width: 20,
+                              height: 20,
+                              scale: deathcnfm[i]/650
                             }))  ;
                         var newiconStyle = new ol.style.Style({
                             image: icon,
@@ -56,7 +55,9 @@
                           });                      
                         
                         var feature = new ol.Feature({
-                            geometry: new ol.geom.Point(ol.proj.fromLonLat(mark[i]))                        
+                            geometry: new ol.geom.Point(ol.proj.fromLonLat(mark[i])),
+                            name: names[i],
+                            count: deathcnfm[i]
                         });
         
                     feature.setStyle(newiconStyle);
@@ -82,7 +83,7 @@
       var districtLayer = new ol.layer.Image({
             source: new ol.source.ImageVector({
               source: new ol.source.Vector({
-                url: '/map/districts/',
+                url: '/map/indDistricts/',
                 format: new ol.format.GeoJSON()
               }),
 
@@ -164,7 +165,7 @@
         } else {
           link = 'none';
         } 
-         };               
+         };
               
               
               
@@ -177,26 +178,17 @@
           return feature;
         });
         
-       var info = document.getElementById('info');
-        if (feature) {
-          info.innerHTML = feature.get('ADM2_NAME');
-        } else {
-          info.innerHTML = 'none';
-        } 
-            
-       
-
-       
-
-        if (feature !== highlight) {
-          if (highlight) {
-            featureOverlay.getSource().removeFeature(highlight);
-          }
-          if (feature) {
-            featureOverlay.getSource().addFeature(feature);
-          }
-          highlight = feature;
-        }
+        var info = document.getElementById('info');
+        var hospitalName = document.getElementById('name');
+        var count = document.getElementById('cases');
+        if(feature) {
+                info.innerHTML = feature.get('name');
+                hospitalName.innerHTML = feature.get('name');
+                count.innerHTML = feature.get('count');
+                } else {
+                        info.innerHTML = 'none';
+                        
+                }
           };
           
     
@@ -209,19 +201,26 @@
         var pixel = map.getEventPixel(evt.originalEvent);
         displayFeatureInfo(pixel);
       });
-
+    
       map.on('click', function(evt) {
+        var info = document.getElementById('info');
+        var hospitalName = document.getElementById('hospital_name');
+        var count = document.getElementById('count');
         displayFeatureInfo(evt.pixel);
-        if(document.getElementById("info").innerHTML != "none") {
-        $.ajax({
-                              url : "/map/marker/",
-                              data : {"name" : document.getElementById("info").innerHTML, "date" : "2014-09-18"},
+        if(document.getElementById("info").innerHTML !== "none") {
+                if (info.innerHTML !== 'undefined'){
+                    hospitalName.innerHTML = "Hospital Code: " + document.getElementById('name').innerHTML;
+                    count.innerHTML = "Total Case Count: " + document.getElementById('cases').innerHTML;
+                    $.ajax({
+                              url : "/map/hosp_overview/",
+                              data : {"code" : document.getElementById('name').innerHTML},
                               dataType : 'html',
                               success : function (data) {
-                                  $("#mySidenav").empty().append(data);
+                                  $("#overview").empty().append(data);
                               }
-                        });        
-
+                        });
+                    }
+                
         }
       });   
           

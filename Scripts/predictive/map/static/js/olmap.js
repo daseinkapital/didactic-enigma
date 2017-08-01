@@ -91,8 +91,8 @@
          });
                         
        var sierraView = new ol.View({
-          center:  [-1215746.7064420073, 949236.9108252194],
-          zoom: 8.541666653951008
+          center:  [-1354603.7697028217, 950826.8771984349],
+          zoom: 8.206381747585729
         });
         
         var view = new ol.View({
@@ -109,9 +109,6 @@
       
        });
         
-     
-       
-    
 
                     
                         
@@ -180,7 +177,7 @@
           
         function flyTo(location, done) {
             var duration = 2000;
-            var zoom = view.getZoom();
+            var zoom = sierraView.getZoom();
             var parts = 2;
             var called = false;
             function callback(complete) {

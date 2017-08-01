@@ -29,6 +29,8 @@
     <link rel="stylesheet" href="{% static 'css/daterange-picker.css' %}">
     <link rel="stylesheet" href="{% static 'css/sidebar.css' %}">
     <link rel="stylesheet" href="{% static 'css/olmap.css' %}">
+    <link rel="stylesheet" href="{% static 'paneltransitions/demo.css' %}">
+    <link rel="stylesheet" href="{% static 'paneltransitions/style3.css' %}">
     <link rel="stylesheet" href="https://openlayers.org/en/v4.2.0/css/ol.css" type="text/css">
 
 
@@ -87,8 +89,14 @@
 
 <div id="sidebar">
     <div id="mySidenav" class="sidenav">
-        <a id="export-png" class="btn btn-default"><i class="fa fa-download"></i> Download CSV</a>
+        <ul>
+            <a id="export-png" class="btn btn-default"><i class="fa fa-download"></i> Download CSV</a>
+            <a id="link-query" class="btn btn-default" href="#query">Query</a>
+            <a class="btn btn-default">Reports</a>
+            <a class="btn btn-default">Alerts</a>
+        </ul>
     </div>
+    <div id="mySidenav"></div>
     <div id="info" ></div>
     <div class="pt-triggers">
         <button id="iterateEffects" class="pt-touch-button">Map</button>
@@ -107,7 +115,6 @@
             </div>
         </div>
 	 </div>
-    
 </div>
 
  

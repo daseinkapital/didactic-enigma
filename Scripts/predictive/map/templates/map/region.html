@@ -13,11 +13,17 @@
 <a id="zoom" hidden>{{dist.zoom}}</a>
 <a id="lat" hidden>{{dist.lat}}</a>
 <a id="lng" hidden>{{dist.lng}}</a>
-<div id='info'></div>
+<div id="info" hidden></div>
+<div id="name" hidden></div>
+<div id="cases" hidden></div>
 <body>
     <div>
         <div id="mySidenav" class="sidenav">
             <a href="#">{{district_name}}</a>
+            <a id="hospital_name"></a>
+            <a id="count"></a>
+            <div id="overview">
+            </div>
         </div>
 
         <div id="map" class="mapol">
