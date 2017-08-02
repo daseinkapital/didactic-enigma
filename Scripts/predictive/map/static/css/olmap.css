@@ -16,10 +16,10 @@
         bottom: 0;
         overflow-x: hidden;
         overflow-y: auto;
+        background-image: linear-gradient(#f8b195, #f67280);
     }
 
 .main-chart-container {
-      float: left;
       position: relative;
       left: 50%;
       top: 10%;
@@ -29,5 +29,5 @@
       padding: 15px;
       float: left;
       position: relative;
-      left: -50%;
+      left: -40%;
     }

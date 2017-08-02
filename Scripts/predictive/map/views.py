@@ -256,7 +256,153 @@ def indDistricts(request):
 
 def region(request, district):
     dist_obj = Districts.objects.filter(name__iexact=district).first()
-    return render(request, 'map/region.html', {'district_name' : district, 'dist': dist_obj})
+    
+    dataSource = {}
+    
+    dataSource["chart"] = {
+        "caption": "Disease Breakdown",
+        "subCaption": district,
+        "xAxisName": "Disease",
+        "yAxisName": "Case Reports",
+        "theme": "zune",
+        "placevaluesInside": "1",
+        "showCanvasBg": "1",
+        "showCanvasBase": "1",
+        "canvasBaseDepth": "14",
+        "canvasBgDepth": "5",
+        "canvasBaseColor": "#aaaaaa",
+        "canvasBgColor": "#eeeeee"
+    }
+    
+    date = dt.strptime('2017-07-27', '%Y-%m-%d')
+    categories_list = []
+    dataset = [{'seriesname':'2017-07-27'}]
+    dataset_list = []
+    diseases = Diseases.objects.all()
+    reports = HeadReports.objects.filter(date=date).filter(phone_number__hospital__district=dist_obj)
+    for disease in diseases:
+        categories_list.append({'label':disease.name})
+        data = reports.filter(disease=disease).aggregate(Sum('count'))['count__sum']
+        if data != None:
+            dataset_list.append({'value':data})
+        else:
+            dataset_list.append({'value':0})
+    dataset[0].update({'data':dataset_list})
+    
+    dataSource['categories'] = [{
+            "category": categories_list
+        }]
+    
+    dataSource['dataset'] = dataset
+    print(dataSource)
+    
+    col3D = FusionCharts("mscolumn3d", "ex1" , "400", "300", "chart-1", "json", dataSource)
+    
+        
+    zoom_line_chart_details = {
+                "caption": "Daily Reports",
+                "subcaption": "Last 100 Days",
+                "yaxisname": "Number of Reports Submitted",
+                "xaxisname": "Date",
+                "yaxisminValue": "0",
+                "pixelsPerPoint": "0",
+                "pixelsPerLabel": "30",
+                "lineThickness": "1",
+                "compactdatamode": "1",
+                "dataseparator": "|",
+                "labelHeight": "30",
+                "theme": "fint"
+            }
+    
+    reports = HeadReports.objects.all().order_by('date')
+    dates = []
+    date_objs = []
+    for row in reports:
+        if row.date.strftime('%b %d') not in dates:
+            dates.append(row.date.strftime('%b %d'))
+            date_objs.append(row.date)
+    
+    
+    categories = ""
+    for date in dates:
+        categories += date + "|"
+    categories = categories[:-1]
+    
+    zoom_line_chart_categories = [
+            {
+                "category": categories
+            }
+        ]
+    
+    datasets = []
+    data = ""
+    for date in date_objs:
+        point = reports.filter(phone_number__hospital__district=dist_obj).filter(date=date).count()
+        data += str(point) + "|"
+    data = data[:-1]
+    datasets.append({'seriesname':'Disease Report Counts', 'data':data})
+    
+        
+    
+    zoom_line_chart_input = {'chart' : zoom_line_chart_details, 'categories': zoom_line_chart_categories, 'dataset':datasets}
+    
+    zoom_line1 = FusionCharts("zoomline", "ex2" , "400", "300", "chart-2", "json", zoom_line_chart_input)
+    
+    
+    #Second zoom line chart
+    zoom_line_chart_details = {
+            "caption": "Disease Levels",
+            "subcaption": "Last 100 Days",
+            "yaxisname": "Case Count",
+            "xaxisname": "Date",
+            "yaxisminValue": "0",
+            "pixelsPerPoint": "0",
+            "pixelsPerLabel": "30",
+            "lineThickness": "1",
+            "compactdatamode": "1",
+            "dataseparator": "|",
+            "labelHeight": "30",
+            "theme": "fint"
+        }
+    
+    reports = HeadReports.objects.all().order_by('date')
+    dates = []
+    date_objs = []
+    for row in reports:
+        if row.date.strftime('%b %d') not in dates:
+            dates.append(row.date.strftime('%b %d'))
+            date_objs.append(row.date)
+    
+    
+    categories = ""
+    for date in dates:
+        categories += date + "|"
+    categories = categories[:-1]
+    
+    zoom_line_chart_categories = [
+            {
+                "category": categories
+            }
+        ]
+    
+    datasets = []
+    diseases = Diseases.objects.all()
+    for disease in diseases:
+        data = ""
+        for date in date_objs:
+            point = reports.filter(disease__name=disease.name).filter(date=date).filter(phone_number__hospital__district=dist_obj).aggregate(Sum('count'))['count__sum']
+            data += str(point) + "|"
+        data = data[:-1]
+        datasets.append({'seriesname':disease.name, 'data':data})
+    
+        
+    
+    zoom_line_chart_input = {'chart' : zoom_line_chart_details, 'categories': zoom_line_chart_categories, 'dataset':datasets}
+    zoom_line2 = FusionCharts("zoomline", "ex3" , "400", "300", "chart-3", "json", zoom_line_chart_input)
+    
+    context = {'output_2dcol': col3D.render(), 'output_zoom_line': zoom_line1.render(), 'output_zoom_line2': zoom_line2.render()}
+    context.update({'district_name' : district, 'dist': dist_obj})
+    return render(request, 'map/region.html', context)
 
 @csrf_exempt
 def sms(request):
