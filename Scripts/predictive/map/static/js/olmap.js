@@ -38,9 +38,7 @@
                         size.push(mark_size);
                         names.push(name);
                 };
-                Object.keys(mark).forEach(function(key) {
-                console.log(key, mark[key]);
-                });
+
                 
                 for (i = 0; i < mark.length; i++){
                         var link = '/map/region/' + names[i];
@@ -68,7 +66,7 @@
           attributions: 'Tiles © <a href="https://services.arcgisonline.com/ArcGIS/' +
               'rest/services/World_Topo_Map/MapServer">ArcGIS</a>',
           url: 'https://server.arcgisonline.com/ArcGIS/rest/services/' +
-              'World_Topo_Map/MapServer/tile/{z}/{y}/{x}'
+              'World_Imagery/MapServer/tile/{z}/{y}/{x}'
         })
       });
       var districtLayer = new ol.layer.Image({
@@ -99,17 +97,21 @@
         center: [-8583403.59127055, 4706697.829103296],
         zoom: 6
       });
+    
+    var viewOut = new ol.View({
+        center: [-5117927.337785828, 3053247.0740952375],
+        zoom: 4
+      });
                         
 
       var map = new ol.Map({
         layers: [rasterLayer, vectorLayer, districtLayer],
         
         target: document.getElementById('mapol'),
-        view: view
+        view: viewOut
       
        });
-        
-
+        setTimeout( function() {map.setView(view)}, 1000);          
                     
                         
         var featureOverlay = new ol.layer.Vector({
@@ -177,7 +179,7 @@
           
         function flyTo(location, done) {
             var duration = 2000;
-            var zoom = sierraView.getZoom();
+            var zoomInit = view.getZoom();
             var parts = 2;
             var called = false;
             function callback(complete) {
@@ -195,18 +197,17 @@
               duration: duration
             }, callback);
             view.animate({
-              zoom: zoom - 1,
+              zoom: zoomInit - 1,
               duration: duration / 2
             }, {
-              zoom: zoom,
+              zoom: sierraView.getZoom(),
               duration: duration / 2
             }, callback);
       }
   
 
-        
+
 setTimeout( function(){
-        
 flyTo(sierraCord, function() {})}, 3000
 );
       
