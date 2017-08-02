@@ -4030,7 +4030,6 @@ if (jQuery) {
             $body.width(oldWidth);
 
             // Push current drag target on top of DOM tree
-
             //$('body').append($dragTarget);
 
             if (options.edge === 'left') {
