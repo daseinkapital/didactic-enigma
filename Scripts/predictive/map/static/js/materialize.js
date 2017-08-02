@@ -3762,7 +3762,7 @@ if (jQuery) {
           $(window).resize(function () {
             if (window.innerWidth > 992) {
               // Close menu if window is resized bigger than 992 and user has fixed sidenav
-              if ($('#sidenav-overlay').length !== 0 && menuOut) {
+              if ($('#sidenav-overlay').length === 0 && menuOut) {
                 removeMenu(true);
               } else {
                 // menu.removeAttr('style');
@@ -4030,7 +4030,8 @@ if (jQuery) {
             $body.width(oldWidth);
 
             // Push current drag target on top of DOM tree
-            $('body').append($dragTarget);
+
+            //$('body').append($dragTarget);
 
             if (options.edge === 'left') {
               $dragTarget.css({ width: '50%', right: 0, left: '' });
@@ -4053,6 +4054,14 @@ if (jQuery) {
             });
 
 
+            // Append body
+            //$('body').append($overlay);
+            $overlay.velocity({ opacity: 1 }, { duration: 300, queue: false, easing: 'easeOutQuad',
+              complete: function () {
+                menuOut = true;
+                panning = false;
+              }
+            });
 
             // Callback
             if (typeof options.onOpen === 'function') {
