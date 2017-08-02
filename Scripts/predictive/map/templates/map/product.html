@@ -17,7 +17,8 @@
     <!-- Custom fonts for this template -->
     <link rel="stylesheet" href="{% static 'vendor/font-awesome/css/font-awesome.min.css' %}">
     <link rel="stylesheet" href="{% static 'vendor/simple-line-icons/css/simple-line-icons.css' %}">
-    
+     <link rel="stylesheet" href="{% static 'css/materialize.css' %}">
+
     
     <!-- Custom styles for this template -->
     
@@ -36,6 +37,7 @@
 
      <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" rel="stylesheet">
     
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script type="text/javascript" src="{% static 'fusioncharts/fusioncharts.js' %}"></script>
     <script type="text/javascript" src="{% static 'fusioncharts/themes/fusioncharts.theme.fint.js' %}"></script>
@@ -44,6 +46,7 @@
     <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL"></script>
     <script src="https://openlayers.org/en/v4.2.0/build/ol.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
+
 
 
 </head>
@@ -77,12 +80,16 @@
 
 
 <div id="sidebar">
+
     <a id="zoom" hidden></a>
     <a id="lat" hidden>{{dist.lat}}</a>
     <a id="lng" hidden>{{dist.lng}}</a>
     <div id="info" hidden></div>
     <div id="name" hidden></div>
     <div id="cases" hidden></div>
+
+<!--
+
     <div id="mySidenav" class="sidenav">
         <ul>
             <a id="export-png" class="btn btn-default"><i class="fa fa-download"></i> Download CSV</a>
@@ -91,6 +98,7 @@
             <a class="btn btn-default">Alerts</a>
         </ul>
     </div>
+
     <div id="mySidenav"></div>
     <div id="info" ></div>
     <div class="pt-triggers">
@@ -110,10 +118,17 @@
             </div>
         </div>
 	 </div>
-</div>
 
- 
-  
+-->
+
+   
+</div>
+  $(".drag-target").remove()
+        
+
+          
+          
+</script>
 
   
     <!--PageTransitions JS-->
@@ -148,4 +163,8 @@
   
 
     <!-- Custom scripts for this template -->
+
     <script src="{% static 'js/new-age.min.js' %}"></script>
+
+    <!--<script src="{% static 'js/loading.js' %}"></script>-->
+
