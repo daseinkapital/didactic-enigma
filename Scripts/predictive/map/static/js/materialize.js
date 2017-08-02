@@ -3727,7 +3727,6 @@ if (jQuery) {
           menu.css('width', '30%');
         }
 
-        // Add Touch Area
         if (options.draggable) {
           // Regenerate dragTarget
           if ($dragTarget.length) {
