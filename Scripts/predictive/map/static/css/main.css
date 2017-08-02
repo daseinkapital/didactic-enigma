@@ -5,6 +5,7 @@
 body {
   font-family: 'Roboto', sans-serif;
 }
+
 #logo{
       position: relative;
       padding-top: 35%;
@@ -13,6 +14,27 @@ body {
       width: 180%;
       overflow: auto;
       }
+
+#logo2{
+    position: relative;
+    top: -24px;
+    left: -200px;
+    height: 80px;
+    float: right;
+    overflow: auto;
+      }
+#icons{
+    vertical-align: middle;
+    position: relative;
+    top: -1px;
+    right: 0px;
+    }
+#warning{
+    vertical-align: middle;
+    position: relative;
+    top: -8px;
+    right: 0px;
+    }
 h1,
 h2,
 h3,
@@ -50,7 +72,7 @@ a:hover {
   line-height: 20px;
 }
 .title {
-  font-size: 30px;
+  font-size: 35px;
   line-height: 1.1;
   font-weight: 300;
   color: #333;
@@ -406,7 +428,7 @@ figure figcaption p {
 }
 #feature p {
   line-height: 25px;
-  font-size: 14px;
+  font-size: 17px;
   color: #777777;
 }
 #feature .icon {
