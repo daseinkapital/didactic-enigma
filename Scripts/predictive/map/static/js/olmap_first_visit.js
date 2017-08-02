@@ -93,16 +93,26 @@
           zoom: 8.206381747585729
         });
         
+        var view = new ol.View({
+        center: [-8583403.59127055, 4706697.829103296],
+        zoom: 6
+      });
+    
+    var viewOut = new ol.View({
+        center: [-5117927.337785828, 3053247.0740952375],
+        zoom: 4
+      });
                         
 
       var map = new ol.Map({
         layers: [rasterLayer, vectorLayer, districtLayer],
         
         target: document.getElementById('mapol'),
-        view: sierraView
+        view: viewOut
       
        });
-
+        setTimeout( function() {map.setView(view)}, 1000);          
+                    
                         
         var featureOverlay = new ol.layer.Vector({
         source: new ol.source.Vector(),
@@ -164,8 +174,42 @@
           highlight = feature;
         }
           };
+          
+        var sierraCord = sierraView.getCenter();
+          
+        function flyTo(location, done) {
+            var duration = 2000;
+            var zoomInit = view.getZoom();
+            var parts = 2;
+            var called = false;
+            function callback(complete) {
+              --parts;
+              if (called) {
+                return;
+              }
+              if (parts === 0 || !complete) {
+                called = true;
+                done(complete);
+              }
+            }
+            view.animate({
+              center: location,
+              duration: duration
+            }, callback);
+            view.animate({
+              zoom: zoomInit - 1,
+              duration: duration / 2
+            }, {
+              zoom: sierraView.getZoom(),
+              duration: duration / 2
+            }, callback);
+      }
+  
 
 
+setTimeout( function(){
+flyTo(sierraCord, function() {})}, 4000
+);
       
 
       map.on('pointermove', function(evt) {

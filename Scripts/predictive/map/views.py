@@ -65,7 +65,7 @@ def addcases(request):
     data = json.dumps(reportsdict)
     return HttpResponse(data, content_type="application/json")
     
-def product(request):  
+def product(request):
     dataSource = {}
     
     dataSource["chart"] = {
@@ -103,7 +103,7 @@ def product(request):
         }]
     
     dataSource['dataset'] = dataset
-    print(dataSource)
+
     
     col2D = FusionCharts("mscolumn3d", "ex1" , "400", "300", "chart-1", "json", dataSource)
     
@@ -189,12 +189,13 @@ def product(request):
             }
         ]
     }
-    print(zoom_line_chart_input)
     
     zoom_line = FusionCharts("zoomline", "ex2" , "400", "300", "chart-2", "json", zoom_line_chart_input)
     context = {'output_2dcol': col2D.render(), 'output_zoom_line': zoom_line.render()}
-    return render(request, 'map/product.html', context)
-    return render(request, 'map/product.html', context)
+    if request.GET.get('visit') == "first":
+        return render(request, 'map/product_first_visit.html', context)
+    else:
+        return render(request, 'map/product.html', context)
 
 ##loads the main map from ajax call
 def init_main(request):
@@ -294,7 +295,7 @@ def region(request, district):
         }]
     
     dataSource['dataset'] = dataset
-    print(dataSource)
+
     
     col3D = FusionCharts("mscolumn3d", "ex1" , "400", "300", "chart-1", "json", dataSource)
     
