@@ -35,6 +35,13 @@ body {
     top: -8px;
     right: 0px;
     }
+
+
+
+
+
+
+
 h1,
 h2,
 h3,
@@ -98,7 +105,7 @@ a:hover {
   padding: 140px 0;
 }
 .navbar-default .navbar-nav > li > a:hover {
-  color: #02bdd5;
+  color: #355c7d;
 }
 .navbar.navbar-default {
   border: 0;
@@ -154,12 +161,12 @@ a:hover {
   text-transform: uppercase;
 }
 #top-bar .main-menu li a:hover {
-  color: #02bdd5;
+  color: #355c7d;
 }
 .navbar-custom .nav li > a {
   position: relative;
   color: #000;
-}
+}#355c7d
 .navbar-right .dropdown-menu {
   right: auto;
   left: 0;
@@ -211,21 +218,53 @@ a:hover {
   font-family: 'Roboto', sans-serif;
   margin-top: 25px;
 }
+#main buttons{
+        text-align: center;
+        }
+
 #hero-area .btn {
-  background: #414141;
-  border: none;
-  color: #fff;
-  padding: 20px 35px;
-  margin-top: 30px;
-  font-size: 16px;
-  font-size: 13px;
-  line-height: 1em;
-  text-transform: uppercase;
-  letter-spacing: normal;
-  border-radius: 0;
+    border-color: #355c7d;
+    border-radius: 60px;
+    color: #355c7d;
+    padding: 15px 40px;
+    margin-top: 5%;
+    margin-bottom: 30px;
+    margin-right: 60px;
+    font-family: 'Roboto';
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    margin-right: 30px;
+    margin-left:30px;
+    margin-top:40px;
 }
+#hero-area .btn {
+       border-color: #355c7d;
+    border-radius: 60px;
+    color: #355c7d;
+    padding: 15px 40px;
+    margin-top: 5%;
+    margin-bottom: 30px;
+    margin-right: 60px;
+    font-family: 'Roboto'
+     -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    margin-right: 30px;
+    margin-left:30px;
+    margin-top:40px;
+}
+#hero-area .btn:hover {
+        background-color: #008CBA;
+        color: white;
+        }
+
+#hero-area .btn:hover {
+        background-color: #008CBA;
+        color: white;
+    }
+
+
 #call-to-action {
-  background: #02bdd5;
+  background: #355C7D;
   background-size: cover;
   background-attachment: fixed;
   padding: 80px 0;
@@ -251,7 +290,7 @@ a:hover {
 #call-to-action .block .btn-contact {
   background: #fff;
   border: none;
-  color: #02bdd5;
+  color: #355c7d;
   padding: 16px 35px;
   margin-top: 20px;
   font-size: 12px;
@@ -401,7 +440,7 @@ figure figcaption h4 {
   margin: 0;
 }
 figure figcaption h4 a {
-  color: #02bdd5;
+  color: #355c7d;
 }
 figure figcaption p {
   font-size: 14px;
@@ -457,10 +496,10 @@ figure figcaption p {
   margin-top: 35px;
   color: #fff;
   outline: none;
-  background: #02bdd5;
+  background: #355c7d;
 }
 #contact-section .contact-form .btn-send:hover {
-  border: 1px solid #02bdd5;
+  border: 1px solid #355c7d;
 }
 #contact-section input {
   display: block;
@@ -510,7 +549,7 @@ figure figcaption p {
 #contact-section .email i,
 #contact-section .phone i {
   font-size: 45px;
-  color: #02bdd5;
+  color: #355c7d;
 }
 #contact-section .address h5,
 #contact-section .email h5,
@@ -537,7 +576,7 @@ figure figcaption p {
   margin-top: 10px;
 }
 #footer .copyright a {
-  color: #02bdd5;
+  color: #f67280;
 }
 #footer .social {
   text-align: right;
@@ -549,10 +588,10 @@ figure figcaption p {
 }
 #footer .social li a {
   font-size: 22px;
-  color: #02bdd5;
+  color: #355c7;
 }
 .cd-headline.slide .cd-words-wrapper {
-  color: #02bdd5;
+  color: #355c7d;
 }
 ul.social-icons {
   height: auto;
@@ -578,7 +617,7 @@ ul.social-icons li {
   background-size: cover;
   padding: 120px 0 25px 0;
   position: relative;
-  background: #02bdd5;
+  background: #355c7d;
   color: #fff;
 }
 .global-page-header h2 {
@@ -611,7 +650,7 @@ ul.social-icons li {
 }
 #product-showcase-banner .block h2 {
   font-size: 40px;
-  color: #02bdd5;
+  color: #355c7d;
   margin-bottom: 20px;
   margin-top: 0;
 }
@@ -729,7 +768,7 @@ ul.social-icons li {
 }
 #related-items .block h4 span {
   float: right;
-  color: #02bdd5;
+  color: #355c7d;
 }
 #related-items .block .img-overly {
   position: relative;
@@ -765,7 +804,7 @@ ul.social-icons li {
 }
 .service-page .service-parts .block i {
   font-size: 35px;
-  color: #02bdd5;
+  color: #355c7d;
 }
 .service-page .service-parts .block p {
   padding: 0 8px;
@@ -823,7 +862,7 @@ ul.social-icons li {
 }
 .wrapper_404 h1 {
   font-size: 200px;
-  color: #02bdd5;
+  color: #355c7d;
   line-height: 1;
 }
 .wrapper_404 h2 {
@@ -871,7 +910,7 @@ ul.social-icons li {
   font-size: 13px;
 }
 .team-member h3 {
-  color: #02bdd5;
+  color: #355c7d;
   margin-bottom: 0;
   font-size: 20px;
 }
@@ -879,7 +918,7 @@ ul.social-icons li {
   font-size: 14px;
 }
 .team-member .social-icons a {
-  background: #02bdd5;
+  background: #355c7d;
   color: #fff;
   padding: 4px 8px;
   display: inline-block;
@@ -901,13 +940,13 @@ ul.social-icons li {
   font-weight: 300;
 }
 .about-feature .about-feature-1 {
-  background: #02bdd5;
+  background: linear-gradient(50deg, #355c7d, #6c5b7b);
 }
 .about-feature .about-feature-2 {
-  background: #00B0C7;
+  background: linear-gradient(90deg,#6c5b7b,#c06c84);
 }
 .about-feature .about-feature-3 {
-  background: #00A6BB;
+  background: linear-gradient(90deg,#c06c84,#f8b195);
 }
 #blog-full-width {
   padding: 40px 0 80px;
@@ -939,15 +978,15 @@ article {
   margin-top: 20px;
 }
 .blog-content .btn-details {
-  color: #02bdd5;
+  color: #355c7d;
   padding: 0;
-  background: #02bdd5;
+  background: #355c7d;
   color: #fff;
   padding: 8px 18px;
   border-radius: 0;
   margin-top: 15px;
   border: 1px solid #fff;
-  box-shadow: 0px 0px 0px 1px #02bdd5;
+  box-shadow: 0px 0px 0px 1px #355c7d;
 }
 .blog-post-image {
   margin-top: 30px;
@@ -1010,7 +1049,7 @@ article {
   font-size: 15px;
 }
 .sidebar .recent-post ul li a:hover {
-  color: #02bdd5;
+  color: #355c7d;
 }
 .sidebar .recent-post time {
   font-weight: 300;
@@ -1051,7 +1090,7 @@ article {
   padding: 30px 20px;
 }
 .single-post .media .media-body a {
-  color: #02bdd5;
+  color: #355c7d;
   font-size: 12px;
 }
 .single-post .media .media {
@@ -1071,7 +1110,7 @@ article {
   border-radius: 0;
 }
 .single-post .post-comment .btn-send {
-  background: #02bdd5;
+  background: #355c7d;
   color: #fff;
   border-radius: 0;
 }
@@ -1082,7 +1121,7 @@ article {
 .social-share a {
   font-size: 20px;
   color: #fff;
-  background: #02bdd5;
+  background: #355c7d;
   padding: 4px 10px;
   display: inline-block;
 }
