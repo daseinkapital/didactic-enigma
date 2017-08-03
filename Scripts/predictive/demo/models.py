@@ -64,4 +64,3 @@ class Cities(models.Model):
             primary_key=True,
             max_length=name_length
         )
-    

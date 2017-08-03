@@ -123,3 +123,4 @@ def add_cases_refresh(request):
 def states(request):
     data = render(request, 'demo/states_outlines.html')
     return HttpResponse(data, content_type="application/json")
+
