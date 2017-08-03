@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Predictive 26 - Sierra Leone</title>
+    <title>Predictive 26 - USA Demo</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
@@ -48,55 +48,27 @@
 
 </head>
 
-<!-- Loop through the points *still have to figure out how to host this-->
-<body background-color= "#C0C0C0">
-<nav class="navbar fixed-top navbar-toggleable-md navbar-light" id="mainNav">
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarExample" aria-controls="navbarExample" aria-expanded="false" aria-label="Toggle navigation">
-            Menu <i class="fa fa-bars"></i>
-        </button>
-        <div class="container">
-            <a class="navbar-brand" id= "home" href="/map/" >MapView By Predictive26</a>
-            <div class="collapse navbar-collapse" id="navbarExample">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/map/#download">Our Story</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/map/#features">Features</a>
-                    </li>
-                     <li class="nav-item">
-                        <a class="nav-link" href="/map/#about">Team</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/map/#contact">Social Media</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+
+<body>
+
 
 
 <div id="sidebar">
-    <a id="zoom" hidden></a>
-    <a id="lat" hidden>{{dist.lat}}</a>
-    <a id="lng" hidden>{{dist.lng}}</a>
+    <div id="mySidenav" class="sidenav">
+        <strong><p style="color: #fff;">Report Info:</p></strong>
+            <p id="area_name" style="color: #fff;"></p>
+            <p id="count" style="color: #fff;"></p>
+    </div>
+    <div id="mySidenav"></div>
     <div id="info" hidden></div>
     <div id="name" hidden></div>
     <div id="cases" hidden></div>
-    <div id="mySidenav" class="sidenav">
-        <ul>
-            <a id="export-png" class="btn btn-default"><i class="fa fa-download"></i> Download CSV</a>
-            <a id="link-query" class="btn btn-default" href="#query">Query</a>
-            <a class="btn btn-default">Reports</a>
-            <a class="btn btn-default">Alerts</a>
-        </ul>
-    </div>
-    <div id="mySidenav"></div>
-    <div id="info" ></div>
+<!--
     <div class="pt-triggers">
         <button id="iterateEffects" class="pt-touch-button">Map</button>
         <button id="iterateEffects2" class="pt-touch-button">Graph</button>
     </div><!-- /triggers -->
+-->
 	 <div id="pt-main" class="pt-perspective">
         <div class="pt-page pt-page-1">
             <div id="mapol" class="mapol"></div>
@@ -104,8 +76,8 @@
         <div class="pt-page pt-page-2">
             <div class="graphs">
                 <div class="main-chart-container">
-                    <div id="chart-1" class="chart">{{ output_zoom_line|safe }}</div>
-                    <div id="chart-2" class="chart">{{ output_2dcol|safe }}</div>
+                    <div id="chart-1" class="chart"><!--{ output_zoom_line|safe }--></div>
+                    <div id="chart-2" class="chart"><!--{ output_2dcol|safe }--></div>
                 </div>
             </div>
         </div>
@@ -144,7 +116,7 @@
     <!-- Plugin JavaScript -->
     <script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
      <script src="https://openlayers.org/en/v4.2.0/build/ol.js" type="text/javascript"></script>
-     <script src="{% static 'js/olmap.js' %}"></script>
+     <script src="{% static 'demo/js/olmap.js' %}"></script>
   
 
     <!-- Custom scripts for this template -->

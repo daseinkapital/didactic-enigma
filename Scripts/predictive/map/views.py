@@ -36,6 +36,7 @@ def marker(request):
 ##sneding json data back to ol-district-map.js to populate the points for reports
 def addcases(request):
     districtName = request.GET.get('name')
+    print(request.GET.get)
     reportsdict ={}
     district = Districts.objects.filter(name=districtName).first()
     i = 0

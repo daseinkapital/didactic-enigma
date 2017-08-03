@@ -7,8 +7,7 @@ name_length = 250
 
 class Reports(models.Model):
     date = models.DateField(
-            auto_now=False,
-            auto_now_add=False,
+            auto_now_add=True
         )
     
     phone_number = models.ForeignKey(
@@ -16,22 +15,14 @@ class Reports(models.Model):
             on_delete=models.CASCADE
         )
     
-    disease = models.ForeignKey(
-            'Diseases',
-            on_delete=models.CASCADE
+    disease = models.CharField(
+            max_length=name_length
         )
     
     report_num = models.AutoField(
             primary_key=True,
         )
     
-
-class HeadReports(Reports):
-    count = models.IntegerField(
-            null=False
-        )
-    
-class DeathReports(Reports):
     count = models.IntegerField(
             null=False
         )
@@ -40,7 +31,21 @@ class DeathReports(Reports):
 class Phones(models.Model):
     number = models.CharField(
             primary_key=True,
-            max_length = name_length
+            max_length=name_length
+        )
+    
+    code = models.ForeignKey(
+            'Cities',
+            on_delete=models.CASCADE
+        )
+        
+class Cities(models.Model):
+    name = models.CharField(
+            max_length=name_length
+        )
+
+    code = models.IntegerField(
+            null=False,
         )
     
     lat = models.FloatField(
@@ -51,32 +56,12 @@ class Phones(models.Model):
             null=False
         )
     
+    state_code = models.CharField(
+            max_length=name_length
+        )
     
-#class Alerts(models.Model):
-#    lhcp = models.ForeignKey(
-#            'LHCP',
-#            on_delete = models.CASCADE
-#        )
-#    
-#    alert_num = models.AutoField(
-#            primary_key=True
-#        )
-    
-    
-class Diseases(models.Model):
-    name = models.CharField(
+    name_state = models.CharField(
             primary_key=True,
-            max_length = name_length
+            max_length=name_length
         )
     
-
-class AltDiseases(models.Model):
-    alt_name = models.CharField(
-            primary_key=True,
-            max_length = name_length
-        )
-    
-    official_name = models.ForeignKey(
-            'Diseases',
-            on_delete=models.CASCADE
-        )
