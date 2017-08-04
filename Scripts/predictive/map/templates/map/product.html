@@ -1,5 +1,6 @@
 {% load static %}
 {% load render_bundle from webpack_loader %}
+
 <!DOCTYPE html>
 
 <html class="no-js">
@@ -29,10 +30,13 @@
     <link rel="stylesheet" href="{% static 'css/daterange-picker.css' %}">
     <link rel="stylesheet" href="{% static 'css/sidebar.css' %}">
     <link rel="stylesheet" href="{% static 'css/olmap.css' %}">
+
+    
     <link rel="stylesheet" href="{% static 'paneltransitions/demo.css' %}">
     <link rel="stylesheet" href="{% static 'paneltransitions/style3.css' %}">
     <link rel="stylesheet" href="https://openlayers.org/en/v4.2.0/css/ol.css" type="text/css">
-
+    
+    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css" type="text/css">-->
 
      <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" rel="stylesheet">
     
@@ -48,49 +52,24 @@
     <script src="{% static 'js/materialize.js' %}"></script>
 
 
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>-->
+
+
+<style>
+#constant{
+	position: absolute;
+	z-index: 2000;
+	width: 235px;
+	top: 50px;
+}
+
+</style>
 
 </head>
 
 <!-- Loop through the points *still have to figure out how to host this-->
 <body background-color= "#C0C0C0">
-<!--
-<nav class="navbar fixed-top navbar-toggleable-md navbar-light" id="mainNav">
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarExample" aria-controls="navbarExample" aria-expanded="false" aria-label="Toggle navigation">
-            Menu <i class="fa fa-bars"></i>
-        </button>
-        <div class="container">
-            <a class="navbar-brand" id= "home" href="/map/" >MapView By Predictive26</a>
-            <div class="collapse navbar-collapse" id="navbarExample">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/map/#download">Our Story</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/map/#features">Features</a>
-                    </li>
-                     <li class="nav-item">
-                        <a class="nav-link" href="/map/#about">Team</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/map/#contact">Social Media</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    -->
-<!--
-<div id="overlay">
- <div class="sk-folding-cube">
-        <div class="sk-cube1 sk-cube"></div>
-        <div class="sk-cube2 sk-cube"></div>
-        <div class="sk-cube4 sk-cube"></div>
-        <div class="sk-cube3 sk-cube"></div>
-        </div>
-        <img src="{% static '/img/logo.png' %}"> </div>
-</div>
 
--->
 
 <div id="sidebar">
 
@@ -150,3 +129,5 @@
 
     <!-- Custom scripts for this template -->
     <script src="{% static 'js/new-age.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/materialize.js' %}"></script>
+    <script src="{% static 'js/toggle_sidebar.js' %}"></script>

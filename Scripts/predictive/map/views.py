@@ -25,6 +25,9 @@ def blog(request):
 def index(request):
     return render(request, 'map/index.html')
 
+def hellotest(request):
+    html='<h1>Hello</h1>'
+    return HttpResponse(html)
 ##populates sidebar upon clicking a district highlighted 
 
 def marker(request):
