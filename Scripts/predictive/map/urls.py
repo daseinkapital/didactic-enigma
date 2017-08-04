@@ -22,6 +22,13 @@ urlpatterns = [
         url(r'blog', views.blog, name='blog'),
         url(r'service', views.service, name='service'),
         url(r'hosp_overview', views.hosp_overview, name='hosp_overview'),
+<<<<<<< HEAD
         url(r'downloads', views.downloads, name='downloads'),
          url(r'reports', views.reports, name='reports')
+=======
+
+        url(r'dist_charts', views.dist_charts, name='dist_charts'),
+        url(r'hellotest', views.hellotest, name='hellotest')
+
+>>>>>>> added the icons for sidebar
     ]
