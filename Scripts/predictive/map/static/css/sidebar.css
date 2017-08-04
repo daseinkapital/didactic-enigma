@@ -32,3 +32,10 @@
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
 }
+
+.active-nav{
+    transform: translateX(0%);
+    }
+.hidden-nav{
+     transform: translateX(-100%);
+        }

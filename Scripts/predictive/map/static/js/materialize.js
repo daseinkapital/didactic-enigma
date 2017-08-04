@@ -3711,7 +3711,7 @@ if (jQuery) {
         menuWidth: 300,
         edge: 'left',
         closeOnClick: false,
-        draggable: true,
+        draggable: false,
         onOpen: null,
         onClose: null
       };
@@ -3723,12 +3723,11 @@ if (jQuery) {
         var menu = $("#" + menuId);
 
         // Set to width
-        if (options.menuWidth != 300) {
-          menu.css('width', options.menuWidth);
+        if (options.menuWidth == 300) {
+          menu.css('width', '30%');
         }
 
         // Add Touch Area
-        var $dragTarget = $('.drag-target[data-sidenav="' + menuId + '"]');
         if (options.draggable) {
           // Regenerate dragTarget
           if ($dragTarget.length) {
