@@ -7,7 +7,7 @@
 }
 
 .wrapper .tooltip1 {
-  background: #1496bb;
+  background: #335d7e;
   bottom: 30%;
   color: #fff;
   display: block;
@@ -48,7 +48,7 @@
 .wrapper .tooltip1:after {
   border-top: solid transparent 10px;
   border-bottom: solid transparent 10px;
-  border-right: solid #1496bb 10px;
+  border-right: solid #335d7e 10px;
   bottom: 30%;
   content: " ";
   height: 0;
