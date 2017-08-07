@@ -17,13 +17,9 @@ urlpatterns = [
         url(r'hosp_overview', views.hosp_overview, name='hosp_overview'),
         url(r'dist_charts', views.dist_charts, name='dist_charts'),
         url(r'addcases', views.addcases, name='addcases'),
-<<<<<<< HEAD
         url(r'about', views.about, name='about'),
         url(r'contact', views.contact, name='contact'),
         url(r'blog', views.blog, name='blog'),
         url(r'service', views.service, name='service')
-=======
         url(r'hosp_overview', views.hosp_overview, name='hosp_overview'),
-        url(r'hellotest', views.hellotest, name='hellotest')
->>>>>>> added the icons for sidebar
     ]
