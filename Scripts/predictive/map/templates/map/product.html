@@ -31,6 +31,7 @@
     <link rel="stylesheet" href="{% static 'css/daterange-picker.css' %}">
     <link rel="stylesheet" href="{% static 'css/sidebar.css' %}">
     <link rel="stylesheet" href="{% static 'css/olmap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/padding-sidebar.css' %}">
 
     
     <link rel="stylesheet" href="{% static 'paneltransitions/demo.css' %}">
@@ -57,7 +58,7 @@
 #constant{
 	position: absolute;
 	z-index: 2000;
-	width: 235px;
+	width: 30%;
 	top: 50px;
 }
 
@@ -133,31 +134,27 @@
     <div id="mapol" class="mapol"></div>
     
     <div id="constant">
+       
+        <img class="globe" src="{% static 'img/platformlogo.png' %}">
+        
+   
+       
         {% include 'map/constant-mini-sidenav.html' %}
-			<li><div class="userView">
-				<div class="background">
-				<img src="images/office.jpg">
-            <img src="{% static 'icons/SVG/home.svg' %}"></img>
-            <img src="{% static 'icons/SVG/file-text2.svg' %}"></img> 
-            <img src="{% static 'icons/SVG/bubbles4.svg' %}"></img> 
-            <img src="{% static 'icons/SVG/search.svg' %}"></img> 
-            <img src="{% static 'icons/SVG/stats-dots.svg' %}"></img> 
-            <img src="{% static 'icons/SVG/map2.svg' %}"></img> 
-				</div>
-				<a href="#!user"><img class="circle" src="images/yuna.jpg"></a>
-				<a href="#!name"><span class="white-text name">John Doe</span></a>
-				<a href="#!email"><span class="white-text email">jdandturk@gmail.com</span></a>
-			</div></li>
-		
-		   <li><a class="waves-effect exit-btn">Exit</a></li>
-			<li><div class="divider"></div></li>
-         <li><a class="subheader nav-toggler" id="activatehosp">Hospital</a></li>
-			<li><a class="subheader nav-toggler" id="activatehello">Hello</a></li>
-			<li><a class="waves-effect nav-toggler" id="activatereact">React</a></li>
-        </div>
+        
+         
+		</div>	     
+        
     
       <div id="mySidenav" class="sidenav">
+      <div class="padsidebar">
+      <h1>"hello Sierra Leone"</h1>
+      </div>
+   
      
+  
+      
+      
+       
 	
 </div>
      <ul id="slide-1" class="side-nav">
@@ -191,6 +188,8 @@
 			<li><div class="divider"></div></li>
 			<li><a class="subheader">Subheader</a></li>
 			<li><a class="waves-effect nav-toggler" id="noswitch" >Third Link With Waves</a></li>
+           
+ 
 		</ul>
 
 <button style="display: none;" data-activates="slide-1" id="sideNavButton1" class="hidden-nav">SideNavButton</button>

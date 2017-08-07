@@ -47,7 +47,7 @@
 						});
 					});	
 
-$("#activatereact").click(function(){
+$("#link-reports").click(function(){
   $.ajax({
                               url : "/map/marker/",
                               data : {"name" : "Bo", "date" : "2017-07-27"},

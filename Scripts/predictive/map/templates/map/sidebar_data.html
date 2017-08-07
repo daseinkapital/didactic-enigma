@@ -1,19 +1,16 @@
+{% load static %}
 {% load render_bundle from webpack_loader %}
+<link rel="stylesheet" href="{% static 'css/padding-sidebar.css' %}">
 
+<body>
 
-
+<div class="padsidebar">
 <a href="/map/region/{{district}}">{{district}}</a>
 <a href="#">Deaths confirmed: {{reports}}</a>
 
 
 
-<body>
 
-
-
-<div id="testing"> 
-{% render_bundle 'main' %}  
-</div>  
 <div id="react-app"> 
 {% render_bundle 'main' %}  
 </div>  
@@ -24,6 +21,7 @@
 {% render_bundle 'main' %}  
 </div>
 
-<li><a class="nav-toggler waves-effect">Third Link With Waves</a></li>
+
+</div>
 
 </body>
