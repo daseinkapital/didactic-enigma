@@ -5,6 +5,9 @@
 body {
   font-family: 'Roboto', sans-serif;
 }
+a2 {
+    color:#fff;text-decoration:none
+    }
 
 #logo{
       position: relative;
@@ -23,6 +26,18 @@ body {
     float: right;
     overflow: auto;
       }
+#chart{
+      position: relative;
+      right: 40%;
+      float: right;
+      width: 180%;
+      overflow: auto;
+}
+hC {
+  font-size: 26px;
+    position: relative;
+    padding-left: 4%;
+}
 #icons{
     vertical-align: middle;
     position: relative;
@@ -50,6 +65,7 @@ h5,
 h6 {
   font-family: 'Roboto Condensed', sans-serif;
 }
+html, body { height: 100%;   } 
 p {
   font-family: 'Roboto', sans-serif;
   line-height: 22px;
@@ -186,6 +202,19 @@ a:hover {
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
   position: relative;
 }
+
+/* start of backlogo set up */
+#black-logo {
+  background: url('..img/blacklogo.png') no-repeat 100%;
+  background-size: cover;
+  background-attachment: fixed;
+  padding: 230px 0;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+
+
 #hero-area:before {
   content: '';
   z-index: 9;
@@ -253,12 +282,12 @@ a:hover {
     margin-top:40px;
 }
 #hero-area .btn:hover {
-        background-color: #008CBA;
+        background-color: #355c7d;
         color: white;
         }
 
 #hero-area .btn:hover {
-        background-color: #008CBA;
+        background-color: #355c7d;
         color: white;
     }
 
@@ -272,6 +301,15 @@ a:hover {
   position: relative;
   color: #fff;
 }
+#call-to-actionsources {
+  background: #355C7D;
+  background-size: cover;
+  background-attachment: fixed;
+  padding: 30px 0;
+  text-align: center;
+  position: relative;
+  color: #fff;
+}
 #call-to-action .block {
   position: relative;
   z-index: 99;
@@ -281,12 +319,26 @@ a:hover {
   margin-bottom: 15px;
   color: #fff;
 }
+#call-to-actionsources .block h2sources {
+  margin-bottom: 20px;
+  color: #fff;
+  padding: 20px 0;
+  height:20px;
+  text-align: center;
+}
 #call-to-action .block p {
   font-size: 15px;
   font-weight: 300;
   font-family: 'Roboto', sans-serif;
   margin-top: 20px;
 }
+
+ul.a{
+    list-style-type: inside;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    }
 #call-to-action .block .btn-contact {
   background: #fff;
   border: none;
@@ -452,6 +504,9 @@ figure figcaption p {
 }
 #feature .media {
   margin: 0px 0 70px 0;
+}
+#feature .media2 {
+    margin: 0px 0 0px 0;
 }
 #feature .media .media-left {
   padding-right: 25px;
