@@ -11,25 +11,20 @@ from .models import Districts, HeadReports, DeathReports, Diseases, Phones
 
 def about(request): 
     return render(request,'map/about.html')
-
-
-def about(request): 
-    return render(request,'map/about.html')
 def service(request):
     return render(request, 'map/service.html')
 def contact(request):
     return render(request, 'map/contact.html')
 def blog(request):
     return render(request, 'map/blog.html')
-
 def index(request):
     return render(request, 'map/index.html')
+def reports(request):
+    return render(request, 'map/reports.html')
+def downloads(request):
+    return render(request, 'map/downloads.html')
 
-def hellotest(request):
-    html='<h1>Hello</h1>'
-    return HttpResponse(html)
 ##populates sidebar upon clicking a district highlighted 
-
 def marker(request):
     districtName, date_string = request.GET.get('name'),request.GET.get('date')
     district = Districts.objects.filter(name=districtName)

@@ -20,6 +20,8 @@ urlpatterns = [
         url(r'about', views.about, name='about'),
         url(r'contact', views.contact, name='contact'),
         url(r'blog', views.blog, name='blog'),
-        url(r'service', views.service, name='service')
+        url(r'service', views.service, name='service'),
         url(r'hosp_overview', views.hosp_overview, name='hosp_overview'),
+        url(r'downloads', views.downloads, name='downloads'),
+         url(r'reports', views.reports, name='reports')
     ]

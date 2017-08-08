@@ -47,7 +47,7 @@
 						});
 					});	
 
-$("#link-reports").click(function(){
+$("#link-alerts").click(function(){
   $.ajax({
                               url : "/map/marker/",
                               data : {"name" : "Bo", "date" : "2017-07-27"},
@@ -67,9 +67,9 @@ $("#link-reports").click(function(){
         
       }); 
 
-$("#activatehello").click(function(){
+$("#link-download").click(function(){
   $.ajax({
-                              url : "/map/hellotest/",
+                              url : "/map/downloads/",
                               dataType : 'html',
                               success : function (data) {
                                     if(!ACTIVE){
@@ -86,9 +86,9 @@ $("#activatehello").click(function(){
         
       }); 
 
-$("#activatehosp").click(function(){
+$("#link-reports").click(function(){
   $.ajax({
-                              url : "/map/hosp_overview/",
+                              url : "/map/reports/",
                               dataType : 'html',
                               success : function (data) {
                                     if(!ACTIVE){
