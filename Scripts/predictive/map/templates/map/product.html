@@ -19,6 +19,12 @@
     <link rel="stylesheet" href="{% static 'vendor/font-awesome/css/font-awesome.min.css' %}">
     <link rel="stylesheet" href="{% static 'vendor/simple-line-icons/css/simple-line-icons.css' %}">
      <link rel="stylesheet" href="{% static 'css/materialize.css' %}">
+     
+   
+
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 
 <!-- Latest compiled JavaScript -->
@@ -71,8 +77,6 @@
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-
-
 </head>
 
 <!-- Loop through the points *still have to figure out how to host this-->
@@ -103,26 +107,30 @@
 </div>
 
 
-
     <div id="info" ></div>
-    
-    <div id="mapol" class="mapol"></div>
     
     <div id="constant">
        
         <img class="globe" src="{% static 'img/platformlogo.png' %}">
+        <div class="paddedtitle">
+        <h1>Sierra Leone</h1>
+           <button type="button" class="btn btn-default">
+        <span class="glyphicon glyphicon-map-marker"></span> MapView
+          </button>
+          <button type="button" class="btn btn-default">
+        <span class="glyphicon glyphicon glyphicon-tasks"></span> GraphView
+          </button>
+        </div>
         
-   
-       
+         
+        
+    
         {% include 'map/constant-mini-sidenav.html' %}
         
          
 	 </div>	     
         
 
-
-
-  
     <!--PageTransitions JS-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script type="text/javascript" src="{% static 'pagetransitions/js/jquery.dlmenu.js' %}"></script>

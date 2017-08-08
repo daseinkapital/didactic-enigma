@@ -24,9 +24,6 @@ def reports(request):
 def downloads(request):
     return render(request, 'map/downloads.html')
 
-def hellotest(request):
-    html='<h1>Hello</h1>'
-    return HttpResponse(html)
 ##populates sidebar upon clicking a district highlighted 
 def marker(request):
     districtName, date_string = request.GET.get('name'),request.GET.get('date')

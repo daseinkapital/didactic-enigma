@@ -27,8 +27,10 @@ urlpatterns = [
          url(r'reports', views.reports, name='reports')
 =======
 
+
         url(r'dist_charts', views.dist_charts, name='dist_charts'),
-        url(r'hellotest', views.hellotest, name='hellotest')
+        url(r'downloads', views.downloads, name='downloads'),
+         url(r'reports', views.reports, name='reports')
 
 >>>>>>> added the icons for sidebar
     ]
