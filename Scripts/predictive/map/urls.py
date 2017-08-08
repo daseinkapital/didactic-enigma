@@ -16,5 +16,6 @@ urlpatterns = [
         url(r'changedate', views.changedate, name='changedate'),
         url(r'addcases', views.addcases, name='addcases'),
         url(r'hosp_overview', views.hosp_overview, name='hosp_overview'),
-        url(r'hellotest', views.hellotest, name='hellotest')
+        url(r'downloads', views.downloads, name='downloads'),
+         url(r'reports', views.reports, name='reports')
     ]

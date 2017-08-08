@@ -19,6 +19,12 @@
     <link rel="stylesheet" href="{% static 'vendor/font-awesome/css/font-awesome.min.css' %}">
     <link rel="stylesheet" href="{% static 'vendor/simple-line-icons/css/simple-line-icons.css' %}">
      <link rel="stylesheet" href="{% static 'css/materialize.css' %}">
+     
+   
+
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     
     <!-- Custom styles for this template -->
@@ -63,6 +69,14 @@
 }
 
 </style>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 </head>
 
@@ -131,14 +145,22 @@
 
     <div id="info" ></div>
     
-    <div id="mapol" class="mapol"></div>
-    
     <div id="constant">
        
         <img class="globe" src="{% static 'img/platformlogo.png' %}">
+        <div class="paddedtitle">
+        <h1>Sierra Leone</h1>
+           <button type="button" class="btn btn-default">
+        <span class="glyphicon glyphicon-map-marker"></span> MapView
+          </button>
+          <button type="button" class="btn btn-default">
+        <span class="glyphicon glyphicon glyphicon-tasks"></span> GraphView
+          </button>
+        </div>
         
-   
-       
+         
+        
+    
         {% include 'map/constant-mini-sidenav.html' %}
         
          
@@ -147,7 +169,24 @@
     
       <div id="mySidenav" class="sidenav">
       <div class="padsidebar">
-      <h1>"hello Sierra Leone"</h1>
+      
+      <div class="input-group">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button">Go!</button>
+      </span>
+      <input type="text" class="form-control" placeholder="Search for desease...">
+    </div><!-- /input-group -->
+   
+        <div id="react-app"> 
+        {% render_bundle 'main' %}  
+        </div>  
+        <div id="testing"> 
+        {% render_bundle 'main' %}  
+        </div>  
+        <div id="Calendar"> 
+        {% render_bundle 'main' %}  
+        </div>
+  
       </div>
    
      

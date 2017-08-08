@@ -1,6 +1,12 @@
 {% load static %}
 {% load render_bundle from webpack_loader %}
 <link rel="stylesheet" href="{% static 'css/padding-sidebar.css' %}">
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <body>
 
@@ -8,18 +14,30 @@
 <a href="/map/region/{{district}}">{{district}}</a>
 <a href="#">Deaths confirmed: {{reports}}</a>
 
-
-
-
-<div id="react-app"> 
-{% render_bundle 'main' %}  
-</div>  
-<div id="testing"> 
-{% render_bundle 'main' %}  
-</div>  
-<div id="Calendar"> 
-{% render_bundle 'main' %}  
+<div class="alert alert-success alert-dismissable">
+  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  <strong>Success!</strong> Indicates a successful or positive action.
 </div>
+
+<div class="alert alert-info alert-dismissable">
+  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  <strong>Info!</strong> Indicates a neutral informative change or action.
+</div>
+
+<div class="alert alert-warning alert-dismissable">
+  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  <strong>Warning!</strong> Indicates a warning that might need attention.
+</div>
+
+<div class="alert alert-danger alert-dismissable">
+  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  <strong>Danger!</strong> Indicates a dangerous or potentially negative action.
+</div>
+
+
+
+
+
 
 
 </div>

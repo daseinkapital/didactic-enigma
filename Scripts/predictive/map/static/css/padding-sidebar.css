@@ -1,6 +1,14 @@
 .padsidebar {
-    padding-top: 280px;
+    padding-top: 340px;
     padding-right: 30px;
     padding-bottom: 50px;
     padding-left: 90px;
 }
+
+.paddedtitle {
+         padding-top: 150px;
+    padding-right: 30px;
+    padding-bottom: 50px;
+    padding-left: 90px;
+        
+        }
