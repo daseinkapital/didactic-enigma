@@ -23,12 +23,12 @@ class Command(BaseCommand):
     #main function control
     def handle(self, *args, **options):
         Cities.objects.all().delete()
-        with open('us-area-code-cities.csv', 'r', encoding="utf8") as csvfile:
+        with open('us-area-code-cities.csv', 'r') as csvfile:
             reader = csv.reader(csvfile)
             dbl_check = []
             for row in reader:
                 print(row)
-                name_state = row[1] + ", " + row[2]
+                name_state = row[1] + ", " + row[2] + " (" + row[0] + ")"
                 if name_state not in dbl_check:
                     Cities.objects.create(
                             name=row[1],

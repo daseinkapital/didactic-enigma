@@ -24,7 +24,7 @@
                         if (deaths == 0){
                                 size.push(0);        
                             } else {
-                                size.push((Math.log(deaths)/Math.log(5))/50);
+                                size.push((Math.log(deaths)/Math.log(2))/50);
                             }
                         deathcnfm.push(deaths);
                         names.push(name);
@@ -202,9 +202,10 @@
                 
         }
       });   
-            
+        var i = 1;
       map.on('postcompose', function(event) {
-          setTimeout(function() {
+             if(i>60){
+
               $.ajax({
                 
                 url : "/demo/add_cases_refresh/",
@@ -227,14 +228,14 @@
                             if (deaths == 0){
                                     size.push(0);        
                                 } else {
-                                    size.push((Math.log(deaths)/Math.log(5))/50);
+                                    size.push((Math.log(deaths)/Math.log(2))/50);
                                 }
                             deathcnfm.push(deaths);
                             names.push(name);
                             zindex.push(zval);
                     };
     
-    
+                                 vectorSource.clear();
                     for (i = 0; i < mark.length; i++){
                             var svg = "PD94bWwgdmVyc2lvbj0iMS4wIj8+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4wLy9FTiIgCiAgICAgICAgICAgICAgImh0dHA6Ly93d3cudzMub3JnL1RSLzIwMDEvUkVDLVNWRy0yMDAxMDkwNC9EVEQvc3ZnMTAuZHRkIj4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMzUiIGhlaWdodD0iMjk2Ij4KICA8ZyBzdHlsZT0iZmlsbC1vcGFjaXR5OjAuNzsiPgogICAgPGNpcmNsZSBjeD0iNTAlIiBjeT0iNTAlIiByPSIxNDUiIHN0eWxlPSJmaWxsOnJlZDsgc3Ryb2tlOmJsYWNrOyBzdHJva2Utd2lkdGg6MiIgLz4KICA8L2c+Cjwvc3ZnPgo=";               
                             var icon = new ol.style.Icon(/** @type {olx.style.IconOptions} */ ({
@@ -261,6 +262,11 @@
                 }
             });
             
-            map.render()}, 60000);
+            i = 1;
+            } else {
+                           i++; 
+                }
+            map.render();
+
         });
        

@@ -37,10 +37,8 @@
             </div>
             <div class="pt-page pt-page-2">
                 <div class="graphs">
-                    <div class="main-chart-container">
-                        <div id="chart-1" class="chart">{{ output_zoom_line|safe }}</div>
-                        <div id="chart-2" class="chart">{{ output_2dcol|safe }}</div>
-                        <div id="chart-3" class="chart">{{ output_zoom_line2|safe }}</div>
+                    <div id="chart-div" class="main-chart-container">
+                        
                     </div>
                 </div>
             </div>
@@ -71,7 +69,7 @@
 <link rel="stylesheet" href="{% static 'css/sidebar.css' %}">
 
 <script src="{% static 'js/ol-district-map.js' %}"></script>
-
+<script src="{% static 'js/region-charts.js' %}"></script>
 <!--Javascript Libraries-->
 
 

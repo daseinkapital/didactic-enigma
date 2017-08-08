@@ -6,6 +6,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.db.models import Sum
 #from .fusioncharts import FusionCharts
 import json
+from time import sleep
 from django.core import management
 
 from datetime import datetime as dt
@@ -19,10 +20,8 @@ def index(request):
 #receive a text message and add the data to a database
 @csrf_exempt
 def sms(request):
-#    message = request.POST.get('Body')
-#    from_number = request.POST.get('From')
-    message = "Ebola, 100"
-    from_number = "+1232147755"
+    message = request.POST.get('Body')
+    from_number = request.POST.get('From')
     if "," in message:
         if len(message.split(",")) > 2:
             start = message.find(",")
@@ -94,8 +93,8 @@ def add_cases_refresh(request):
     reportsdict ={}
 
     i = 0
-    Date = dt.now() - td(seconds=60)
-    reports = Reports.objects.filter(date__gte=Date)
+    Date = dt.today()
+    reports = Reports.objects.filter(date=Date)
     areas = []
     for report in reports:
         if report.phone_number.code.name_state not in areas:
