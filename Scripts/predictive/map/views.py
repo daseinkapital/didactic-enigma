@@ -20,10 +20,10 @@ def index(request):
     most_east = Districts.objects.order_by('-latitude')[:5]
     context.update({'most_east':most_east})
     return render(request, 'map/index.html', context)
-
-def hellotest(request):
-    html='<h1>Hello</h1>'
-    return HttpResponse(html)
+def reports(request):
+    return render(request, 'map/reports.html')
+def downloads(request):
+    return render(request, 'map/downloads.html')
 ##populates sidebar upon clicking a district highlighted 
 
 def marker(request):

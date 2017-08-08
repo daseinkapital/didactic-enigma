@@ -19,6 +19,12 @@
     <link rel="stylesheet" href="{% static 'vendor/font-awesome/css/font-awesome.min.css' %}">
     <link rel="stylesheet" href="{% static 'vendor/simple-line-icons/css/simple-line-icons.css' %}">
      <link rel="stylesheet" href="{% static 'css/materialize.css' %}">
+     
+   
+
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     
     <!-- Custom styles for this template -->
@@ -63,6 +69,14 @@
 }
 
 </style>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 </head>
 
@@ -140,73 +154,69 @@
 
 -->
 
-<<<<<<< HEAD
-   
 
-=======
->>>>>>> added the icons for sidebar
 
 
     <div id="info" ></div>
     
-    <div id="mapol" class="mapol"></div>
-    
     <div id="constant">
        
         <img class="globe" src="{% static 'img/platformlogo.png' %}">
+        <div class="paddedtitle">
+        <h1>Sierra Leone</h1>
+           <button type="button" class="btn btn-default">
+        <span class="glyphicon glyphicon-map-marker"></span> MapView
+          </button>
+          <button type="button" class="btn btn-default">
+        <span class="glyphicon glyphicon glyphicon-tasks"></span> GraphView
+          </button>
+        </div>
         
-   
-       
+         
+        
+    
         {% include 'map/constant-mini-sidenav.html' %}
         
          
 		</div>	     
         
     
-      <div id="mySidenav" class="sidenav">
-<<<<<<< HEAD
-<<<<<<< HEAD
-    <ul id="slide-out" class="side-nav">
-    <li><div class="user-view">
-      <div class="background">
-        <img src="images/office.jpg">
-      </div>
-      <a href="#!user"><img class="circle" src="images/yuna.jpg"></a>
-      <a href="#!name"><span class="white-text name">John Doe</span></a>
-      <a href="#!email"><span class="white-text email">jdandturk@gmail.com</span></a>
-    </div></li>
-    <li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
-    <li><a href="#!">Second Link</a></li>
-    <li><div class="divider"></div></li>
-    <li><a class="subheader">Subheader</a></li>
-    <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
-  </ul>
-  <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
-  </div>
-    
-
-</div>
-  $(".drag-target").remove()
-        
-
-
-          
-          
-</script>
-=======
-=======
-      <div class="padsidebar">
-      <h1>"hello Sierra Leone"</h1>
+ <div id="mySidenav" class="sidenav">
+  <div class="padsidebar">
+      
+      <div class="input-group">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button">Go!</button>
+      </span>
+      <input type="text" class="form-control" placeholder="Search for desease...">
+    </div><!-- /input-group -->
+   
+        <div id="react-app"> 
+        {% render_bundle 'main' %}  
+        </div>  
+        <div id="testing"> 
+        {% render_bundle 'main' %}  
+        </div>  
+        <div id="Calendar"> 
+        {% render_bundle 'main' %}  
+        </div>
+  
       </div>
    
->>>>>>> fixed constant objects on nav bar
+
+
+</div>
+
+
+     
+
      
   
       
       
        
 	
-</div>
+
      <ul id="slide-1" class="side-nav">
 			<li><div class="userView">
 				<div class="background">
@@ -250,7 +260,7 @@
 
  
 
->>>>>>> added the icons for sidebar
+
 
   
     <!--PageTransitions JS-->
@@ -288,11 +298,10 @@
 
 
     <script src="{% static 'js/new-age.min.js' %}"></script>
-<<<<<<< HEAD
+
 
     <!--<script src="{% static 'js/loading.js' %}"></script>-->
 
-=======
+
     <script type="text/javascript" src="{% static 'js/materialize.js' %}"></script>
     <script src="{% static 'js/toggle_sidebar.js' %}"></script>
->>>>>>> added the icons for sidebar
