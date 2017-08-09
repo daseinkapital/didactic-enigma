@@ -18,25 +18,88 @@ a2 {
       overflow: auto;
       }
 
-#logo2{
+#logo2web{
     position: relative;
-    top: -24px;
-    left: -200px;
-    height: 80px;
+    width: 60%;
+    float: left;
+    padding-bottom:4%;
+      }
+#logo2moble{
+    position: relative;
+    top: -18px;
+    width: 90%;
     float: right;
     overflow: auto;
       }
+
 #chart{
       position: relative;
       right: 40%;
       float: right;
       width: 180%;
       overflow: auto;
+      margin-top:4%;
+}
+#chart2{
+      position: relative;
+      right: 40%;
+      float: right;
+      width: 400%;
+      overflow: auto;
+      margin-top:4%;
+}
+
+
+/* for working between different size screens */
+.image2{
+   display: none;
+}
+
+@media only screen and (max-width: 500px)
+{
+.image1{
+     display: none;
+   }
+.image2{
+     display: block;
+   }
+}
+
+
+.logo2moble{
+   display: none;
+}
+
+@media only screen and (max-width: 500px)
+{
+.logo2web{
+     display: none;
+   }
+.logo2moble{
+     display: block;
+   }
+}
+
+
+
+/* end of section here */
+#phone{
+      position: relative;
+      width: 100%;
+      overflow: auto;
+}
+#imagecover {
+  background: url('../img/blacklogo.png') no-repeat 100%;
+  background-size: cover;
+  background-attachment: fixed;
+  alignment: center;
+  padding: 230px 0;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+  position: relative;
 }
 hC {
   font-size: 26px;
-    position: relative;
-    padding-left: 4%;
+   padding-right: 4%;
 }
 #icons{
     vertical-align: middle;
@@ -51,7 +114,19 @@ hC {
     right: 0px;
     }
 
+.infographic{
+  background-attachment: fixed;
+  background-size: cover;
+  background: #fff;
+  padding-top: 10%;
+  padding-bottom: 10%;
+ }
 
+.banner{
+  background-attachment: fixed;
+  background-size: cover;
+  background: #000000;
+ }
 
 
 
@@ -72,6 +147,7 @@ p {
   font-size: 16px;
   font-weight: 300;
 }
+
 ul {
   padding-left: 0;
 }
@@ -109,7 +185,7 @@ a:hover {
   text-transform: uppercase;
 }
 .subtitle-des {
-  color: #727272;
+  color: #000000;
   font-size: 14px;
   margin-bottom: 35px;
   font-weight: 300;
@@ -148,7 +224,6 @@ a:hover {
   color: #fff;
   -webkit-transition: all 0.2s ease-out 0s;
   transition: all 0.2s ease-out 0s;
-  padding: 15px 0;
   -webkit-box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.1);
   box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.1);
   border-bottom: 1px solid #dedede;
@@ -157,7 +232,7 @@ a:hover {
   background: transparent;
 }
 #top-bar.animated-header {
-  padding: 20px 0;
+  /* padding: 20px 0; */
   background: #ffffff;
   box-shadow: none;
 }
@@ -205,10 +280,10 @@ a:hover {
 
 /* start of backlogo set up */
 #black-logo {
-  background: url('..img/blacklogo.png') no-repeat 100%;
+  background: url('../img/blacklogo.png') no-repeat 50%;
   background-size: cover;
   background-attachment: fixed;
-  padding: 230px 0;
+  padding: 50%;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
   position: relative;
 }
@@ -389,7 +464,7 @@ ul.a{
 .works .block h4 {
   padding: 20px 15px;
   margin-top: 0;
-  color: #666;
+  color: #000000;
 }
 .works .block .img-overly {
   position: relative;
@@ -501,6 +576,7 @@ figure figcaption p {
 }
 #feature {
   padding: 80px 0;
+  background: rgba(176, 194, 189, 0.41)
 }
 #feature .media {
   margin: 0px 0 70px 0;
@@ -524,6 +600,12 @@ figure figcaption p {
   line-height: 25px;
   font-size: 17px;
   color: #777777;
+}
+#feature p2 {
+  line-height: 25px;
+  font-size: 17px;
+  color: #777777;
+  width: 70%
 }
 #feature .icon {
   text-decoration: none;
@@ -864,7 +946,7 @@ ul.social-icons li {
 .service-page .service-parts .block p {
   padding: 0 8px;
   font-size: 14px;
-  color: #777;
+  color: #000000;
   line-height: 1.7;
 }
 .works.service-page figure .buttons {
@@ -939,6 +1021,7 @@ ul.social-icons li {
 }
 .company-description {
   margin-top: 80px;
+  padding-bottom: 5%;
 }
 .company-description .block h3 {
   margin-top: 0;
@@ -988,6 +1071,11 @@ ul.social-icons li {
 .about-feature .block {
   color: #fff;
   width: 33.33%;
+  padding: 5%;
+  float: left;
+}
+.about-feature .block2 {
+  color: #fff;
   padding: 5%;
   float: left;
 }

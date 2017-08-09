@@ -55,48 +55,7 @@
         <script src="{% static 'js/main.js' %}"></script>
     </head>
     <body>
-        <!--
-        ==================================================
-        Header Section Start
-        ================================================== -->
-        <header id="top-bar" class="navbar-fixed-top animated-header">
-            <div class="container">
-                <div class="navbar-header">
-                    <!-- responsive nav button -->
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    </button>
-                    <!-- /responsive nav button -->
-                    
-                    <!-- logo -->
-                    <div class="navbar-brand">
-                        <a href="index.html" >
-                            <img id="logo2" src="{% static 'img/about/logo2.png' %}" height="100px">
-                        </a>
-                    </div>
-                    <!-- /logo -->
-                </div>
-                <!-- main menu -->
-                <nav class="collapse navbar-collapse navbar-right" role="navigation">
-                    <div class="main-menu">
-                        <ul class="nav navbar-nav navbar-right">
-                            <li>
-                                <a href="/map/index" >Home</a>
-                            </li>
-                            <li><a href="/map/about">About</a></li>
-                            <li><a href="/map/service">Impact</a></li>
-                            <li><a href="/map/blog">Product</a></li>
-                            <li><a href="/map/contact">Contact</a></li>
-                            
-                        </ul>
-                    </div>
-                </nav>
-                <!-- /main nav -->
-            </div>
-        </header>
+    {% include "map/header.html" %}
 
         <!-- 
         ================================================== 
@@ -107,7 +66,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="block">
-                            <h2>Health-R.A.I.S</h2>
+                            <h2>Health R.A.I.S</h2>
                             <ol class="breadcrumb">
                                 <li>
                                     <a href="/map/index">
@@ -127,60 +86,166 @@
         ================================================== 
             Company Description Section Start
         ================================================== -->
-        <section class="company-description">
+          <section class="banner">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-6 wow fadeInLeft" data-wow-delay=".3s" >
-                        <img src="{% static 'img/RAISlogo.png' %}" alt="" class="img-responsive">
-                    </div>
-                    <div class="col-md-6">
-                        <div class="block">
-                            <h3 class="subtitle wow fadeInUp" data-wow-delay=".3s" data-wow-duration="500ms">Epidemics</h3>
-                            <p  class="wow fadeInUp" data-wow-delay=".5s" data-wow-duration="500ms">
-                                One of the biggest threats to international security is pandemics. As a global community, we’re not prepared to respond to outbreaks like Ebola, SARs, Zika, and H1N1, among others. As the world grows ever more interconnected, risk of the rapid spread of outbreaks increases. The international community must work together to build the tools and networks necessary to save millions of lives. Some tools already exist to help us respond to these outbreaks. However, these tools often source information from the internet, meaning we can’t see the spread of an outbreak in places without internet access. This makes it difficult for those responding to outbreaks to make appropriate resource allocation decisions; costing time, money, and lives. More inclusive outbreak mapping tools may be able to paint a more accurate picture of outbreak spread and be used to help respondents make better resource allocation decisions. 
-                            </p>
-                            
-                            
-                        </div>
+                    <div class="fadeInLeft" data-wow-delay=".3s" >
+                        <img src="{% static 'img/RAISlogo.png' %}" style="height:100%; width:100%" class="img-responsive">
                     </div>
                 </div>
             </div>
         </section>
+        
+        
+        
 
-  <!-- 
+
+      
+        <!--
+        ==================================================
+        Clients Section Start
+        ================================================== -->
+         
+              
+      
+        <section class="infographic">
+          <h2 class="subtitle text-center">How Health R.A.I.S. Works</h2>
+            <div class="container">
+               
+                <div class="row">
+                    <div class="col-md-12">
+                         <img src="{% static 'img/howitworks.png' %}" width="100%">
+                    </div>
+                </div>
+         
+            </div>
+        </section>
+        
+        
+         <!-- 
+       ================================================
+       pricing section 
+       ================================================ -->
+     {% include "map/pricing.html" %}
+    
+         <!--
+            ==================================================
+           "Technology stack" start HOW TO REGISTER 
+            ================================================== -->
+        <section>
+            <div class="container">
+                <div class="row">
+                    <h2 class="subtitle text-center">How Health R.A.I.S. Regisiters Phones</h2>
+                </div>
+        <div class="row">
+                        <div class="block; col-md-8" style="inline:block" align="center">
+                            <h2 class="subtitle wow fadeInUp animated" data-wow-delay=".3s" data-wow-duration="500ms">Registering</h2>
+                            
+                             <div class="row service-parts">
+                                <p  class="wow fadeInUp" data-wow-delay=".5s" data-wow-duration="500ms">
+                                 The platform will generate authorization codes specific to each hospital or clinic.  
+                                </p>
+                                <p  class="wow fadeInUp" data-wow-delay=".7s" data-wow-duration="500ms">
+                                  To register a cell phone for a specific healthcare facility, text that facility’s authorization code to (571) 200-4949  
+                                </p>
+                            </div>
+                        </div>
+        
+                <div class="col-md-push-8">
+                        <div style="width: 20%; float: right;"> 
+                            <div class="block wow fadeInLeft animated" data-wow-delay=".3s" data-wow-duration="500ms" style="visibility: visible; animation-duration: 500ms; animation-delay: 0.3s; animation-name: fadeInLeft;"> 
+                                <img id="phone" src="{% static 'img/phone1.png' %}" alt="">
+                            </div>
+                            
+                        </div>
+                    
+                </div>
+        </div> 
+                                 
+        <div class="row">
+                  <div class="col-md-push-8">                    
+                        <div style="width: 20%; float: left;"> 
+                            <div class="block wow fadeInLeft animated" data-wow-delay=".3s" data-wow-duration="500ms" style="visibility: visible; animation-duration: 500ms; animation-delay: 0.3s; animation-name: fadeInLeft;"> 
+                                <img id="phone" src="{% static 'img/phone2.png' %}" alt="">
+                            </div>
+                            
+                        </div>
+                </div>
+                
+                        <div class="block; col-md-8" style="inline:block" align="center">
+                            <h2 class="subtitle wow fadeInUp animated" data-wow-delay=".3s" data-wow-duration="500ms">Reporting</h2>
+                            
+                             <div class="row service-parts">
+                                <p  class="wow fadeInUp" data-wow-delay=".5s" data-wow-duration="500ms">
+                                 To make a report, format texts as follows:
+                                <br>
+                                 (name of disease) , (number of cases)
+                                </p>
+                                <p  class="wow fadeInUp" data-wow-delay=".7s" data-wow-duration="500ms">
+                                  To include multiple reports in one text, separate each with a semicolon (;)
+                                </p>
+                            </div>
+                        </div>
+            
+              
+        </div>   
+        <div class="row">
+                <div class="col-md-8">
+                        <div class="block" style="inline:block" align="center">
+                            <h2 class="subtitle wow fadeInUp animated" data-wow-delay=".3s" data-wow-duration="500ms">Alerts</h2>
+                            
+                             <div class="row service-parts">
+                                <p  class="wow fadeInUp" data-wow-delay=".5s" data-wow-duration="500ms">
+                                 To generate an alert, simply enter into the HealthRAIS platform and type up your preferred message.
+                                </p>
+                                <p  class="wow fadeInUp" data-wow-delay=".7s" data-wow-duration="500ms">
+                                  Frequently used alerts will be saved within the platform for ease of selection later.
+                                </p>
+                            </div>
+                        </div>
+                </div>
+                <div class="col-md-push-6">
+                        <div style="width: 20%; float: right;"> 
+                            <div class="block wow fadeInLeft animated" data-wow-delay=".3s" data-wow-duration="500ms" style="visibility: visible; animation-duration: 500ms; animation-delay: 0.3s; animation-name: fadeInLeft;"> 
+                                <img id="phone" src="{% static 'img/phone3.png' %}" alt="">
+                            </div>
+                            
+                        </div>
+                </div>
+        </div>
+         
+              
+            </div>
+        </section>
+         <!-- 
   ================================================== 
   clickable section start 
   ================================================== --> 
 
-            
+            <div id="information-network">
+            </div>
+             <br>
+            <br>
+            <br>             
             <section id="feature" class="works">
-                <div class="container">
-                    <!--
-                    <div class="section-heading">
-                        <h1 class="title wow fadeInDown" data-wow-delay=".3s">Our Mission</h1>
-                        <p class="wow fadeInDown" data-wow-delay=".6s">
-                             Information in the right hands can make the difference
-                        </p>
-                        -->
-                    </div>
-                </div>
-                                       
-                        <div class="col-md-push-1 col-lg-7 col-xs-14">
-                            <div class="media wow fadeInDown animated" data-wow-duration="500ms" data-wow-delay="600ms">
+                <div class="container">                 
+                              
+                        <div class="col-md-1 col-lg-7 col-xs-12">
+                            <div class="media wow fadeInDown animated" data-wow-duration="500ms" data-wow-delay="1200ms">
                                 <div class="media-left">
                                     <div class="icon">
                                        <img id="icon" src="{% static 'img/about/icons/link.png' %}" alt="">
                                     </div>
-                                </div>
+                                </div>                  
                                 <div class="media-body">
                                     <h4 class="media-heading">Information Network</h4>
                                     <p>Health-R.A.I.S. facilitate two-way information sharing between the user and the local healthcare providers sending data. Users can decide what messages should be texted back to the health care locations that each data set is assigned to. This can be tailored to warnings of an outbreak, vigilance of a certain symptoms, or notifications of incoming supplies or international help. The User will have full control over the area that will be messaged the user's custom alert or notification. This added benefit will help fix the disconnect between the people that make resource decisions and the people on the front lines of any outbreak. 
                                     </p>
                                 </div>
                             </div>
-                        </div>
-                                     
-                        <div class="col-md-push-1 col-lg-7 col-xs-12">
+                        </div>                 
+                                                       
+                        <div class="col-md-1 col-lg-7 col-xs-12">
                             <div class="media wow fadeInDown animated" data-wow-duration="500ms" data-wow-delay="1200ms">
                                 <div class="media-left">
                                     <div class="icon">
@@ -194,121 +259,20 @@
                                 </div>
                             </div>
                         </div> 
+                  
                     </div>
-                </section>
+            </section>
 
 
-       <!-- 
-       ================================================
-       pricing section 
-       ================================================ -->
-   <div class="pricing-Plans">
-  <a href="https://app.and.co/signup">
-    <div class="pricing-Plans-plan pricing-Plans-plan--silver">
-    <h4>silver</h4>
-    <div class="pricing-Plans-plan-content">
-      <i>Personal Chief Operator</i>
-      <i>2 Invoices + 1 per month</i>
-      <i>3 Contracts + 2 per month</i>
-      <i>20 Expenses</i>
-      <p class="pricing-Plans-price">free</p>
-      <p class="color-gray">Billed with love</p>
-    </div>
-  </div>
-  </a>
-  <a href="https://app.and.co/signup">
-    <div class="pricing-Plans-plan pricing-Plans-plan--gold">
-    <h4>gold</h4>
-    <div class="pricing-Plans-plan-content">
-      <i>Personal Chief Operator</i>
-      <i>Unlimited Invoices</i>
-      <i>Unlimited Contracts</i>
-      <i>Unlimited Expenses</i>
-      <p class="pricing-Plans-price">$14/month</p>
-      <p class="color-gray">Billed annually</p>
-    </div>
-  </div>
-  </a>
-</div>
-        <!--
-        ==================================================
-        Clients Section Start
-        ================================================== -->
-        <section id="clients">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-push-12 text-center">
-                        <h2 class="subtitle text-center wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".3s">Targeted Users</h2>
-                        <p class="subtitle-des text-center wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".5s">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore, error.</p>
-                        <div class="col-md-8">
-                        <div id="clients-logo" class="owl-carousel">
-                           <!--
-                           <div>
-                                <img src="{% static 'img/clients/logo-1.jpg' %}" alt="">
-                            </div>
-                            <div>
-                                <img src="{% static 'img/clients/logo-2.jpg' %}" alt="">
-                            </div>
-                            <div>
-                                <img src="{% static 'img/clients/logo-3.jpg' %}" alt="">
-                            </div>
-                            <div>
-                                <img src="{% static 'img/clients/logo-4.jpg' %}" alt="">
-                            </div>
-                            <div>
-                                <img src="{% static 'img/clients/logo-5.jpg' %}" alt="">
-                            </div>
-                            <div>
-                                <img src="{% static 'img/clients/logo-1.jpg' %}" alt="">
-                            </div>
-                            <div>
-                                <img src="{% static 'img/clients/logo-2.jpg' %}" alt="">
-                            </div>
-                            <div>
-                                <img src="{% static 'img/clients/logo-3.jpg' %}" alt="">
-                            </div>
-                            <div>
-                                <img src="{% static 'img/clients/logo-4.jpg' %}" alt="">
-                            </div>
-                            <div>
-                                <img src="{% static 'img/clients/logo-5.jpg' %}" alt="">
-                            </div>
-                            -->
-                        </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-         <!--
-            ==================================================
-           "Technology stack" start
-            ================================================== -->
-            <section class="company-description">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6 wow fadeInLeft" data-wow-delay=".3s" >
-                        <img src="{% static 'img/RAISlogo.png' %}" alt="" class="img-responsive">
-                    </div>
-                    <div class="col-md-6">
-                        <div class="block">
-                            <h3 class="subtitle wow fadeInUp" data-wow-delay=".3s" data-wow-duration="500ms">Epidemics</h3>
-                            <p  class="wow fadeInUp" data-wow-delay=".5s" data-wow-duration="500ms">
-                                One of the biggest threats to international security is pandemics. As a global community, we’re not prepared to respond to outbreaks like Ebola, SARs, Zika, and H1N1, among others. As the world grows ever more interconnected, risk of the rapid spread of outbreaks increases. The international community must work together to build the tools and networks necessary to save millions of lives. Some tools already exist to help us respond to these outbreaks. However, these tools often source information from the internet, meaning we can’t see the spread of an outbreak in places without internet access. This makes it difficult for those responding to outbreaks to make appropriate resource allocation decisions; costing time, money, and lives. More inclusive outbreak mapping tools may be able to paint a more accurate picture of outbreak spread and be used to help respondents make better resource allocation decisions. 
-                            </p>
-                            
-                            
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+       
+        
         
          <!--
         ==================================================
         Timeline Start
         ================================================== -->
-        <section id="clients">
+      <!--
+      <section id="clients">
             <div class="container">
                 <div class="row">
                     <div class="col-md-push-12 text-center">

@@ -7,7 +7,7 @@
         <meta charset="utf-8">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <link rel="icon" type="image/png" href="{% static 'img/favicon.png' %}">
-        <title>Timer Agency Template</title>
+        <title>Predictive26 Site</title>
         <meta name="description" content="">
         <meta name="keywords" content="">
         <meta name="author" content="">
@@ -59,44 +59,7 @@
         ==================================================
         Header Section Start
         ================================================== -->
-        <header id="top-bar" class="navbar-fixed-top animated-header">
-            <div class="container">
-                <div class="navbar-header">
-                    <!-- responsive nav button -->
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    </button>
-                    <!-- /responsive nav button -->
-                    
-                    <!-- logo -->
-                    <div class="navbar-brand">
-                        <a href="index.html" >
-                            <img id="logo2" src="{% static 'img/about/logo2.png' %}" height="95%">
-                        </a>
-                    </div>
-                    <!-- /logo -->
-                </div>
-                <!-- main menu -->
-                <nav class="collapse navbar-collapse navbar-right" role="navigation">
-                    <div class="main-menu">
-                        <ul class="nav navbar-nav navbar-right">
-                           <li>
-                                <a href="/map/index" >Home</a>
-                            </li>
-                            <li><a href="/map/about">About</a></li>
-                            <li><a href="/map/service">Impact</a></li>
-                            <li><a href="/map/blog">Product</a></li>
-                            <li><a href="/map/contact">Contact</a></li>
-                        </ul>
-                    </div>
-                </nav>
-                <!-- /main nav -->
-            </div>
-        </header>
-        
+          {% include "map/header.html" %}
         <!--
         ==================================================
         Slider Section Start
@@ -128,13 +91,13 @@
                                 <a href="map/product" class="btn craft-btn">
             									<div class="craft-btn-content">
             									<h4>Demo</h4>
-            									<h4>HealthRAIS</h4>                                             								
+            									<h4>Health R.A.I.S.</h4>                                             								
             						      </div>
                                 </a>
                                 <a href="map/product" class="btn craft-btn">
             									<div class="craft-btn-content">
             									<h4>Login to</h4>
-                								<h4>HealthRAIS</h4>                                             								
+                								<h4>Health R.A.I.S.</h4>                                             								
             						      </div>
                                 </a>
                             </div> 
@@ -183,8 +146,8 @@
                             </div>
                             
                        </div>
-                       </div>
-                </div>
+                    </div>
+            </div>
             </section> <!-- /#about -->
             <!--
             ==================================================
@@ -204,66 +167,66 @@
                         </p>
                     </div>
                 </div>
-                      <div class="container">
-                        <div class="col-md-push-7 col-lg-7 col-xs-11" style="height:">
+                <div class="container">
+                        <div class="col-md-6 col-lg-6 col-xs-11" style="height:">
                             <div class="media2 wow fadeInUp animated" data-wow-duration="500ms" data-wow-delay="300ms">
                                 <div class="media-left">
                                     <div class="icon">    
-                                        <img id="icon" src="{% static 'img/about/icons/folder2.png' %}" alt="">
+                                        <img id="icon" src="{% static 'img/about/icons/folder2.png' %}" onclick="location.href='/map/service#consistent-monitoring';" alt="">
                                     </div>
                                 </div>
                                 <div class="media-body">
-                                    <h4 class="media-heading">Orginization and Consistency</h4>
-                                    <p>More often than not, incoming data is unorganized, inconsistent, and infrequent. Using HealthRAIS, incoming data is aggregated, standardized, and displayed in a uniform way to give the best picture.</p>
+                                    <h4 class="media-heading" onclick="location.href='/map/service#consistent-monitoring';"> Consistent Monitoring</h4>
+                                    <p2>Most developing countries use paper-based reporting methods, resulting in unstandardized and unorganized data. HealthRAIS continuously collects, aggregates, standardizes, and displays data to provide and accurate and up-to-date picture of infectious disease activity.</p2>
                                 </div>
                             </div>
                         </div>
-                  
-                
-                        <div class="col-md-4 col-lg-7 col-xs-11" style="margin:0">
+                  </div>
+                    <div class="container">
+                        <div class="col-md-push-6 col-lg-6 col-xs-11" style="margin:0">
                             <div class="media2 wow fadeInDown animated" data-wow-duration="500ms" data-wow-delay="600ms">
                                 <div class="media-left">
                                     <div class="icon">
-                                       <img id="icon" src="{% static 'img/about/icons/link.png' %}" alt="">
+                                       <img id="icon" src="{% static 'img/about/icons/link.png' %}" onclick="location.href='/map/blog#information-network';" alt="">
                                     </div>
                                 </div>
                                 <div class="media-body">
-                                    <h4 class="media-heading">Information Network</h4>
-                                    <p>By recreating the reporting process, HealthRAIS gathers data from local level healthcare providers that wasn't getting reported in the past. With the built-in alert system, users can send mass SMS responses back to numbers registered within the platform.</p>
+                                    <h4 class="media-heading" onclick="location.href='/map/blog#information-network';">Information Network</h4>
+                                    <p2>In the past, local level healthcare providers were not communicating. By recreating the reporting process, data is gathered from these healthcare providers, and with the built-in alert system, users can send mass SMS responses back to numbers registered within the platform.</p2>
                                 </div>
                             </div>
                         </div>
-                  
-                    
-                        <div class="col-md-push-7 col-lg-7 col-xs-12" style="margin:0">
+                  </div>
+                    <div class="container">
+                        <div class="col-md-6 col-lg-6 col-xs-12" style="margin:0">
                             <div class="media2 wow fadeInDown animated" data-wow-duration="500ms" data-wow-delay="900ms">
                                 <div class="media-left">
                                     <div class="icon">
-                                        <img id="warning" src="{% static 'img/about/icons/alert.png' %}" alt="">
+                                        <img id="warning" src="{% static 'img/about/icons/alert.png' %}" onclick="location.href='/map/service#consistent-monitoring';" alt="">
                                     </div>
                                 </div>
                                 <div class="media-body">
-                                    <h4 class="media-heading">Early Warning</h4>
-                                    <p>There is a dire need for accurate, up-to-date information in order to catch outbreaks early on. The ability for a system to detect and show that there is abnormal disease activity occurring creates the opportunity for officials to make the decisions necessary to stop outbreaks in their tracks.</p>
+                                    <h4 class="media-heading" onclick="location.href='/map/service#consistent-monitoring';">Early Warning</h4>
+                                    <p2>In developing countries, there is a dire need for accurate, up-to-date information to catch outbreaks early on. HealthRAIS detects and shows abnormal disease activity and creates the opportunity for officials to make the decisions necessary to stop outbreaks in their tracks.</p2>
                                 </div>
                             </div>
                         </div>
-                 
-                   
-                        <div class="col-md-4 col-lg-7 col-xs-12" style="margin:0">
+                     </div>
+                       <div class="container">
+                        <div class="col-md-push-6 col-lg-6 col-xs-12" style="margin:0">
                             <div class="media2 wow fadeInDown animated" data-wow-duration="500ms" data-wow-delay="1200ms">
                                 <div class="media-left">
                                     <div class="icon">
-                                        <img id="icon" src="{% static 'img/about/icons/message.png' %}" alt="">
+                                        <img id="icon" src="{% static 'img/about/icons/message.png' %}" onclick="location.href='/map/blog#information-network';" alt="">
                                     </div>
                                 </div>
                                 <div class="media-body">
-                                    <h4 class="media-heading">Hard to Reach Places</h4>
-                                    <p>While there are still parts of the world without internet, HealthRAIS utilizes SMS reporting to gather data from every corner of the region. Now, hospitals and clinics everywhere can report and receive alerts using just one simple cell-phone.</p>
+                                    <h4 class="media-heading" onclick="location.href='/map/blog#information-network';">Hard to Reach Places</h4>
+                                    <p2>A large portion of the world still does not have access to the internet, and because of that, HealthRAIS utilizes SMS reporting to gather data from every corner of the region. Now, hospitals and clinics everywhere can report and receive alerts using just one simple cell-phone.</p2>
                                 </div>
                             </div>
                         </div> 
-               
+                       </div>
            
                         <!-- 
                         <div class="col-md-4 col-lg-4 col-xs-12">
@@ -293,7 +256,7 @@
                             </div>
                         </div>
                         --> 
-                 </div> 
+               
             </section> <!-- /#feature --> 
           
                             
