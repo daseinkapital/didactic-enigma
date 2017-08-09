@@ -59,45 +59,7 @@
         ==================================================
         Header Section Start
         ================================================== -->
-        <header id="top-bar" class="navbar-fixed-top animated-header">
-            <div class="container">
-                <div class="navbar-header">
-                    <!-- responsive nav button -->
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    </button>
-                    <!-- /responsive nav button -->
-                    
-                    <!-- logo -->
-                    <div class="navbar-brand">
-                        <a href="index.html" >
-                            <img id="logo2" src="{% static 'img/about/logo2.png' %}" height="100px">
-                        </a>
-                    </div>
-                    <!-- /logo -->
-                </div>
-                <!-- main menu -->
-                <nav class="collapse navbar-collapse navbar-right" role="navigation">
-                    <div class="main-menu">
-                        <ul class="nav navbar-nav navbar-right">
-                            <li>
-                                <a href="/map/index" >Home</a>
-                            </li>
-                            <li><a href="/map/about">About</a></li>
-                            <li><a href="/map/service">Impact</a></li>
-                            <li><a href="/map/blog">Product</a></li>
-                            <li><a href="/map/contact">Contact</a></li>
-                            
-                        </ul>
-                    </div>
-                </nav>
-                <!-- /main nav -->
-            </div>
-        </header>
-
+          {% include "map/header.html" %}
         <!-- 
         ================================================== 
             Global Page Section Start
@@ -131,11 +93,11 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 wow fadeInLeft" data-wow-delay=".3s" >
-                        <img src="{% static 'img/about/about-company.jpg' %}" alt="" class="img-responsive">
+                        <img src="{% static 'img/team/team.jpg' %}" alt="" class="img-responsive">
                     </div>
                     <div class="col-md-6">
                         <div class="block">
-                            <h3 class="subtitle wow fadeInUp" data-wow-delay=".3s" data-wow-duration="500ms">Epidemics</h3>
+                            <h3 class="subtitle wow fadeInUp" data-wow-delay=".3s" data-wow-duration="500ms">Our Start</h3>
                             <p  class="wow fadeInUp" data-wow-delay=".5s" data-wow-duration="500ms">
                                 Hailing from different corners of the country, our team, Predictive26, is overwhelmingly diverse, not only geographically, but also in our areas of expertise. With one mechanical engineer, two advanced coders, a business and design major, and two chemical engineers, the average day for us is not unlike something you might see on television. With our wide range of skills and creative insights constantly flowing, we looked at every angle possible to try and come up with the best solution for our problem. And our result, HealthRAIS, is the system that all of this is devoted to. 
                             </p>                          
@@ -196,13 +158,13 @@
             <div class="container">
                 <div class="row">
                     <h2 class="subtitle text-center">Meet The Team</h2>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <div class="team-member wow fadeInLeft" data-wow-duration="500ms" data-wow-delay=".3s">
                             <div class="team-img">
                                 <img src="{% static 'img/team/team-1.jpg' %}" class="team-pic" alt="">
                             </div>
                             <h3 class="team_name">Adam Wienberger</h3>
-                            <p class="team_designation">CEO, Project Manager</p>
+                            <p class="team_designation">Team Lead</p>
                             <p class="team_text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore </p>
                             <p class="social-icons">
                                 <a href="#" class="facebook" target="_blank"><i class="ion-social-facebook-outline"></i></a>
@@ -212,13 +174,13 @@
                             </p>
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <div class="team-member wow fadeInLeft" data-wow-duration="500ms" data-wow-delay=".5s">
                             <div class="team-img">
                                 <img src="{% static 'img/team/team-2.jpg' %}" class="team-pic" alt="">
                             </div>
                             <h3 class="team_name">Caroline Gimmillaro</h3>
-                            <p class="team_designation">CEO, Project Manager</p>
+                            <p class="team_designation">Team Lead</p>
                             <p class="team_text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore .</p>
                             <p class="social-icons">
                                 <a href="#" class="facebook" target="_blank"><i class="ion-social-facebook-outline"></i></a>
@@ -228,13 +190,15 @@
                             </p>
                         </div>
                     </div>
-                    <div class="col-md-3">
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
                         <div class="team-member wow fadeInLeft" data-wow-duration="500ms" data-wow-delay=".7s">
                             <div class="team-img">
-                                <img src="{% static 'img/team/team-3.jpg' %}" class="team-pic" alt="">
+                                <img src="{% static 'img/team/ej.jpg' %}" class="team-pic" alt="">
                             </div>
                             <h3 class="team_name">Esther "Ej" Armah</h3>
-                            <p class="team_designation">CEO, Project Manager</p>
+                            <p class="team_designation">Chemical Engineer Consultant</p>
                             <p class="team_text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore .</p>
                             <p class="social-icons">
                                 <a href="#" class="facebook" target="_blank"><i class="ion-social-facebook-outline"></i></a>
@@ -244,13 +208,13 @@
                             </p>
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <div class="team-member wow fadeInLeft" data-wow-duration="500ms" data-wow-delay=".7s">
                             <div class="team-img">
-                                <img src="{% static 'img/team/team-3.jpg' %}" class="team-pic" alt="">
+                                <img src="{% static 'img/team/trey.jpg' %}" class="team-pic" alt="">
                             </div>
                             <h3 class="team_name">Trong "Trey" Nguyen</h3>
-                            <p class="team_designation">CEO, Project Manager</p>
+                            <p class="team_designation">Business and Technology Consultant</p>
                             <p class="team_text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore .</p>
                             <p class="social-icons">
                                 <a href="#" class="facebook" target="_blank"><i class="ion-social-facebook-outline"></i></a>
@@ -260,13 +224,13 @@
                             </p>
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <div class="team-member wow fadeInLeft" data-wow-duration="500ms" data-wow-delay=".7s">
                             <div class="team-img">
-                                <img src="{% static 'img/team/team-3.jpg' %}" class="team-pic" alt="">
+                                <img src="{% static 'img/team/kit.jpg' %}" class="team-pic" alt="">
                             </div>
                             <h3 class="team_name">Margaret "Kit" Philleo</h3>
-                            <p class="team_designation">CEO, Project Manager</p>
+                            <p class="team_designation">Mechanical Engineer Consultant</p>
                             <p class="team_text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore .</p>
                             <p class="social-icons">
                                 <a href="#" class="facebook" target="_blank"><i class="ion-social-facebook-outline"></i></a>
@@ -276,13 +240,15 @@
                             </p>
                         </div>
                     </div>
-                    <div class="col-md-3">
+                </div>
+                <div row="row">
+                    <div class="col-md-4">
                         <div class="team-member wow fadeInLeft" data-wow-duration="500ms" data-wow-delay=".7s">
                             <div class="team-img">
-                                <img src="{% static 'img/team/team-3.jpg' %}" class="team-pic" alt="">
+                                <img src="{% static 'img/team/tori.jpg' %}" class="team-pic" alt="">
                             </div>
-                            <h3 class="team_name">Victoria "Tori" Ponci</h3>
-                            <p class="team_designation">CEO, Project Manager</p>
+                            <h3 class="team_name">Victoria "Tori" Poncy</h3>
+                            <p class="team_designation">Chemical Engineer Consultant</p>
                             <p class="team_text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore .</p>
                             <p class="social-icons">
                                 <a href="#" class="facebook" target="_blank"><i class="ion-social-facebook-outline"></i></a>
@@ -292,13 +258,13 @@
                             </p>
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <div class="team-member wow fadeInLeft" data-wow-duration="500ms" data-wow-delay=".7s">
                             <div class="team-img">
-                                <img src="{% static 'img/team/team-3.jpg' %}" class="team-pic" alt="">
+                                <img src="{% static 'img/team/vik.jpg' %}" class="team-pic" alt="">
                             </div>
                             <h3 class="team_name">Vikram "Vik" Ramesh</h3>
-                            <p class="team_designation">CEO, Project Manager</p>
+                            <p class="team_designation">Business and Design Consultant</p>
                             <p class="team_text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore .</p>
                             <p class="social-icons">
                                 <a href="#" class="facebook" target="_blank"><i class="ion-social-facebook-outline"></i></a>
@@ -308,13 +274,13 @@
                             </p>
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <div class="team-member wow fadeInLeft" data-wow-duration="500ms" data-wow-delay=".9s">
                             <div class="team-img">
-                                <img src="{% static 'img/team/team-4.jpg' %}" class="team-pic" alt="">
+                                <img src="{% static 'img/team/andrew.jpg' %}" class="team-pic" alt="">
                             </div>
                             <h3 class="team_name">Andrew Samuelson</h3>
-                            <p class="team_designation">CEO, Project Manager</p>
+                            <p class="team_designation">Industrial Engineer Consultant</p>
                             <p class="team_text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore .</p>
                             <p class="social-icons">
                                 <a href="#" class="facebook" target="_blank"><i class="ion-social-facebook-outline"></i></a>
