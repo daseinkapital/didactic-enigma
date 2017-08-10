@@ -1,6 +1,8 @@
  		var FIRST_TOGGLE = true;
+
     var report_status = document.getElementById('active');
         
+
       var ACTIVE = true;
 				$(document).ready(function(){
                         
@@ -38,6 +40,7 @@
 					});	
 
 
+
              	$(".exit-btn").click(function(){
                     side1Width =$('#slide-1').css("transform")
                     side2Width =$('#slide-2').css("transform")
@@ -57,6 +60,20 @@
     					});
                             });	
 
+             	$(".exit-btn").click(function(){
+                    if(ACTIVE){
+                          $('#sideNavButton2').sideNav('show');
+                          $('#sideNavButton2').sideNav('hide');
+                        } else {
+                          $('#sideNavButton1').sideNav('show');
+                          $('#sideNavButton1').sideNav('hide');
+                                }
+                          FIRST_TOGGLE = true;
+                          ACTIVE = true;
+						});
+					});	
+
+
 $("#link-alerts").click(function(){
   $.ajax({
                               url : "/map/marker/",
@@ -71,7 +88,10 @@ $("#link-alerts").click(function(){
                                      $("#slide-2").empty().append(data);    
                                         
                                         }
+
                                  report_status.innerHTML= false;
+
+
                                     }
                         });        
 
@@ -91,7 +111,9 @@ $("#link-download").click(function(){
                                      $("#slide-2").empty().append(data);    
                                         
                                         }
+
                                  report_status.innerHTML= false;
+
                                     }
                         });        
 
@@ -111,11 +133,14 @@ $("#link-reports").click(function(){
                                      $("#slide-2").empty().append(data);    
                                         
                                         }
+
                                 report_status.innerHTML= true;
+
                                     }
                         });        
 
         
+
       });  
 
      
@@ -136,7 +161,8 @@ $("#sendAlert").click(function(){
         
       });
 
- 
+
+         
 
 
 

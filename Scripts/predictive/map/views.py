@@ -21,6 +21,7 @@ def index(request):
     context.update({'most_east':most_east})
     return render(request, 'map/index.html', context)
 
+
 def reports(request):
     districtName, date_string = request.GET.get('name'), request.GET.get('date')
     if districtName == None and date_string == None:
@@ -33,9 +34,10 @@ def reports(request):
     html = render(request, 'map/reports.html', context)
     return HttpResponse(html)
     
+
 def downloads(request):
     return render(request, 'map/downloads.html')
-##populates sidebar upon clicking a district highlighted 
+
 
 def marker(request):
     districtName, date_string = request.GET.get('name'),request.GET.get('date')

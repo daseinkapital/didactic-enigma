@@ -16,9 +16,12 @@ urlpatterns = [
         url(r'changedate', views.changedate, name='changedate'),
         url(r'addcases', views.addcases, name='addcases'),
         url(r'hosp_overview', views.hosp_overview, name='hosp_overview'),
+
         url(r'dist_charts', views.dist_charts, name='dist_charts'),
         url(r'downloads', views.downloads, name='downloads'),
         url(r'reports', views.reports, name='reports'),
         url(r'country_charts', views.country_charts, name='country_charts')
+
+
 
     ]
