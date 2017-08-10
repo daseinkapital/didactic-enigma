@@ -9,17 +9,20 @@ import json
 from datetime import datetime as dt
 from .models import Districts, HeadReports, DeathReports, Diseases, Phones
 
+def about(request): 
+    return render(request,'map/about.html')
+
+def service(request):
+    return render(request, 'map/service.html')
+
+def contact(request):
+    return render(request, 'map/contact.html')
+
+def blog(request):
+    return render(request, 'map/blog.html')
 
 def index(request):
-    most_north = Districts.objects.order_by('-longitude')[:5]
-    context = {'most_north':most_north}
-    most_south = Districts.objects.order_by('longitude')[:5]
-    context.update({'most_south':most_south})
-    most_west = Districts.objects.order_by('latitude')[:5]
-    context.update({'most_west':most_west})
-    most_east = Districts.objects.order_by('-latitude')[:5]
-    context.update({'most_east':most_east})
-    return render(request, 'map/index.html', context)
+    return render(request, 'map/index.html')
 
 ##populates sidebar upon clicking a district highlighted 
 

@@ -1,664 +1,467 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
-
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Summer Games</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
-
-    <!-- Custom fonts for this template -->
-    <link rel="stylesheet" href="{% static 'vendor/font-awesome/css/font-awesome.min.css' %}">
-    <link rel="stylesheet" href="{% static 'vendor/simple-line-icons/css/simple-line-icons.css' %}">
-    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
-    
-    
-
-
-    <!-- Plugin CSS -->
-    <link rel="stylesheet" href="{% static 'device-mockups/device-mockups.min.css' %}">
-
-    <!-- Custom styles for this template -->
-    <link href="{% static '/css/new-age.min.css' %}" rel="stylesheet">
-    <link href="{% static '/css/agency.min.css' %}" rel="stylesheet">
-    <link href="{% static '/css/responsive.css' %}" rel="stylesheet">
-    <link href="{% static '/css/style.css' %}" rel="stylesheet">
-    <link href="{% static '/css/styles.min.css' %}" rel="stylesheet">
-    <link href="{% static '/css/animation.css' %}" rel="stylesheet">
-
-    <!-- Temporary navbar container fix -->
-
-
-</head>
-<style>
-.navbar-toggler {
-        z-index: 1;
-        }
-    
-@media (max-width: 576px) {
-        nav > .container {
-            width: 100%;
-        }
-    }
+<html class="no-js">
+    <head>
+        <!-- Basic Page Needs
+        ================================================== -->
+        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <link rel="icon" type="image/png" href="{% static 'img/favicon.png' %}">
+        <title>Timer Agency Template</title>
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+        <meta name="author" content="">
+        <!-- Mobile Specific Metas
+        ================================================== -->
+        <meta name="format-detection" content="telephone=no">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         
-    .img-circle {
-  border-radius: 50%;
-}
-.carousel-inner>.item>a>img, .carousel-inner>.item>img, .img-responsive, .thumbnail a>img, .thumbnail>img {
-    display: block;
-    max-width: 100%;
-    height: auto;
-}
-.img-responsive,
-.thumbnail > img,
-.thumbnail a > img,
-.carousel-inner > .item > img,
-.carousel-inner > .item > a > img {
-  display: block;
-  max-width: 100%;
-  height: auto;
-}
-.img-rounded {
-  border-radius: 6px;
-}
-.img-thumbnail {
-  display: inline-block;
-  max-width: 100%;
-  height: auto;
-  padding: 4px;
-  line-height: 1.42857143;
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  -webkit-transition: all .2s ease-in-out;
-       -o-transition: all .2s ease-in-out;
-          transition: all .2s ease-in-out;
-}
-.timeline {
-    list-style: none;
-    padding: 0;
-    position: relative;
-}
-#margin.section-heading.text-center {
-    margin-bottom: 100px;
-}
-.background-semi-dark {
-    background-color: #5bc0de;
-}
-.timeline>li .timeline-image {  
-    background-color: #31b0d5;
-}
-.body {
-    margin: 0;
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.5;
-    color: #292b2c;
-    background-color: #d35400;
-}
-section.features {
-        background-color: #fff
-        }
 
-@keyframes slideInFromLeft {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(0);
-  }
-}
+        <!-- Template CSS Files
+        ================================================== -->
+        <!-- Twitter Bootstrs CSS -->
+        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+        <!-- Ionicons Fonts Css -->
+        <link rel="stylesheet" href="{% static 'css/ionicons.min.css' %}">
+        <!-- animate css -->
+        <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+        <!-- Hero area slider css-->
+        <link rel="stylesheet" href="{% static 'css/slider.css' %}">
+        <!-- owl craousel css -->
+        <link rel="stylesheet" href="{% static 'css/owl.carousel.css' %}">
+        <link rel="stylesheet" href="{% static 'css/owl.theme.css' %}">
+        <link rel="stylesheet" href="{% static 'css/jquery.fancybox.css' %}">
+        <!-- template main css file -->
+        <link rel="stylesheet" href="{% static 'css/main.css' %}">
+        <!-- responsive css -->
+        <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+        
+        <!-- Template Javascript Files
+        ================================================== -->
+        <!-- modernizr js -->
+        <script src="{% static 'js/vendor/modernizr-2.6.2.min.js' %}"></script>
+        <!-- jquery -->
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <!-- owl carouserl js -->
+        <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+        <!-- bootstrap js -->
 
-    @media (min-width: 992px)
-{
-#mainNav {
-    animation: 1s ease-out 0s 1 slideInFromLeft;
-}}
-
-.header-content{
-       
-    animation: 1s ease-out 0s 1 slideInFromLeft; }
-
-
-.social-icon li a {
-    font-size: 16px;
-    text-align: center;
-    width: 33px;
-    height: 33px;
-    padding: 2px;
-    border-radius: 50%;
-    margin-right: 15px;
-    background-color: transparent;
-    color: #ffffff;
-    border: 2px solid;
-    border-color: #ffffff;
-    display: inline-block;
-}
-.btn-outline {
-  color: white;
-  border: 1px solid;
-  border-color: white; }
-  .btn-outline:hover, .btn-outline:focus, .btn-outline:active, .btn-outline.active {
-    color: white;
-    border-color: #fdcc52;
-    background-color: #fdcc52; }
-  
-  @keyframes pulse_animation {
-	0% { transform: scale(1); }
-	30% { transform: scale(1); }
-	40% { transform: scale(1.08); }
-	50% { transform: scale(1); }
-	60% { transform: scale(1); }
-	70% { transform: scale(1.05); }
-	80% { transform: scale(1); }
-	100% { transform: scale(1); }
-}
-  .pulse {
-	animation-name: pulse_animation;
-	animation-duration: 3000ms;
-	transform-origin:70% 100%;
-	animation-iteration-count: infinite;
-	animation-timing-function: linear;
-}
-</style>
-
-
-<body id="page-top" class="body">
-
-    <!-- Navigation -->
-    
-<div id="overlay" hidden="True"></div>
-
-    <nav class="navbar fixed-top navbar-toggleable-md navbar-light" id="mainNav">
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarExample" aria-controls="navbarExample" aria-expanded="false" aria-label="Toggle navigation">
-            Menu <i class="fa fa-bars"></i>
-        </button>
-        <div class="container">
-            <a class="navbar-brand" href="#page-top">Predictive26</a>
-            <div class="collapse navbar-collapse" id="navbarExample">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#download">Our Story</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#features">Features</a>
-                    </li>
-                     <li class="nav-item">
-                        <a class="nav-link" href="#about">Team</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contact">Social Media</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    <header class="masthead">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-7">
-                    <div class="header-content">
-                        <div class="header-content-inner">
-                            <h1>Through both internet and non-internet sources, our crowd-sourced web-based platform will collect, standardize, analyze, and map data from local-level healthcare providers.</h1>
-                            <a href="/map/product/?visit=first" id="product" class="btn btn-outline btn-xl pulse">Start Now for Free!</a>
-                            <a href="#download" class="btn btn-outline btn-xl pulse">Click to Learn More!</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-15">
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <section class="download bg-primary text-center" id="download">
-        <div class="container">
-           
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">About</h2>
-                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <ul class="timeline">
-                        <li>
-                            <div class="timeline-image pulse">
-                                <img class="img-circle img-responsive" src="{% static 'img/about/1.jpg' %}" alt="">
-                            </div>
-                            <div class="timeline-panel">
-                                <div class="timeline-heading">
-                                    <h4>2009-2011</h4>
-                                    <h4 class="subheading">Our Humble Beginnings</h4>
-                                </div>
-                                <div class="timeline-body">
-                                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="timeline-inverted">
-                            <div class="timeline-image pulse">
-                                <img class="img-circle img-responsive" src="{% static 'img/about/2.jpg' %}" alt="">
-                            </div>
-                            <div class="timeline-panel">
-                                <div class="timeline-heading">
-                                    <h4>March 2011</h4>
-                                    <h4 class="subheading">A Product is Born</h4>
-                                </div>
-                                <div class="timeline-body">
-                                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
-                                 </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="timeline-image pulse">
-                                <img class="img-circle img-responsive" src="{% static 'img/about/3.jpg' %}" alt="">
-                            </div>
-                            <div class="timeline-panel">
-                                <div class="timeline-heading">
-                                    <h4>December 2012</h4>
-                                    <h4 class="subheading">Transition to SMS</h4>
-                                </div>
-                                <div class="timeline-body">
-                                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="timeline-inverted">
-                            <div class="timeline-image pulse">
-                                <img class="img-circle img-responsive" src="{% static 'img/about/4.jpg' %}" alt="">
-                            </div>
-                            <div class="timeline-panel">
-                                <div class="timeline-heading">
-                                    <h4>July 2014</h4>
-                                    <h4 class="subheading">Phase Two Expansion</h4>
-                                </div>
-                                <div class="timeline-body">
-                                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="timeline-inverted">
-                            <div class="timeline-image pulse">
-                                <h4>Be Part
-                                    <br>Of Our
-                                    <br>Story!</h4>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="features" id="features">
-        <div class="container">
-            <div class="section-heading text-center">
-                <h2>Helping save lives, one feature at a time!</h2>
-                <p class="text-muted">See how Predictive26 can help you!</p>
-                <hr>
-            </div>
-            <div class="row">
-                <div class="col-lg-4">
-                    
-                        
-                            <div class="device">
-                                <div class="screen">
-                                    <!-- Demo image for screen mockup, you can put an image here, some HTML, an animation, video, or anything else! -->
-                                    <img src="{% static '/img/nurse.png' %}" class="img-fluid" alt=""> </div>
-                                <div class="button">
-                                    <!-- You can hook the "home button" to some JavaScript events or just remove it -->
-                                </div>
-                            </div>
-                        
-                    
-                </div>
-                <div class="col-lg-8">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="feature-item">
-                                    <i class="icon-screen-smartphone text-primary"></i>
-                                    <h3>SMS Accessible</h3>
-                                    <p class="text-muted">Our platform supports internet and non-internet regions, with just the use of SMS!</p>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="feature-item">
-                                    <i class="icon-camera text-primary"></i>
-                                    <h3>Meaningful Imagery</h3>
-                                    <p class="text-muted">Our map analysis makes sense, putting the right information in a presentable format!</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="feature-item">
-                                    <i class="icon-present text-primary"></i>
-                                    <h3>Free to Use</h3>
-                                    <p class="text-muted">As always, our product is free to use!</p>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="feature-item">
-                                    <i class="icon-lock-open text-primary"></i>
-                                    <h3>Crowd Source</h3>
-                                    <p class="text-muted">We collect data from local health care providers to help local health care providers!</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-   
-        <section class="features-section-6 relative background-semi-dark" id="about">
+        <script src="{% static 'js/bootstrap.min.js' %}"></script>
+        <!-- wow js -->
+        <script src="{% static 'js/wow.min.js' %}"></script>
+        <!-- slider js -->
+        <script src="{% static 'js/slider.js' %}"></script>
+        <script src="{% static 'js/jquery.fancybox.js' %}"></script>
+        <!-- template main js -->
+        <script src="{% static 'js/main.js' %}"></script>
+    </head>
+    <body>
+        <!--
+        ==================================================
+        Header Section Start
+        ================================================== -->
+        <header id="top-bar" class="navbar-fixed-top animated-header">
             <div class="container">
-            
-
-                    <!-- Start: Section Header -->
-                    <div class="section-heading text-center" id="margin" >
-                        <h2 class="section-heading">The Team</h2>
-                        <p class="text-muted">The people who made it possible</p>
-                        <hr>
-                       
+                <div class="navbar-header">
+                    <!-- responsive nav button -->
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    </button>
+                    <!-- /responsive nav button -->
+                    
+                    <!-- logo -->
+                    <div class="navbar-brand">
+                        <a href="index.html" >
+                            <img src="{% static 'img/logo.png' %}" alt="">
+                        </a>
+                    </div>
+                    <!-- /logo -->
+                </div>
+                <!-- main menu -->
+                <nav class="collapse navbar-collapse navbar-right" role="navigation">
+                    <div class="main-menu">
+                        <ul class="nav navbar-nav navbar-right">
+                           <li>
+                                <a href="/map/index" >Home</a>
+                            </li>
+                            <li><a href="/map/about">About</a></li>
+                            <li><a href="/map/service">Impact</a></li>
+                            <li><a href="/map/blog">Product</a></li>
+                            <li><a href="/map/service">Contact</a></li>
+                        </ul>
+                    </div>
+                </nav>
+                <!-- /main nav -->
+            </div>
+        </header>
+        
+        <!--
+        ==================================================
+        Slider Section Start
+        ================================================== -->
+        <section id="hero-area" >
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <div class="block wow fadeInUp" data-wow-delay=".3s">
+                            
+                            <!-- Slider -->
+                            <section class="cd-intro">
+                                <h1 class="wow fadeInUp animated cd-headline slide" data-wow-delay=".4s" >
+                                <span>HI, MY NAME IS JONATHON & I AM A</span><br>
+                                <span class="cd-words-wrapper">
+                                    <b class="is-visible">DESIGNER</b>
+                                    <b>DEVELOPER</b>
+                                    <b>FATHER</b>
+                                </span>
+                                </h1>
+                                </section> <!-- cd-intro -->
+                                <!-- /.slider -->
+                                <h2 class="wow fadeInUp animated" data-wow-delay=".6s" >
+                                    With 10 years experience, I've occupied many roles including digital design director,<br> web designer and developer. This site showcases some of my work.
+                                </h2>
+                                <a class="btn-lines dark light wow fadeInUp animated smooth-scroll btn btn-default btn-green" data-wow-delay=".9s" href="#works" data-section="#works" >View Works</a>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section><!--/#main-slider-->
+            <!--
+            ==================================================
+            Slider Section Start
+            ================================================== -->
+            <section id="about">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6">
+                            <div class="block wow fadeInLeft" data-wow-delay=".3s" data-wow-duration="500ms">
+                                <h2>
+                                ABOUT ME
+                                </h2>
+                                <p>
+                                    Hello, Iâ€™m a UI/UX Designer & Front End Developer from Victoria, Australia. I hold a master degree of Web Design from the World University.And scrambled it to make a type specimen book. It has survived not only five centuries
+                                </p>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error, adipisci voluptatum repudiandae, natus impedit repellat aut officia illum at assumenda iusto reiciendis placeat. Temporibus, vero.
+                                </p>
+                            </div>
+                            
+                        </div>
+                        <div class="col-md-6 col-sm-6">
+                            <div class="block wow fadeInRight" data-wow-delay=".3s" data-wow-duration="500ms">
+                                <img src="{% static 'img/about/about.jpg' %}" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section> <!-- /#about -->
+            <!--
+            ==================================================
+            Portfolio Section Start
+            ================================================== -->
+            <section id="works" class="works">
+                <div class="container">
+                    <div class="section-heading">
+                        <h1 class="title wow fadeInDown" data-wow-delay=".3s">Latest Works</h1>
+                        <p class="wow fadeInDown" data-wow-delay=".5s">
+                            Aliquam lobortis. Maecenas vestibulum mollis diam. Pellentesque auctor neque nec urna. Nulla sit amet est. Aenean posuere <br> tortor sed cursus feugiat, nunc augue blandit nunc, eu sollicitudin urna dolor sagittis lacus.
+                        </p>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4 col-xs-12">
+                            <figure class="wow fadeInLeft animated portfolio-item" data-wow-duration="500ms" data-wow-delay="0ms">
+                                <div class="img-wrapper">
+                                    <img src="{% static 'img/portfolio/item-1.jpg' %}" class="img-responsive" alt="this is a title" >
+                                    <div class="overlay">
+                                        <div class="buttons">
+                                            <a rel="gallery" class="fancybox" href="{% static 'img/portfolio/item-1.jpg' %}">Demo</a>
+                                            <a target="_blank" href="single-portfolio.html">Details</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <figcaption>
+                                <h4>
+                                <a href="#">
+                                    Dew Drop
+                                </a>
+                                </h4>
+                                <p>
+                                    Redesigne UI Concept
+                                </p>
+                                </figcaption>
+                            </figure>
+                        </div>
+                        <div class="col-sm-4 col-xs-12">
+                            <figure class="wow fadeInLeft animated" data-wow-duration="500ms" data-wow-delay="300ms">
+                                <div class="img-wrapper">
+                                    <img src="{% static 'img/portfolio/item-2.jpg' %}" class="img-responsive" alt="this is a title" >
+                                    <div class="overlay">
+                                        <div class="buttons">
+                                            <a rel="gallery" class="fancybox" href="{% static 'img/portfolio/item-2.jpg' %}">Demo</a>
+                                            <a target="_blank" href="single-portfolio.html">Details</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <figcaption>
+                                <h4>
+                                <a href="#">
+                                    Bottle Mockup
+                                </a>
+                                </h4>
+                                <p>
+                                    Lorem ipsum dolor sit.
+                                </p>
+                                </figcaption>
+                            </figure>
+                        </div>
+                        <div class="col-sm-4 col-xs-12">
+                            <figure class="wow fadeInLeft animated" data-wow-duration="500ms" data-wow-delay="300ms">
+                                <div class="img-wrapper">
+                                    <img src="{% static 'img/portfolio/item-3.jpg' %}" class="img-responsive" alt="" >
+                                    <div class="overlay">
+                                        <div class="buttons">
+                                            <a rel="gallery" class="fancybox" href="{% static 'img/portfolio/item-3.jpg' %}">Demo</a>
+                                            <a target="_blank" href="single-portfolio.html">Details</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <figcaption>
+                                <h4>
+                                <a href="#">
+                                    Table Design
+                                </a>
+                                </h4>
+                                <p>
+                                    Lorem ipsum dolor sit amet.
+                                </p>
+                                </figcaption>
+                            </figure>
+                        </div>
+                        <div class="col-sm-4 col-xs-12">
+                            <figure class="wow fadeInLeft animated" data-wow-duration="500ms" data-wow-delay="600ms">
+                                <div class="img-wrapper">
+                                    <img src="{% static 'img/portfolio/item-4.jpg' %}" class="img-responsive" alt="" >
+                                    <div class="overlay">
+                                        <div class="buttons">
+                                            <a rel="gallery" class="fancybox" href="{% static 'img/portfolio/item-4.jpg' %}">Demo</a>
+                                            <a target="_blank" href="single-portfolio.html">Details</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <figcaption>
+                                <h4>
+                                <a href="#">
+                                    Make Up elements
+                                </a>
+                                </h4>
+                                <p>
+                                    Lorem ipsum dolor.
+                                </p>
+                                </figcaption>
+                            </figure>
+                        </div>
+                        <div class="col-sm-4 col-xs-12">
+                            <figure class="wow fadeInLeft animated" data-wow-duration="500ms" data-wow-delay="900ms">
+                                <div class="img-wrapper">
+                                    <img src="{% static 'img/portfolio/item-5.jpg' %}" class="img-responsive" alt="" >
+                                    <div class="overlay">
+                                        <div class="buttons">
+                                            <a rel="gallery" class="fancybox" href="{% static 'img/portfolio/item-5.jpg' %}">Demo</a>
+                                            <a target="_blank" href="single-portfolio.html">Details</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <figcaption>
+                                <h4>
+                                <a href="#">
+                                    Shoping Bag Concept
+                                </a>
+                                </h4>
+                                <p>
+                                    Lorem ipsum dolor.
+                                </p>
+                                </figcaption>
+                            </figure>
+                        </div>
+                        <div class="col-sm-4 col-xs-12">
+                            <figure class="wow fadeInLeft animated" data-wow-duration="500ms" data-wow-delay="1200ms">
+                                <div class="img-wrapper">
+                                    <img src="{% static 'img/portfolio/item-6.jpg' %}" class="img-responsive" alt="" >
+                                    <div class="overlay">
+                                        <div class="buttons">
+                                            <a rel="gallery" class="fancybox" href="{% static 'img/portfolio/item-6.jpg' %}">Demo</a>
+                                            <a target="_blank" href="single-portfolio.html">Details</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <figcaption>
+                                <h4>
+                                <a href="#">
+                                    Caramel Bottle
+                                </a>
+                                </h4>
+                                <p>
+                                    Lorem ipsum dolor.
+                                </p>
+                                </figcaption>
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+            </section> <!-- #works -->
+            <!--
+            ==================================================
+            Portfolio Section Start
+            ================================================== -->
+            <section id="feature">
+                <div class="container">
+                    <div class="section-heading">
+                        <h1 class="title wow fadeInDown" data-wow-delay=".3s">Offer From Me</h1>
+                        <p class="wow fadeInDown" data-wow-delay=".5s">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed,<br> quasi dolores numquam dolor vero ex, tempora commodi repellendus quod laborum.
+                        </p>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 col-lg-4 col-xs-12">
+                            <div class="media wow fadeInUp animated" data-wow-duration="500ms" data-wow-delay="300ms">
+                                <div class="media-left">
+                                    <div class="icon">
+                                        <i class="ion-ios-flask-outline"></i>
+                                    </div>
+                                </div>
+                                <div class="media-body">
+                                    <h4 class="media-heading">Media heading</h4>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum, sint.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-lg-4 col-xs-12">
+                            <div class="media wow fadeInDown animated" data-wow-duration="500ms" data-wow-delay="600ms">
+                                <div class="media-left">
+                                    <div class="icon">
+                                        <i class="ion-ios-lightbulb-outline"></i>
+                                    </div>
+                                </div>
+                                <div class="media-body">
+                                    <h4 class="media-heading">Well documented.</h4>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum, sint.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-lg-4 col-xs-12">
+                            <div class="media wow fadeInDown animated" data-wow-duration="500ms" data-wow-delay="900ms">
+                                <div class="media-left">
+                                    <div class="icon">
+                                        <i class="ion-ios-lightbulb-outline"></i>
+                                    </div>
+                                </div>
+                                <div class="media-body">
+                                    <h4 class="media-heading">Well documented.</h4>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum, sint.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-lg-4 col-xs-12">
+                            <div class="media wow fadeInDown animated" data-wow-duration="500ms" data-wow-delay="1200ms">
+                                <div class="media-left">
+                                    <div class="icon">
+                                        <i class="ion-ios-americanfootball-outline"></i>
+                                    </div>
+                                </div>
+                                <div class="media-body">
+                                    <h4 class="media-heading">Free updates</h4>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum, sint.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-lg-4 col-xs-12">
+                            <div class="media wow fadeInDown animated" data-wow-duration="500ms" data-wow-delay="1500ms">
+                                <div class="media-left">
+                                    <div class="icon">
+                                        <i class="ion-ios-keypad-outline"></i>
+                                    </div>
+                                </div>
+                                <div class="media-body">
+                                    <h4 class="media-heading">Solid Support</h4>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum, sint.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-lg-4 col-xs-12">
+                            <div class="media wow fadeInDown animated" data-wow-duration="500ms" data-wow-delay="1800ms">
+                                <div class="media-left">
+                                    <div class="icon">
+                                        <i class="ion-ios-barcode-outline"></i>
+                                    </div>
+                                </div>
+                                <div class="media-body">
+                                    <h4 class="media-heading">Simple Installation</h4>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum, sint.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section> <!-- /#feature -->
+                            
+            <!--
+            ==================================================
+            Call To Action Section Start
+            ================================================== -->
+            <section id="call-to-action">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="block">
+                                <h2 class="title wow fadeInDown" data-wow-delay=".3s" data-wow-duration="500ms">SO WHAT YOU THINK ?</h1>
+                                <p class="wow fadeInDown" data-wow-delay=".5s" data-wow-duration="500ms">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis,<br>possimus commodi, fugiat magnam temporibus vero magni recusandae? Dolore, maxime praesentium.</p>
+                                <a href="contact.html" class="btn btn-default btn-contact wow fadeInDown" data-wow-delay=".7s" data-wow-duration="500ms">Contact With Me</a>
+                            </div>
+                        </div>
                         
                     </div>
-                    
-                    <!-- End: Section Header -->
-
-                    <div class="clearfix"></div>
-
-                    <div class="features-item col-xs-12">
-                        <div class="row">
-                            
-                            <div class="each-features col-md-3 col-sm-6 col-xs-12">
-                                <div class="inner background-light text-center">
-                                    <div class="features-hover">
-                                        <img src="{% static 'img/tori.jpg' %}" alt="Our Members" class="img-responsive">
-                                        <div class="mask">
-                                            <div class="mask-inner">
-                                                <div class="title">Get Connected</div>
-                                                <ul class="nav social-icon">
-                                                    <li><a href="#"><i class="icon icons8-facebook"></i></a></li>
-                                                    <li><a href="#"><i class="icon icons8-twitter"></i></a></li>
-                                                    <li><a href="#"><i class="icon icons8-pinterest"></i></a></li>
-                                                    <li><a href="#"><i class="icon icons8-instagram"></i></a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                    <div class="detail">
-                                        <h6 class="name">Caroline Gimmillaro</h6>
-                                        <p class="position">Challenge Lead</p>
-                                    </div>
-                                        
-                                </div> <!-- End: .inner -->
-                            </div> <!-- End: .each-features -->
-
-                            <div class="each-features col-md-3 col-sm-6 col-xs-12">
-                                <div class="inner background-light text-center">
-                                    <div class="features-hover">
-                                        <img src="{% static 'img/tori.jpg' %}" alt="Our Members" class="img-responsive">
-                                        <div class="mask">
-                                            <div class="mask-inner">
-                                                <div class="title">Get Connected</div>
-                                                <ul class="nav social-icon">
-                                                    <li><a href="#"><i class="icon icons8-facebook"></i></a></li>
-                                                    <li><a href="#"><i class="icon icons8-twitter"></i></a></li>
-                                                    <li><a href="#"><i class="icon icons8-pinterest"></i></a></li>
-                                                    <li><a href="#"><i class="icon icons8-instagram"></i></a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                    <div class="detail">
-                                        <h6 class="name">Adam Weinberger</h6>
-                                        <p class="position">Challenge Lead</p>
-                                    </div>
-                                        
-                                </div> <!-- End: .inner -->
-                            </div> <!-- End: .each-features -->
-
-                            <div class="each-features col-md-3 col-sm-6 col-xs-12">
-                                <div class="inner background-light text-center">
-                                    <div class="features-hover">
-                                        <img src="{% static 'img/ester lmaoo.jpg' %}" alt="Our Members" class="img-responsive">
-                                        <div class="mask">
-                                            <div class="mask-inner">
-                                                <div class="title">Get Connected</div>
-                                                <ul class="nav social-icon">
-                                                    <li><a href="#"><i class="icon icons8-facebook"></i></a></li>
-                                                    <li><a href="#"><i class="icon"></i></a></li>
-                                                    <li><a href="#"><i class="icon"></i></a></li>
-                                                    <li><a href="#"><i class="icon"></i></a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                    <div class="detail">
-                                        <h6 class="name">Esther Armah</h6>
-                                        <p class="position">Summer Games Intern</p>
-                                    </div>
-                                        
-                                </div> <!-- End: .inner -->
-                            </div> <!-- End: .each-features -->
-
-                            <div class="each-features col-md-3 col-sm-6 col-xs-12">
-                                <div class="inner background-light text-center">
-                                    <div class="features-hover">
-                                        <img src="{% static 'img/trey lmao.jpg' %}" alt="Our Members" class="img-responsive">
-                                        <div class="mask">
-                                            <div class="mask-inner">
-                                                <div class="title">Get Connected</div>
-                                                <ul class="nav social-icon">
-                                                    <li><a href="#" width="33px" height="33px"><i class="icon icons8-facebook"></i></a></li>
-                                                    <li><a href="#"><i class="icon icons8-twitter"></i></a></li>
-                                                    <li><a href="#"><i class="icon icons8-pinterest"></i></a></li>
-                                                    <li><a href="#"><i class="icon icons8-instagram"></i></a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                    <div class="detail">
-                                        <h6 class="name">Trong Nguyen</h6>
-                                        <p class="position">Summer Games Intern</p>
-                                    </div>
-                                        
-                                </div> <!-- End: .inner -->
-                            </div> <!-- End: .each-features -->
-
-                        
-                    </div> <!-- End: .col-md-8 -->
-
-                </div> <!-- End: .row -->
+                </div>
+            </section>
+            <!--
+            ==================================================
+            Footer Section Start
+            ================================================== -->
+            <footer id="footer">
+                <div class="container">
+                    <div class="col-md-8">
+                        <p class="copyright">Copyright: <span>2015</span> . Design and Developed by <a href="http://www.Themefisher.com">Themefisher</a></p>
+                    </div>
+                    <div class="col-md-4">
+                        <!-- Social Media -->
+                        <ul class="social">
+                            <li>
+                                <a href="http://wwww.fb.com/themefisher" class="Facebook">
+                                    <i class="ion-social-facebook"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="http://wwww.twitter.com/themefisher" class="Twitter">
+                                    <i class="ion-social-twitter"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="Linkedin">
+                                    <i class="ion-social-linkedin"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="http://wwww.fb.com/themefisher" class="Google Plus">
+                                    <i class="ion-social-googleplus"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </footer> <!-- /#footer -->
                 
-                    <div class="clearfix"></div>
-
-                    <div class="features-item col-xs-12">
-                        <div class="row">
-                            
-                            <div class="each-features col-md-3 col-sm-6 col-xs-12">
-                                <div class="inner background-light text-center">
-                                    <div class="features-hover">
-                                        <img src="{% static 'img/kit lmao.jpg' %}" alt="Our Members" class="img-responsive">
-                                        <div class="mask">
-                                            <div class="mask-inner">
-                                                <div class="title">Get Connected</div>
-                                                <ul class="nav social-icon">
-                                                    <li><a href="#"><i class="icon icons8-facebook"></i></a></li>
-                                                    <li><a href="#"><i class="icon icons8-twitter"></i></a></li>
-                                                    <li><a href="#"><i class="icon icons8-pinterest"></i></a></li>
-                                                    <li><a href="#"><i class="icon icons8-instagram"></i></a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                    <div class="detail">
-                                        <h6 class="name">Margaret the Junior</h6>
-                                        <p class="position">Intern</p>
-                                    </div>
-                                        
-                                </div> <!-- End: .inner -->
-                            </div> <!-- End: .each-features -->
-
-                            <div class="each-features col-md-3 col-sm-6 col-xs-12">
-                                <div class="inner background-light text-center">
-                                    <div class="features-hover">
-                                        <img src="{% static 'img/tori lmao.jpg' %}" alt="Our Members" class="img-responsive">
-                                        <div class="mask">
-                                            <div class="mask-inner">
-                                                <div class="title">Get Connected</div>
-                                                <ul class="nav social-icon">
-                                                    <li><a href="#"><i class="icon icons8-facebook"></i></a></li>
-                                                    <li><a href="#"><i class="icon icons8-twitter"></i></a></li>
-                                                    <li><a href="#"><i class="icon icons8-pinterest"></i></a></li>
-                                                    <li><a href="#"><i class="icon icons8-instagram"></i></a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                    <div class="detail">
-                                        <h6 class="name">Victoria Ponci</h6>
-                                        <p class="position">Summer Games Intern</p>
-                                    </div>
-                                        
-                                </div> <!-- End: .inner -->
-                            </div> <!-- End: .each-features -->
-
-                            <div class="each-features col-md-3 col-sm-6 col-xs-12">
-                                <div class="inner background-light text-center">
-                                    <div class="features-hover">
-                                        <img src="{% static 'img/vik lmao.jpg' %}" alt="Our Members" class="img-responsive">
-                                        <div class="mask">
-                                            <div class="mask-inner">
-                                                <div class="title">Get Connected</div>
-                                                <ul class="nav social-icon">
-                                                    <li><a href="#"><i class="{% static 'icon icons8-facebook' %}"></i></a></li>
-                                                    <li><a href="#"><i class="{% static 'icon icons8-twitter' %}"></i></a></li>
-                                                    <li><a href="#"><i class="{% static 'icon icons8-pinterest' %}"></i></a></li>
-                                                    <li><a href="#"><i class="{% static 'icon icons8-instagram' %}"></i></a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                    <div class="detail">
-                                        <h6 class="name">Vikram Ramesh</h6>
-                                        <p class="position">Summer Games Intern</p>
-                                    </div>
-                                        
-                                </div> <!-- End: .inner -->
-                            </div> <!-- End: .each-features -->
-
-                            <div class="each-features col-md-3 col-sm-6 col-xs-12">
-                                <div class="inner background-light text-center">
-                                    <div class="features-hover">
-                                        <img src="{% static 'img/andrew lmao.jpg' %}" alt="Our Members" class="img-responsive">
-                                        <div class="mask">
-                                            <div class="mask-inner">
-                                                <div class="title">Get Connected</div>
-                                                <ul class="nav social-icon">
-                                                    <li><a href="#"><i class="icon icons8-facebook"></i></a></li>
-                                                    <li><a href="#"><i class="icon icons8-twitter"></i></a></li>
-                                                    <li><a href="#"><i class="icon icons8-pinterest"></i></a></li>
-                                                    <li><a href="#"><i class="icon icons8-instagram"></i></a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                    <div class="detail">
-                                        <h6 class="name">Andrew Samuelson</h6>
-                                        <p class="position">Summer Games Intern</p>
-                                    </div>
-                                        
-                                </div> <!-- End: .inner -->
-                            </div> <!-- End: .each-features -->
-
-                        
-                    </div> <!-- End: .col-md-8 -->
-
-                </div> <!-- End: .row -->
-                
-            </div> <!-- End: .container -->
-        </section>
-        
-
-    <section class="contact bg-primary" id="contact">
-        <div class="container">
-            <h2>We <i class="fa fa-heart pulse"></i> new friends!</h2>
-            <ul class="list-inline list-social">
-                <li class="list-inline-item social-twitter">
-                    <a href="#"><i class="fa fa-twitter"></i></a>
-                </li>
-                <li class="list-inline-item social-facebook">
-                    <a href="#"><i class="fa fa-facebook"></i></a>
-                </li>
-                <li class="list-inline-item social-google-plus">
-                    <a href="#"><i class="fa fa-google-plus"></i></a>
-                </li>
-            </ul>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2017 Predictive26. All Rights Reserved.</p>
-            <ul class="list-inline">
-                <li class="list-inline-item">
-                    <a href="#">Privacy</a>
-                </li>
-                <li class="list-inline-item">
-                    <a href="#">Terms</a>
-                </li>
-                <li class="list-inline-item">
-                    <a href="#">FAQ</a>
-                </li>
-            </ul>
-        </div>
-    </footer>
-
-    <!-- Bootstrap core JavaScript -->
-    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
-    <script src="{% static 'vendor/tether/tether.min.js' %}"></script>
-    <script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
-
-    <!-- Plugin JavaScript -->
-    <script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
-
-    <!-- Custom scripts for this template -->
-    <script src="{% static 'js/new-age.min.js' %}"></script>
-    <script>
-    $('#product').click(function(e) {
-e.preventDefault();
-newLocation = this.href;
-$('body').fadeOut('slow', newpage);
-});
-function newpage() {
-window.location = newLocation;
-}
-    </script>
-
-</body>
-
-</html>
+        </body>
+    </html>
