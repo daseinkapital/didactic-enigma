@@ -57,6 +57,7 @@
     					});
                             });	
 
+
 $("#link-alerts").click(function(){
   $.ajax({
                               url : "/map/marker/",
