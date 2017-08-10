@@ -94,9 +94,15 @@
         });
         
                         
+    var circlesource = new ol.source.Vector({wrapX: false});
 
+     var Circlevector = new ol.layer.Vector({
+        source: circlesource
+      });   
+                        
+                        
       var map = new ol.Map({
-        layers: [rasterLayer, vectorLayer, districtLayer],
+        layers: [rasterLayer, vectorLayer, districtLayer, Circlevector],
         
         target: document.getElementById('mapol'),
         view: sierraView
@@ -180,16 +186,29 @@
       map.on('click', function(evt) {
         displayFeatureInfo(evt.pixel);
         if(document.getElementById("info").innerHTML != "none") {
+                document.getElementById("name").innerHTML = document.getElementById("info").innerHTML;
+                if(document.getElementById("active").innerHTML != false){
         $.ajax({
-                              url : "/map/marker/",
-                              data : {"name" : document.getElementById("info").innerHTML, "date" : "2017-07-27"},
-                              dataType : 'html',
+                              url : "/map/reports/",
+                    
+                              data : {"name" : document.getElementById("name").innerHTML, "date" : "2017-07-27"},
+                              dataType: "html",
                               success : function (data) {
-                                  $("#mySidenav").empty().append(data);
+                                  side1Width =$('#slide-1').css("transform");
+                                 
+                                  if (side1Width === "matrix(1, 0, 0, 1, 0, 0)"){
+                                  
+                                  $("#slide-1").empty().append(data);
+                                  }
+                                  else
+                                  {
+                                   $("#slide-2").empty().append(data);
+                                          }
                               }
-                        });        
-
-        }
+                        }); 
+          
+        };
+        };
       });   
           
      map.on('dblclick', function(evt) {
@@ -199,6 +218,35 @@
 
         }
       });  
+          
+    
+        
+    var typeSelect = document.getElementById('type');
+
+     var draw; // global so we can remove it later
+      function addInteraction() {
+        var value = typeSelect.innerHTML;
+        if (value == 'Circle') {
+          draw = new ol.interaction.Draw({
+            source: circlesource,
+            type: "Circle"
+          });
+          map.addInteraction(draw);
+        
+          
+        }
+      }
+    
+              
+   $('#type').change(function(){
+            map.removeInteraction(draw);
+        addInteraction();
+        circlesource.clear();
+       
+      
+});
+
+      addInteraction();
           
      
           

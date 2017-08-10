@@ -106,8 +106,15 @@
           zoom: parseFloat(document.getElementById('zoom').text)
       });
                         
+     var circlesource = new ol.source.Vector({wrapX: false});
+
+     var Circlevector = new ol.layer.Vector({
+        source: circlesource
+      });   
+            
+                        
       var map = new ol.Map({
-        layers: [rasterLayer, vectorLayer, districtLayer],
+        layers: [rasterLayer, vectorLayer, districtLayer, Circlevector],
         
         target: document.getElementById('map'),
         view: distView
@@ -209,16 +216,31 @@
         displayFeatureInfo(evt.pixel);
         if(document.getElementById("info").innerHTML !== "none") {
                 if (info.innerHTML !== 'undefined'){
+                        
+                    
                     hospitalName.innerHTML = "Hospital Code: " + document.getElementById('name').innerHTML;
                     count.innerHTML = "Total Case Count: " + document.getElementById('cases').innerHTML;
+                    
+                    if(document.getElementById("active").innerHTML != false){
                     $.ajax({
                               url : "/map/hosp_overview/",
                               data : {"code" : document.getElementById('name').innerHTML},
                               dataType : 'html',
                               success : function (data) {
-                                  $("#overview").empty().append(data);
+                                   side1Width =$('#slide-1').css("transform");
+                                 
+                                  if (side1Width === "matrix(1, 0, 0, 1, 0, 0)"){
+                                  
+                                  $("#slide-1").empty().append(data);
+                                  }
+                                  else
+                                  {
+                                   $("#slide-2").empty().append(data);
+                                          }
+                
                               }
                         });
+        }
                     }
                 
         }
@@ -231,5 +253,33 @@
 
         }
       });   
+          
+        
+    var typeSelect = document.getElementById('type');
+
+     var draw; // global so we can remove it later
+      function addInteraction() {
+        var value = typeSelect.innerHTML;
+        if (value == 'Circle') {
+          draw = new ol.interaction.Draw({
+            source: circlesource,
+            type: "Circle"
+          });
+          map.addInteraction(draw);
+        
+          
+        }
+      }
+    
+              
+   $('#type').change(function(){
+        map.removeInteraction(draw);
+        addInteraction();
+        circlesource.clear();
+       
+      
+});
+
+      addInteraction();
           
        

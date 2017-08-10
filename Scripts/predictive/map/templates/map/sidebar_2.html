@@ -1,0 +1,66 @@
+{% load static %}
+{% load render_bundle from webpack_loader %}
+
+<div id="constant">
+       
+        <img class="globe" src="{% static 'img/platformlogo.png' %}">
+        <div class="paddedtitle">
+        <h1><a href="/map/product/">Sierra Leone</a></h1>
+        <p>{{district_name}}</p>
+        <div class="pt-triggers">
+               <button id="iterateEffects" type="button" class="btn btn-default pt-touch-button">
+            <span class="glyphicon glyphicon-map-marker"></span> MapView
+              </button>
+              <button id="iterateEffects2" type="button" class="btn btn-default pt-touch-button">
+            <span  class="glyphicon glyphicon-tasks"></span> GraphView
+            </button>
+           
+        </div>
+        </div>
+        
+         
+        
+    
+        {% include 'map/constant-mini-sidenav.html' %}
+        
+         
+		</div>	     
+        
+    
+ <div id="mySidenav" class="sidenav">
+  <div class="padsidebar">
+      
+      <div class="input-group">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button">Go!</button>
+      </span>
+      <input type="text" class="form-control" placeholder="Search for desease...">
+    </div><!-- /input-group -->
+    <button type="button"  id="createAlert" class="btn btn-danger">Create Alert</button>
+    <button type="button"  id="sendAlert" class="btn btn-danger">Send Alert</button>
+   
+</form>
+        <div id="react-app"> 
+        {% render_bundle 'main' %}  
+        </div>  
+        <div id="testing"> 
+        {% render_bundle 'main' %}  
+        </div>  
+        <div id="Calendar"> 
+        {% render_bundle 'main' %}  
+        </div>
+  
+      </div>
+   
+
+
+</div>
+
+     <ul id="slide-1" class="side-nav">
+		</ul>
+     <ul id="slide-2" class="side-nav">
+		</ul>
+
+<button style="display: none;" data-activates="slide-1" id="sideNavButton1" class="hidden-nav">SideNavButton</button>
+<button style="display: none;" data-activates="slide-2" id="sideNavButton2" class="hidden-nav">SideNavButton</button>
+

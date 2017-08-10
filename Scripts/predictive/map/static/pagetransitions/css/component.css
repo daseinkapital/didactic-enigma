@@ -86,16 +86,7 @@
 /* Triggers (menu and button) */
 
 .pt-triggers {
-	position: relative;
-	width: 300px;
-	z-index: 999999;
-	top: 12%;
-	left: 15%;
-	margin-top: 130px;
-	-webkit-transform: translateX(-50%);
-	-moz-transform: translateX(-50%);
-	-ms-transform: translateX(-50%); 
-	transform: translateX(-50%);
+	
 }
 
 .no-js .pt-triggers {
@@ -104,19 +95,7 @@
 
 .pt-triggers .dl-menuwrapper button,
 .pt-touch-button {
-	border: none;
-	font-size: 13px;
-	font-weight: 700;
-	text-transform: uppercase;
-	margin: 10px 0 20px;
-	padding: 0px 20px;
-	line-height: 50px;
-	height: 50px;
-	letter-spacing: 1px;
-	width: 100%;
 	cursor: pointer;
-	display: block;
-	font-family: 'Lato', Calibri, Arial, sans-serif;
 	box-shadow: 0 3px 0 rgba(0,0,0,0.1);
 	-webkit-touch-callout: none;
 	-webkit-user-select: none;

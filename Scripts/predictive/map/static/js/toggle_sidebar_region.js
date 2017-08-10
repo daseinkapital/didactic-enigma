@@ -36,26 +36,19 @@
                           }
 						}
 					});	
-
-
              	$(".exit-btn").click(function(){
-                    side1Width =$('#slide-1').css("transform")
-                    side2Width =$('#slide-2').css("transform")
-                    if(side1Width == "matrix(1, 0, 0, 1, 0, 0)" || side2Width == "matrix(1, 0, 0, 1, 0, 0)"){
-
-                        if(ACTIVE){
-                              $('#sideNavButton2').sideNav('show');
-                              $('#sideNavButton2').sideNav('hide');
-                            } else {
-                              $('#sideNavButton1').sideNav('show');
-                              $('#sideNavButton1').sideNav('hide');
-                                    }
-                              FIRST_TOGGLE = true;
-                              ACTIVE = true;
-                              report_status.innerHTML= false;
-    						}
-    					});
-                            });	
+                    if(ACTIVE){
+                          $('#sideNavButton2').sideNav('show');
+                          $('#sideNavButton2').sideNav('hide');
+                        } else {
+                          $('#sideNavButton1').sideNav('show');
+                          $('#sideNavButton1').sideNav('hide');
+                                }
+                          FIRST_TOGGLE = true;
+                          ACTIVE = true;
+                          report_status.innerHTML= false;
+						});
+					});	
 
 $("#link-alerts").click(function(){
   $.ajax({
@@ -100,7 +93,7 @@ $("#link-download").click(function(){
 
 $("#link-reports").click(function(){
   $.ajax({
-                              url : "/map/reports/",
+                              url : "/map/hosp_overview/",
                               dataType : 'html',
                               success : function (data) {
                                     if(!ACTIVE){
@@ -118,8 +111,6 @@ $("#link-reports").click(function(){
         
       });  
 
-     
-
 $("#createAlert").click(function(){
      
         type.innerHTML='Circle';
@@ -135,7 +126,6 @@ $("#sendAlert").click(function(){
         
         
       });
-
  
 
 

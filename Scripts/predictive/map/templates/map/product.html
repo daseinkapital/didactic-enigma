@@ -44,6 +44,7 @@
     <link rel="stylesheet" href="{% static 'paneltransitions/style3.css' %}">
     <link rel="stylesheet" href="https://openlayers.org/en/v4.2.0/css/ol.css" type="text/css">
     
+    
     <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css" type="text/css">-->
 
      <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" rel="stylesheet">
@@ -83,33 +84,7 @@
 <!-- Loop through the points *still have to figure out how to host this-->
 <body background-color= "#C0C0C0">
 
-<!--
-<nav class="navbar fixed-top navbar-toggleable-md navbar-light" id="mainNav">
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarExample" aria-controls="navbarExample" aria-expanded="false" aria-label="Toggle navigation">
-            Menu <i class="fa fa-bars"></i>
-        </button>
-        <div class="container">
-            <a class="navbar-brand" id= "home" href="/map/" >MapView By Predictive26</a>
-            <div class="collapse navbar-collapse" id="navbarExample">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/map/#download">Our Story</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/map/#features">Features</a>
-                    </li>
-                     <li class="nav-item">
-                        <a class="nav-link" href="/map/#about">Team</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/map/#contact">Social Media</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
 
--->
 <div id="sidebar">
 
     <a id="zoom" hidden></a>
@@ -118,25 +93,10 @@
     <div id="info" hidden></div>
     <div id="name" hidden></div>
     <div id="cases" hidden></div>
+    <div id="active" hidden></div>
+    <div id="type">None</div>
 
-<!--
 
-
-    <div id="mySidenav" class="sidenav">
-        <ul>
-            <a id="export-png" class="btn btn-default"><i class="fa fa-download"></i> Download CSV</a>
-            <a id="link-query" class="btn btn-default" href="#query">Query</a>
-            <a class="btn btn-default">Reports</a>
-            <a class="btn btn-default">Alerts</a>
-        </ul>
-    </div>
-
-    <div id="mySidenav"></div>
-    <div id="info" ></div>
-    <div class="pt-triggers">
-        <button id="iterateEffects" class="pt-touch-button">Map</button>
-        <button id="iterateEffects2" class="pt-touch-button">Graph</button>
-    </div><!-- /triggers -->
 	 <div id="pt-main" class="pt-perspective">
         <div class="pt-page pt-page-1">
             <div id="mapol" class="mapol"></div>
@@ -144,117 +104,20 @@
         <div class="pt-page pt-page-2">
             <div class="graphs">
                 <div class="main-chart-container">
-                    <div id="chart-1" class="chart">{{ output_zoom_line|safe }}</div>
-                    <div id="chart-2" class="chart">{{ output_2dcol|safe }}</div>
+                    <div id="chart-div"></div>
                 </div>
             </div>
         </div>
 	 </div>
 
 
--->
 
 
 
 
     <div id="info" ></div>
     
-    <div id="constant">
-       
-        <img class="globe" src="{% static 'img/platformlogo.png' %}">
-        <div class="paddedtitle">
-        <h1>Sierra Leone</h1>
-           <button type="button" class="btn btn-default">
-        <span class="glyphicon glyphicon-map-marker"></span> MapView
-          </button>
-          <button type="button" class="btn btn-default">
-        <span class="glyphicon glyphicon glyphicon-tasks"></span> GraphView
-          </button>
-        </div>
-        
-         
-        
-    
-        {% include 'map/constant-mini-sidenav.html' %}
-        
-         
-		</div>	     
-        
-    
- <div id="mySidenav" class="sidenav">
-  <div class="padsidebar">
-      
-      <div class="input-group">
-      <span class="input-group-btn">
-        <button class="btn btn-default" type="button">Go!</button>
-      </span>
-      <input type="text" class="form-control" placeholder="Search for desease...">
-    </div><!-- /input-group -->
-   
-        <div id="react-app"> 
-        {% render_bundle 'main' %}  
-        </div>  
-        <div id="testing"> 
-        {% render_bundle 'main' %}  
-        </div>  
-        <div id="Calendar"> 
-        {% render_bundle 'main' %}  
-        </div>
-  
-      </div>
-   
-
-
-</div>
-
-
-     
-
-     
-  
-      
-      
-       
-	
-
-     <ul id="slide-1" class="side-nav">
-			<li><div class="userView">
-				<div class="background">
-				<img src="images/office.jpg">
-				</div>
-                <h2>Bar 1</h2>
-				<a href="#!user"><img class="circle" src="images/yuna.jpg"></a>
-				<a href="#!name"><span class="white-text name">John Doe</span></a>
-				<a href="#!email"><span class="white-text email">jdandturk@gmail.com</span></a>
-			</div></li>
-			<li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
-			<li><a class="waves-effect exit-btn">Second Link</a></li>
-			<li><div class="divider"></div></li>
-			<li><a class="subheader">Subheader</a></li>
-			<li><a class="waves-effect nav-toggler" id="noswitch" >Third Link With Waves</a></li>
-		</ul>
-     <ul id="slide-2" class="side-nav">
-			<li><div class="userView">
-				<div class="background">
-				<img src="images/office.jpg">
-				</div>
-                <h2>Bar 2</h2>
-				<a href="#!user"><img class="circle" src="images/yuna.jpg"></a>
-				<a href="#!name"><span class="white-text name">John Doe</span></a>
-				<a href="#!email"><span class="white-text email">jdandturk@gmail.com</span></a>
-			</div></li>
-			<li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
-			<li><a class="waves-effect exit-btn">Second Link</a></li>
-			<li><div class="divider"></div></li>
-			<li><a class="subheader">Subheader</a></li>
-			<li><a class="waves-effect nav-toggler" id="noswitch" >Third Link With Waves</a></li>
-           
- 
-		</ul>
-
-<button style="display: none;" data-activates="slide-1" id="sideNavButton1" class="hidden-nav">SideNavButton</button>
-<button style="display: none;" data-activates="slide-2" id="sideNavButton2" class="hidden-nav">SideNavButton</button>
-
+    {% include 'map/sidebar_2.html' %}
 
 
 
@@ -265,6 +128,7 @@
   
     <!--PageTransitions JS-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    
     <script type="text/javascript" src="{% static 'pagetransitions/js/jquery.dlmenu.js' %}"></script>
     <script type="text/javascript" src="{% static 'pagetransitions/js/pagetransitions.js' %}"></script>
  
@@ -278,6 +142,14 @@
 
 
 
+    <script type="text/javascript" src="{% static 'pagetransitions/js/jquery.dlmenu.js' %}"></script>
+    <script type="text/javascript" src="{% static 'pagetransitions/js/pagetransitions.js' %}"></script>
+ 
+    <!--PageTransitions CSS-->
+
+
+    <link rel="stylesheet" href="{% static 'pagetransitions/css/animations.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'pagetransitions/css/component.css' %}" type="text/css">
 
  
     <!--PageTransitions JS-->
@@ -298,6 +170,7 @@
 
 
     <script src="{% static 'js/new-age.min.js' %}"></script>
+    <script src="{% static 'js/graph_country_view.js' %}"></script>
 
 
     <!--<script src="{% static 'js/loading.js' %}"></script>-->

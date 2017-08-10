@@ -1,4 +1,22 @@
+{% load static %}
+{% load render_bundle from webpack_loader %}
+<link rel="stylesheet" href="{% static 'css/padding-sidebar.css' %}">
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<body>
+
+<div class="padsidebar">
+
+
+
 <ul>
+    <h1><a>Hospital Name: {{hosp_code}}</a></h1><br>
+    <a>Total Case Counts: {{total_counts}}</a><br>
     <a><b>Disease Breakdown:</b></a>
     <br>
     {% for disease in diseases %}
@@ -12,3 +30,6 @@
         <li><a>{{phone}}</a></li>
     {% endfor %}
 </ul>
+
+</body>
+</div>
