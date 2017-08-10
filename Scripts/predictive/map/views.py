@@ -12,12 +12,13 @@ from .models import Districts, HeadReports, DeathReports, Diseases, Phones
 def about(request): 
     return render(request,'map/about.html')
 
+
+def about(request): 
+    return render(request,'map/about.html')
 def service(request):
     return render(request, 'map/service.html')
-
 def contact(request):
     return render(request, 'map/contact.html')
-
 def blog(request):
     return render(request, 'map/blog.html')
 
