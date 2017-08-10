@@ -48,6 +48,7 @@
     <link rel="stylesheet" href="{% static 'paneltransitions/style3.css' %}">
     <link rel="stylesheet" href="https://openlayers.org/en/v4.2.0/css/ol.css" type="text/css">
     
+    
     <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css" type="text/css">-->
 
      <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" rel="stylesheet">
@@ -82,6 +83,7 @@
 <!-- Loop through the points *still have to figure out how to host this-->
 <body background-color= "#C0C0C0">
 
+
 <div id="sidebar">
 
     <a id="zoom" hidden></a>
@@ -90,6 +92,9 @@
     <div id="info" hidden></div>
     <div id="name" hidden></div>
     <div id="cases" hidden></div>
+    <div id="active" hidden></div>
+    <div id="type">None</div>
+
 
 	 <div id="pt-main" class="pt-perspective">
         <div class="pt-page pt-page-1">
@@ -98,8 +103,7 @@
         <div class="pt-page pt-page-2">
             <div class="graphs">
                 <div class="main-chart-container">
-                    <div id="chart-1" class="chart">{{ output_zoom_line|safe }}</div>
-                    <div id="chart-2" class="chart">{{ output_2dcol|safe }}</div>
+                    <div id="chart-div"></div>
                 </div>
             </div>
         </div>
@@ -107,32 +111,15 @@
 </div>
 
 
-    <div id="info" ></div>
-    
-    <div id="constant">
-       
-        <img class="globe" src="{% static 'img/platformlogo.png' %}">
-        <div class="paddedtitle">
-        <h1>Sierra Leone</h1>
-           <button type="button" class="btn btn-default">
-        <span class="glyphicon glyphicon-map-marker"></span> MapView
-          </button>
-          <button type="button" class="btn btn-default">
-        <span class="glyphicon glyphicon glyphicon-tasks"></span> GraphView
-          </button>
-        </div>
-        
-         
-        
-    
-        {% include 'map/constant-mini-sidenav.html' %}
-        
-         
-	 </div>	     
-        
+
+
+
+    {% include 'map/sidebar_2.html' %}
+
 
     <!--PageTransitions JS-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    
     <script type="text/javascript" src="{% static 'pagetransitions/js/jquery.dlmenu.js' %}"></script>
     <script type="text/javascript" src="{% static 'pagetransitions/js/pagetransitions.js' %}"></script>
  
@@ -146,6 +133,14 @@
 
 
 
+    <script type="text/javascript" src="{% static 'pagetransitions/js/jquery.dlmenu.js' %}"></script>
+    <script type="text/javascript" src="{% static 'pagetransitions/js/pagetransitions.js' %}"></script>
+ 
+    <!--PageTransitions CSS-->
+
+
+    <link rel="stylesheet" href="{% static 'pagetransitions/css/animations.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'pagetransitions/css/component.css' %}" type="text/css">
 
  
     <!--PageTransitions JS-->
@@ -164,5 +159,6 @@
 
     <!-- Custom scripts for this template -->
     <script src="{% static 'js/new-age.min.js' %}"></script>
+    <script src="{% static 'js/graph_country_view.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/materialize.js' %}"></script>
     <script src="{% static 'js/toggle_sidebar.js' %}"></script>

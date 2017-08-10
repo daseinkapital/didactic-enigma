@@ -12,14 +12,42 @@
 <script type="text/javascript" src="{% static 'fusioncharts/themes/fusioncharts.theme.fint.js' %}"></script>
 <link rel="stylesheet" href="https://openlayers.org/en/v4.2.0/css/ol.css" type="text/css">
 
+<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'css/padding-sidebar.css' %}">
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="{% static 'css/sidebar.css' %}">
+ 
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+{%  include 'map/include_js_header.html' %}
+
 <a id="zoom" hidden>{{dist.zoom}}</a>
 <a id="lat" hidden>{{dist.lat}}</a>
 <a id="lng" hidden>{{dist.lng}}</a>
 <div id="info" hidden></div>
 <div id="name" hidden></div>
 <div id="cases" hidden></div>
-<body>
+<div id="active" hidden></div>
+<a id="hospital_name"></a>
+<a id="count"></a>
+<div id="type">None</div>
 
+<style>
+#constant{
+	position: absolute;
+	z-index: 2000;
+	width: 30%;
+	top: 50px;
+}
+
+</style>
+<body>
+{% include 'map/sidebar_2.html' %}
+
+
+<!--
         <div id="mySidenav" class="sidenav">
             <a href="/map/product/">{{district_name}}</a>
             <a id="hospital_name"></a>
@@ -30,7 +58,9 @@
         <div class="pt-triggers">
             <button id="iterateEffects" class="pt-touch-button">Map</button>
             <button id="iterateEffects2" class="pt-touch-button">Graph</button>
-        </div><!-- /triggers -->
+        </div>-->
+        
+        
     	 <div id="pt-main" class="pt-perspective">
             <div class="pt-page pt-page-1">
                 <div id="map" class="mapol"></div>
@@ -42,8 +72,9 @@
                     </div>
                 </div>
             </div>
-            <h1>Hello</h1>
     	 </div>
+         
+       
 
 
 
@@ -64,6 +95,7 @@
 
 
 </body>
+{% include 'map/include_js_footer.html' %}
 
 <!--Stylesheets by Predictive26-->
 <link rel="stylesheet" href="{% static 'css/olmap.css' %}">
@@ -72,9 +104,9 @@
 <script src="{% static 'js/ol-district-map.js' %}"></script>
 <script src="{% static 'js/region-charts.js' %}"></script>
 <!--Javascript Libraries-->
+  <script src="{% static 'js/toggle_sidebar_region.js' %}"></script>
 
 
 
 <!--Javascript by Predictive26-->
 
-</html>

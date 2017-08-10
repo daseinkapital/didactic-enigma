@@ -19,8 +19,19 @@ def blog(request):
     return render(request, 'map/blog.html')
 def index(request):
     return render(request, 'map/index.html')
+
 def reports(request):
-    return render(request, 'map/reports.html')
+    districtName, date_string = request.GET.get('name'), request.GET.get('date')
+    if districtName == None and date_string == None:
+        return render(request, 'map/preselect_reports.html')
+    district = Districts.objects.filter(name=districtName)
+    context = {'district':districtName}
+    Date = dt.strptime(date_string, '%Y-%m-%d')
+    headReports = HeadReports.objects.filter(date=Date).filter(phone_number__hospital__district=district).aggregate(Sum('count'))
+    context.update({'reports': headReports['count__sum']})
+    html = render(request, 'map/reports.html', context)
+    return HttpResponse(html)
+    
 def downloads(request):
     return render(request, 'map/downloads.html')
 
@@ -69,105 +80,10 @@ def addcases(request):
     return HttpResponse(data, content_type="application/json")
     
 def product(request):
-    dataSource = {}
-    
-    dataSource["chart"] = {
-        "caption": "Ebola by District",
-        "subCaption": "Sierra Leone",
-        "xAxisName": "District",
-        "yAxisName": "Case Reports",
-        "theme": "zune",
-        "placevaluesInside": "1",
-        "showCanvasBg": "1",
-        "showCanvasBase": "1",
-        "canvasBaseDepth": "14",
-        "canvasBgDepth": "5",
-        "canvasBaseColor": "#aaaaaa",
-        "canvasBgColor": "#eeeeee"
-    }
-    
-    date = dt.strptime('2017-07-27', '%Y-%m-%d')
-    categories_list = []
-    dataset = [{'seriesname':'2017-07-27'}]
-    dataset_list = []
-    districts = Districts.objects.all()
-    reports = HeadReports.objects.filter(date=date).filter(disease__name='Ebola')
-    for district in districts:
-        categories_list.append({'label':district.name})
-        data = reports.filter(phone_number__hospital__district=district).aggregate(Sum('count'))['count__sum']
-        if data != None:
-            dataset_list.append({'value':data})
-        else:
-            dataset_list.append({'value':0})
-    dataset[0].update({'data':dataset_list})
-    
-    dataSource['categories'] = [{
-            "category": categories_list
-        }]
-    
-    dataSource['dataset'] = dataset
-
-    
-    col2D = FusionCharts("mscolumn3d", "ex1" , "400", "300", "chart-1", "json", dataSource)
-    
-        
-    zoom_line_chart_details = {
-                "caption": "Disease Levels",
-                "subcaption": "Last 100 Days",
-                "yaxisname": "Case Count",
-                "xaxisname": "Date",
-                "yaxisminValue": "0",
-                "yaxismaxValue": "3000",
-                "pixelsPerPoint": "0",
-                "pixelsPerLabel": "30",
-                "lineThickness": "1",
-                "compactdatamode": "1",
-                "dataseparator": "|",
-                "labelHeight": "30",
-                "theme": "fint"
-            }
-    
-    reports = HeadReports.objects.all().order_by('date')
-    dates = []
-    date_objs = []
-    for row in reports:
-        if row.date.strftime('%b %d') not in dates:
-            dates.append(row.date.strftime('%b %d'))
-            date_objs.append(row.date)
-    
-    
-    categories = ""
-    for date in dates:
-        categories += date + "|"
-    categories = categories[:-1]
-    
-    zoom_line_chart_categories = [
-            {
-                "category": categories
-            }
-        ]
-    
-    datasets = []
-    diseases = Diseases.objects.all()
-    for disease in diseases:
-        data = ""
-        for date in date_objs:
-            point = reports.filter(disease__name=disease.name).filter(date=date).aggregate(Sum('count'))['count__sum']
-            data += str(point) + "|"
-        data = data[:-1]
-        datasets.append({'seriesname':disease.name, 'data':data})
-    
-        
-    
-    zoom_line_chart_input = {'chart' : zoom_line_chart_details, 'categories': zoom_line_chart_categories, 'dataset':datasets}
-
-    
-    zoom_line = FusionCharts("zoomline", "ex2" , "400", "300", "chart-2", "json", zoom_line_chart_input)
-    context = {'output_2dcol': col2D.render(), 'output_zoom_line': zoom_line.render()}
     if request.GET.get('visit') == "first":
-        return render(request, 'map/product_first_visit.html', context)
+        return render(request, 'map/product_first_visit.html')
     else:
-        return render(request, 'map/product.html', context)
+        return render(request, 'map/product.html')
 
 ##loads the main map from ajax call
 def init_main(request):
@@ -270,13 +186,13 @@ def hosp_overview(request):
     nums = []
     for phone in phones:
         nums.append(phone.number)
-        
+    total_counts=reports.aggregate(Sum('count'))['count__sum']
     disease_counts = []
     for disease in diseases:
         count = reports.filter(disease__name=disease.name).aggregate(Sum('count'))['count__sum']
         if count:
             disease_counts.append({'name':disease.name, 'count':count})
-    data = {'hosp_code':hosp_code,'diseases':disease_counts, 'numbers':nums}
+    data = {'hosp_code':hosp_code,'diseases':disease_counts, 'numbers':nums, 'total_counts':total_counts}
     return HttpResponse(render(request, 'map/report_listings.html', data))
     
 def dist_charts(request):
@@ -428,5 +344,108 @@ def dist_charts(request):
     
     context = {'chart1': col3D.render(), 'chart2': zoom_line1.render(), 'chart3': zoom_line2.render()}        
     html = render(request, 'map/region-charts.html', context)
+    return HttpResponse(html)
+
+def country_charts(request):
+    dataSource = {}
+    
+    dataSource["chart"] = {
+        "caption": "Ebola by District",
+        "subCaption": "Sierra Leone",
+        "xAxisName": "District",
+        "yAxisName": "Case Reports",
+        "theme": "zune",
+        "placevaluesInside": "1",
+        "showCanvasBg": "1",
+        "showCanvasBase": "1",
+        "canvasBaseDepth": "14",
+        "canvasBgDepth": "5",
+        "canvasBaseColor": "#aaaaaa",
+        "canvasBgColor": "#eeeeee"
+    }
+    
+    date = dt.strptime('2017-07-27', '%Y-%m-%d')
+    categories_list = []
+    dataset = [{'seriesname':'2017-07-27'}]
+    dataset_list = []
+    districts = Districts.objects.all()
+    reports = HeadReports.objects.filter(date=date).filter(disease__name='Ebola')
+    for district in districts:
+        categories_list.append({'label':district.name})
+        data = reports.filter(phone_number__hospital__district=district).aggregate(Sum('count'))['count__sum']
+        if data != None:
+            dataset_list.append({'value':data})
+        else:
+            dataset_list.append({'value':0})
+    dataset[0].update({'data':dataset_list})
+    
+    dataSource['categories'] = [{
+            "category": categories_list
+        }]
+    
+    dataSource['dataset'] = dataset
+
+    
+    col2D = FusionCharts("mscolumn3d", "ex1" , "400", "300", "chart-1", "json", dataSource)
+    
+        
+    zoom_line_chart_details = {
+                "caption": "Disease Levels",
+                "subcaption": "Last 100 Days",
+                "yaxisname": "Case Count",
+                "xaxisname": "Date",
+                "yaxisminValue": "0",
+                "yaxismaxValue": "3000",
+                "pixelsPerPoint": "0",
+                "pixelsPerLabel": "30",
+                "lineThickness": "1",
+                "compactdatamode": "1",
+                "dataseparator": "|",
+                "labelHeight": "30",
+                "theme": "fint"
+            }
+    
+    reports = HeadReports.objects.all().order_by('date')
+    dates = []
+    date_objs = []
+    for row in reports:
+        if row.date.strftime('%b %d') not in dates:
+            dates.append(row.date.strftime('%b %d'))
+            date_objs.append(row.date)
+    
+    
+    categories = ""
+    for date in dates:
+        categories += date + "|"
+    categories = categories[:-1]
+    
+    zoom_line_chart_categories = [
+            {
+                "category": categories
+            }
+        ]
+    
+    datasets = []
+    diseases = Diseases.objects.all()
+    for disease in diseases:
+        data = ""
+        for date in date_objs:
+            point = reports.filter(disease__name=disease.name).filter(date=date).aggregate(Sum('count'))['count__sum']
+            if point != None:
+                data += str(point) + "|"
+            else:
+                data += "0|"
+        data = data[:-1]
+        datasets.append({'seriesname':disease.name, 'data':data})
+    
+        
+    
+    zoom_line_chart_input = {'chart' : zoom_line_chart_details, 'categories': zoom_line_chart_categories, 'dataset':datasets}
+
+    
+    zoom_line = FusionCharts("zoomline", "ex2" , "400", "300", "chart-2", "json", zoom_line_chart_input)
+    context = {'chart1': col2D.render(), 'chart2': zoom_line.render()}
+    
+    html = render(request, 'map/graph_country_view.html', context)
     return HttpResponse(html)
     
