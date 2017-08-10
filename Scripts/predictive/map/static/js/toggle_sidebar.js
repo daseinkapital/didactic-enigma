@@ -60,18 +60,6 @@
     					});
                             });	
 
-             	$(".exit-btn").click(function(){
-                    if(ACTIVE){
-                          $('#sideNavButton2').sideNav('show');
-                          $('#sideNavButton2').sideNav('hide');
-                        } else {
-                          $('#sideNavButton1').sideNav('show');
-                          $('#sideNavButton1').sideNav('hide');
-                                }
-                          FIRST_TOGGLE = true;
-                          ACTIVE = true;
-						});
-					});	
 
 
 $("#link-alerts").click(function(){
