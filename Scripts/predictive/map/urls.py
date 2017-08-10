@@ -16,7 +16,6 @@ urlpatterns = [
         url(r'changedate', views.changedate, name='changedate'),
         url(r'hosp_overview', views.hosp_overview, name='hosp_overview'),
         url(r'dist_charts', views.dist_charts, name='dist_charts'),
-        url(r'graphs', views.graphs, name='graphs'),
         url(r'addcases', views.addcases, name='addcases'),
         url(r'about', views.about, name='about'),
         url(r'contact', views.contact, name='contact'),
