@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'bootstrap3',
     'map',
     'webpack_loader',
-    'rest_framework'
+    'rest_framework',
+    'demo'
 ]
 
 MIDDLEWARE = [

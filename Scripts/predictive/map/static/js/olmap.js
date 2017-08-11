@@ -38,9 +38,7 @@
                         size.push(mark_size);
                         names.push(name);
                 };
-                Object.keys(mark).forEach(function(key) {
-                console.log(key, mark[key]);
-                });
+
                 
                 for (i = 0; i < mark.length; i++){
                         var link = '/map/region/' + names[i];
@@ -68,7 +66,7 @@
           attributions: 'Tiles © <a href="https://services.arcgisonline.com/ArcGIS/' +
               'rest/services/World_Topo_Map/MapServer">ArcGIS</a>',
           url: 'https://server.arcgisonline.com/ArcGIS/rest/services/' +
-              'World_Topo_Map/MapServer/tile/{z}/{y}/{x}'
+              'World_Imagery/MapServer/tile/{z}/{y}/{x}'
         })
       });
       var districtLayer = new ol.layer.Image({
@@ -91,29 +89,20 @@
          });
                         
        var sierraView = new ol.View({
-          center:  [-1215746.7064420073, 949236.9108252194],
-          zoom: 8.541666653951008
+          center:  [-1354603.7697028217, 950826.8771984349],
+          zoom: 8.206381747585729
         });
         
-        var view = new ol.View({
-        center: [-8583403.59127055, 4706697.829103296],
-        zoom: 6
-      });
                         
 
       var map = new ol.Map({
         layers: [rasterLayer, vectorLayer, districtLayer],
         
         target: document.getElementById('mapol'),
-        view: view
+        view: sierraView
       
        });
-        
-     
-       
-    
 
-                    
                         
         var featureOverlay = new ol.layer.Vector({
         source: new ol.source.Vector(),
@@ -175,43 +164,8 @@
           highlight = feature;
         }
           };
-          
-        var sierraCord = [-1215746.7064420073, 949236.9108252194];
-          
-        function flyTo(location, done) {
-            var duration = 2000;
-            var zoom = view.getZoom();
-            var parts = 2;
-            var called = false;
-            function callback(complete) {
-              --parts;
-              if (called) {
-                return;
-              }
-              if (parts === 0 || !complete) {
-                called = true;
-                done(complete);
-              }
-            }
-            view.animate({
-              center: location,
-              duration: duration
-            }, callback);
-            view.animate({
-              zoom: zoom - 1,
-              duration: duration / 2
-            }, {
-              zoom: zoom,
-              duration: duration / 2
-            }, callback);
-      }
-  
 
-        
-setTimeout( function(){
-        
-flyTo(sierraCord, function() {})}, 3000
-);
+
       
 
       map.on('pointermove', function(evt) {

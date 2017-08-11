@@ -1,6 +1,6 @@
 {% load static %}
 {% load render_bundle from webpack_loader %}
-<html>
+<html class="no-js">
 <title>{{district_name}}</title>
 <script src="https://openlayers.org/en/v4.2.0/build/ol.js" type="text/javascript"></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
@@ -8,18 +8,60 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
+<script type="text/javascript" src="{% static 'fusioncharts/fusioncharts.js' %}"></script>
+<script type="text/javascript" src="{% static 'fusioncharts/themes/fusioncharts.theme.fint.js' %}"></script>
 <link rel="stylesheet" href="https://openlayers.org/en/v4.2.0/css/ol.css" type="text/css">
 
-<div id='info'></div>
+<a id="zoom" hidden>{{dist.zoom}}</a>
+<a id="lat" hidden>{{dist.lat}}</a>
+<a id="lng" hidden>{{dist.lng}}</a>
+<div id="info" hidden></div>
+<div id="name" hidden></div>
+<div id="cases" hidden></div>
 <body>
-    <div>
-        <div id="mySidenav" class="sidenav">
-            <a href="#">{{district_name}}</a>
-        </div>
 
-        <div id="map" class="mapol">
+        <div id="mySidenav" class="sidenav">
+            <a href="/map/product/">{{district_name}}</a>
+            <a id="hospital_name"></a>
+            <a id="count"></a>
+            <div id="overview">
+            </div>
         </div>
-    </div>
+        <div class="pt-triggers">
+            <button id="iterateEffects" class="pt-touch-button">Map</button>
+            <button id="iterateEffects2" class="pt-touch-button">Graph</button>
+        </div><!-- /triggers -->
+    	 <div id="pt-main" class="pt-perspective">
+            <div class="pt-page pt-page-1">
+                <div id="map" class="mapol"></div>
+            </div>
+            <div class="pt-page pt-page-2">
+                <div class="graphs">
+                    <div id="chart-div" class="main-chart-container">
+                        
+                    </div>
+                </div>
+            </div>
+    	 </div>
+
+
+
+
+
+
+  
+    <!--PageTransitions JS-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="{% static 'pagetransitions/js/jquery.dlmenu.js' %}"></script>
+    <script type="text/javascript" src="{% static 'pagetransitions/js/pagetransitions.js' %}"></script>
+ 
+    <!--PageTransitions CSS-->
+
+
+    <link rel="stylesheet" href="{% static 'pagetransitions/css/animations.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'pagetransitions/css/component.css' %}" type="text/css">
+
+
 </body>
 
 <!--Stylesheets by Predictive26-->
@@ -27,7 +69,7 @@
 <link rel="stylesheet" href="{% static 'css/sidebar.css' %}">
 
 <script src="{% static 'js/ol-district-map.js' %}"></script>
-
+<script src="{% static 'js/region-charts.js' %}"></script>
 <!--Javascript Libraries-->
 
 

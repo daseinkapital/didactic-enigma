@@ -1,0 +1,14 @@
+<ul>
+    <a><b>Disease Breakdown:</b></a>
+    <br>
+    {% for disease in diseases %}
+        <li><a>Disease: {{disease.name}}</a></li>
+        <li><a>Case Count: {{disease.count}}</a></li>
+        <br>
+    {% endfor %}
+    <br>
+    <a><b>Points of Contact:</b></a>
+    {% for phone in numbers %}
+        <li><a>{{phone}}</a></li>
+    {% endfor %}
+</ul>

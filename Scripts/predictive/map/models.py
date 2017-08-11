@@ -15,8 +15,7 @@ class Districts(models.Model):
     
     lat = models.FloatField()
     
-    #can we change this?
-    zoom = models.IntegerField()
+    zoom = models.FloatField()
     
 
 class Reports(models.Model):
@@ -114,4 +113,32 @@ class AltDiseases(models.Model):
             'Diseases',
             on_delete=models.CASCADE
         )
-    
+
+#class TimeSeries(models.Model):
+#    population = models.IntegerField(
+#            null=False
+#        )
+#    
+#    disease_count = models.IntegerField(
+#            null=False
+#        )
+#    
+#    disease = models.ForeignKey(
+#            'Disease',
+#            on_delete=models.CASCADE
+#        )
+#    
+#    date = models.DateField()
+#
+#class DailyTimeSeries(TimeSeries):
+#    pass
+#
+#
+##this actually represents a 5 day week
+#class WeeklyTimeSeries(TimeSeries):
+#    pass
+#
+#
+##for use on entire country
+#class MonthlyTimeSeries(TimeSeries):
+#    pass
