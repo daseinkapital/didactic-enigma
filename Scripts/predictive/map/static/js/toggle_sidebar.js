@@ -1,5 +1,6 @@
  		var FIRST_TOGGLE = true;
     var report_status = document.getElementById('active');
+
         
       var ACTIVE = true;
 				$(document).ready(function(){
@@ -60,8 +61,7 @@
 
 $("#link-alerts").click(function(){
   $.ajax({
-                              url : "/map/marker/",
-                              data : {"name" : "Bo", "date" : "2017-07-27"},
+                                url : "/map/marker/",
                               dataType : 'html',
                               success : function (data) {
                                     if(!ACTIVE){
