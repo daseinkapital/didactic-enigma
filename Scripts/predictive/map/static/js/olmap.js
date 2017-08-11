@@ -197,11 +197,13 @@
                                   side1Width =$('#slide-1').css("transform");
                                  
                                   if (side1Width === "matrix(1, 0, 0, 1, 0, 0)"){
+
                                   
                                   $("#slide-1").empty().append(data);
                                   }
                                   else
                                   {
+                            
                                    $("#slide-2").empty().append(data);
                                           }
                               }
@@ -239,7 +241,8 @@
     
               
    $('#type').change(function(){
-            map.removeInteraction(draw);
+        alert("type has changed");
+        map.removeInteraction(draw);
         addInteraction();
         circlesource.clear();
        

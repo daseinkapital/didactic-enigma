@@ -40,14 +40,7 @@ def downloads(request):
 
 
 def marker(request):
-    districtName, date_string = request.GET.get('name'),request.GET.get('date')
-    district = Districts.objects.filter(name=districtName)
-    context = {'district':districtName}
-    Date = dt.strptime(date_string, '%Y-%m-%d')
-    headReports = HeadReports.objects.filter(date=Date).filter(phone_number__hospital__district=district).aggregate(Sum('count'))
-    context.update({'reports': headReports['count__sum']})
-    html = render(request, 'map/sidebar_data.html', context)
-    return HttpResponse(html)
+    return render(request, 'map/sidebar_data.html')
 
 ##sneding json data back to ol-district-map.js to populate the points for reports
 def addcases(request):

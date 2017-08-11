@@ -1,5 +1,7 @@
 {% load static %}
 {% load render_bundle from webpack_loader %}
+{% load static %}
+{% load render_bundle from webpack_loader %}
 <link rel="stylesheet" href="{% static 'css/padding-sidebar.css' %}">
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -7,11 +9,6 @@
 
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <body>
 
@@ -30,13 +27,6 @@
   <strong>Info!</strong> Indicates a neutral informative change or action.
 </div>
 
-=======
-<div class="alert alert-info alert-dismissable">
-  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-  <strong>Info!</strong> Indicates a neutral informative change or action.
-</div>
-
->>>>>>> 988e47c0d00eef6f897e0b718b446b4a55eff86b
 <div class="alert alert-warning alert-dismissable">
   <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
   <strong>Warning!</strong> Indicates a warning that might need attention.

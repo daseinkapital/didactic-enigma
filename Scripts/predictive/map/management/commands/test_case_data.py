@@ -237,7 +237,7 @@ def create_disease_outbreak_epicenter_timeframe(add_options):
     random_num_list = add_options['random_list']
     
     for day in range(add_options['num_days']):
-        
+        print(Phones.objects.all().count())
         date = increment_date(add_options, day)
         
         if not outbreak:

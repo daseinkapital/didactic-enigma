@@ -22,7 +22,7 @@
      
    
 
-
+{% include 'map/include_js_header.html' %}
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
@@ -118,13 +118,12 @@
                     </div>
                 </div>
             </div>
-            <h1>Hello</h1>
+         
     	 </div>
 
   
     <!--PageTransitions JS-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    
+  
     <script type="text/javascript" src="{% static 'pagetransitions/js/jquery.dlmenu.js' %}"></script>
     <script type="text/javascript" src="{% static 'pagetransitions/js/pagetransitions.js' %}"></script>
  
@@ -135,6 +134,8 @@
     <link rel="stylesheet" href="{% static 'pagetransitions/css/component.css' %}" type="text/css">
     
 </body>
+  {% include 'map/include_js_footer.html' %}
+    
 
 
 
@@ -149,7 +150,6 @@
 
  
     <!--PageTransitions JS-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
     <!-- Bootstrap core JavaScript -->
     <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
@@ -173,9 +173,7 @@
     <!--<script src="{% static 'js/loading.js' %}"></script>-->
 
 
-    <script type="text/javascript" src="{% static 'js/materialize.js' %}"></script>
-    <script src="{% static 'js/toggle_sidebar.js' %}"></script>
-
     <script src="{% static 'js/new-age.min.js' %}"></script>
+    
     <script type="text/javascript" src="{% static 'js/materialize.js' %}"></script>
     <script src="{% static 'js/toggle_sidebar.js' %}"></script>
