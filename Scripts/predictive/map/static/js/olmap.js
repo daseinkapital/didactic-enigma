@@ -69,6 +69,7 @@
               'World_Imagery/MapServer/tile/{z}/{y}/{x}'
         })
       });
+      var feature = vectorSource.getFeatures();
       var districtLayer = new ol.layer.Image({
             source: new ol.source.ImageVector({
               source: new ol.source.Vector({
@@ -76,16 +77,28 @@
                 format: new ol.format.GeoJSON()
               }),
 
-              style: new ol.style.Style({
-                fill: new ol.style.Fill({
-                  color: 'rgba(255, 255, 255, 0.6)'
-                }),
-                stroke: new ol.style.Stroke({
-                  color: '#319FD3',
-                  width: 1
-                })
-            })
-        }) 
+              style: function(feature, res){
+                      return feature.get('ADM2_NAME') == "Bo" ? 
+                              new ol.style.Style({
+                                  stroke: new ol.style.Stroke({
+                                  color: '#319FD3',
+                                  width: 1
+                                }),
+                                  fill: new ol.style.Fill({
+                                    color: 'rgba(255,0,0,1)'
+                                })
+                              }) :
+                              new ol.style.Style({
+                                  stroke: new ol.style.Stroke({
+                                  color: '#319FD3',
+                                  width: 1
+                                }),
+                                  fill: new ol.style.Fill({
+                                    color: 'rgba(255,255,255,1)'
+                                })
+                              });
+          
+        }}) 
          });
                         
        var sierraView = new ol.View({
