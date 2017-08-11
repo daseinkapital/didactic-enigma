@@ -1,6 +1,8 @@
  		var FIRST_TOGGLE = true;
-    var report_status = document.getElementById('active');
+
+      var report_status = document.getElementById('active');
         
+
       var ACTIVE = true;
 				$(document).ready(function(){
                         
@@ -36,24 +38,33 @@
                           }
 						}
 					});	
+
+
+
              	$(".exit-btn").click(function(){
-                    if(ACTIVE){
-                          $('#sideNavButton2').sideNav('show');
-                          $('#sideNavButton2').sideNav('hide');
-                        } else {
-                          $('#sideNavButton1').sideNav('show');
-                          $('#sideNavButton1').sideNav('hide');
-                                }
-                          FIRST_TOGGLE = true;
-                          ACTIVE = true;
-                          report_status.innerHTML= false;
-						});
-					});	
+                    side1Width =$('#slide-1').css("transform")
+                    side2Width =$('#slide-2').css("transform")
+                    if(side1Width == "matrix(1, 0, 0, 1, 0, 0)" || side2Width == "matrix(1, 0, 0, 1, 0, 0)"){
+
+                        if(ACTIVE){
+                              $('#sideNavButton2').sideNav('show');
+                              $('#sideNavButton2').sideNav('hide');
+                            } else {
+                              $('#sideNavButton1').sideNav('show');
+                              $('#sideNavButton1').sideNav('hide');
+                                    }
+                              FIRST_TOGGLE = true;
+                              ACTIVE = true;
+                              report_status.innerHTML= false;
+    						}
+    					});
+                            });	
+
+
 
 $("#link-alerts").click(function(){
   $.ajax({
-                              url : "/map/marker/",
-                              data : {"name" : "Bo", "date" : "2017-07-27"},
+                                url : "/map/marker/",
                               dataType : 'html',
                               success : function (data) {
                                     if(!ACTIVE){
@@ -64,7 +75,10 @@ $("#link-alerts").click(function(){
                                      $("#slide-2").empty().append(data);    
                                         
                                         }
+
                                  report_status.innerHTML= false;
+
+
                                     }
                         });        
 
@@ -84,7 +98,9 @@ $("#link-download").click(function(){
                                      $("#slide-2").empty().append(data);    
                                         
                                         }
+
                                  report_status.innerHTML= false;
+
                                     }
                         });        
 
@@ -104,12 +120,17 @@ $("#link-reports").click(function(){
                                      $("#slide-2").empty().append(data);    
                                         
                                         }
+
                                 report_status.innerHTML= true;
+
                                     }
                         });        
 
         
+
       });  
+
+     
 
 $("#createAlert").click(function(){
      
@@ -126,7 +147,9 @@ $("#sendAlert").click(function(){
         
         
       });
- 
+
+
+         
 
 
 

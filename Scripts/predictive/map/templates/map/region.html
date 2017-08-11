@@ -99,7 +99,6 @@
 {% include 'map/include_js_footer.html' %}
 
 <!--Stylesheets by Predictive26-->
-<script type="text/javascript" src="{% static 'js/ol-district-map.js' %}"></script>
 <link rel="stylesheet" href="{% static 'css/olmap.css' %}">
 <link rel="stylesheet" href="{% static 'css/sidebar.css' %}">
 
@@ -107,6 +106,10 @@
 <script src="{% static 'js/region-charts.js' %}"></script>
 <!--Javascript Libraries-->
   <script src="{% static 'js/toggle_sidebar_region.js' %}"></script>
+  
+  <script>
+  $('.drag-target').remove();
+  </script>
 
 
 
