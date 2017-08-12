@@ -1,0 +1,105 @@
+h1{
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.1;
+    color: rgba(0, 0, 0, 0.55);
+    padding-left:6%;
+    padding-bottom:2%;
+    }
+HS{
+   font-family: inherit;
+     font: bold 12px Arial,Helvetica,Sans-serif;
+    line-height: .7;
+    color: rgba(0, 0, 0, 0.55);
+    padding-bottom: 2%;
+    padding-top:2%;
+    padding-left:5%;
+    
+   }
+.padsidebar2 {
+    position: relative;
+    padding-top: 100%;
+    padding-left: 15%;
+    padding-bottom: 25%;
+}
+a {
+    color: rgba(0, 0, 0, 0.55);
+    text-decoration: none;
+    text-align: center;
+    }
+.spacing{
+    padding-bottom: 10%;
+    padding-top:10%;
+        }
+
+.paddedtitle {
+    padding-top: 30%;
+    padding-bottom: 20%;
+    padding-left: 25%;
+    }
+
+.form-control{
+   position: relative;
+    z-index: 2;
+    float: left;
+    width: 100%;
+    line-height: 2;
+    }
+
+/* bar attempt */
+
+input[type=text] {
+    width: 130px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    background-image: url('searchicon.png');
+    background-position: 10px 10px; 
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+input[type=text]:focus {
+    width: 100%;
+}
+/* current bar */
+#search {
+
+}
+
+
+#search input[type="text"] {
+    background: url(search-white.png) no-repeat 10px 6px #444;
+    border: 0 none;
+    font: bold 12px Arial,Helvetica,Sans-serif;
+    color: #d7d7d7;
+    width:150px;
+    padding: 6px 15px 6px 35px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    text-shadow: 0 2px 2px rgba(0, 0, 0, 0.3); 
+    -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 3px rgba(0, 0, 0, 0.2) inset;
+    -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 3px rgba(0, 0, 0, 0.2) inset;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 3px rgba(0, 0, 0, 0.2) inset;
+    -webkit-transition: all 0.7s ease 0s;
+    -moz-transition: all 0.7s ease 0s;
+    -o-transition: all 0.7s ease 0s;
+    transition: all 0.7s ease 0s;
+    }
+
+#search input[type="text"]:focus {
+    background: url(search-dark.png) no-repeat 10px 6px #fcfcfc;
+    color: #6a6f75;
+    width: 200px;
+    -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(0, 0, 0, 0.9) inset;
+    -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(0, 0, 0, 0.9) inset;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(0, 0, 0, 0.9) inset;
+    text-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+    }
+    
+    
+    
