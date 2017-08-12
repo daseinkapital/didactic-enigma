@@ -1,17 +1,22 @@
 {% load static %}
 {% load render_bundle from webpack_loader %}
 
-<div id="constant">
 
+
+
+<div id="constant">
        
         <img class="globe" src="{% static 'img/platformlogo.png' %}">
         <div class="paddedtitle">
-        <h1><a href="/map/product/">Sierra Leone</a></h1>
+        <h1>
+        <a href="/map/product/">Sierra Leone</a></h1>
         <p>{{district_name}}</p>
-        <div class="pt-triggers">
+        <div class="pt-triggers; align:center">
                <button id="iterateEffects" type="button" class="btn btn-default pt-touch-button">
             <span class="glyphicon glyphicon-map-marker"></span> MapView
               </button>
+            
+
               <button id="iterateEffects2" type="button" class="btn btn-default pt-touch-button">
             <span  class="glyphicon glyphicon-tasks"></span> GraphView
             </button>
@@ -26,34 +31,68 @@
         
          
 		</div>	     
-        
-    
+
+<!--- search bar seachtion -->
+
+ <div id="mySidenav" class="sidenav">
+  
+  <div class="padsidebar2">
+ 
+  <div><HS> Search for Dieases <HS> </div>
+  <br>
+<form method="get" action="/region/Bo" id="search">
+  <input name="" type="text" size="40" placeholder="Search..." />
+</form>
+
+<!--                         --> 
+<!--
  <div id="mySidenav" class="sidenav">
   <div class="padsidebar">
-      
+  
       <div class="input-group">
-      <span class="input-group-btn">
+       
+    
+      
+        <span class="input-group-btn">
+    
         <button class="btn btn-default" type="button">Go!</button>
-      </span>
-      <input type="text" class="form-control" placeholder="Search for desease...">
-    </div><!-- /input-group -->
+      </span> 
+      <input type="text" class="search" placeholder="Search for desease...">
+    
+    </div> -->
+    
+    <!-- /input-group -->
+<div class="row; text-align:center">
     <button type="button"  id="createAlert" class="btn btn-danger">Create Alert</button>
     <button type="button"  id="sendAlert" class="btn btn-danger">Send Alert</button>
-   
-</form>
-        <div id="react-app"> 
+</div>
+
+<!-- end of alert buttons --> 
+
+<!-- start of ??? -->
+
+        <div id="react-app" hidden> 
         {% render_bundle 'main' %}  
         </div>  
-        <div id="testing"> 
-        {% render_bundle 'main' %}  
-        </div>  
-        <div id="Calendar"> 
+
+ <div class="spacing">
+        <HS> Select date <HS> 
+    
+        <div id="Calendar">  
         {% render_bundle 'main' %}  
         </div>
-  
-      </div>
-   
+</div>
 
+<div class="spacing">
+      <HS> Search  <HS> 
+         <div id="testing"> 
+        {% render_bundle 'main' %}  
+        </div>  
+</div>
+     
+
+<!-- sliding side bar -->
+</div>
 
 </div>
 

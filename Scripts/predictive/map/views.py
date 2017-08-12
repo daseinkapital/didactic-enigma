@@ -32,10 +32,13 @@ def reports(request):
     html = render(request, 'map/reports.html', context)
     return HttpResponse(html)
     
+
 def downloads(request):
     return render(request, 'map/downloads.html')
 
-##populates sidebar upon clicking a district highlighted 
+
+
+
 def marker(request):
     return render(request, 'map/sidebar_data.html')
 

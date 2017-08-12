@@ -78,24 +78,29 @@
               }),
 
               style: function(feature, res){
+
                       return  feature.get('ADM2_NAME') == "Kambia" || feature.get('ADM2_NAME')== "Koinadugu" || feature.get('ADM2_NAME')== "Western Area Rural" || feature.get('ADM2_NAME')== "Kono" || feature.get('ADM2_NAME')== "Bonthe" || feature.get('ADM2_NAME')== "Kalihun"? 
+
                               new ol.style.Style({
                                   stroke: new ol.style.Stroke({
                                   color: '#319FD3',
                                   width: 1
                                 }),
                                   fill: new ol.style.Fill({
+
                                     color: 'rgba(255,255,0, 0.7)'
                                 })
                               }) :
                       
                               feature.get('ADM2_NAME') == "Pujehun" || feature.get('ADM2_NAME')== "Tonkolli" || feature.get('ADM2_NAME')== "Kenema" || feature.get('ADM2_NAME')== "Bo" ? 
+
                               new ol.style.Style({
                                   stroke: new ol.style.Stroke({
                                   color: '#319FD3',
                                   width: 1
                                 }),
                                   fill: new ol.style.Fill({
+
                                     color: 'rgba(255,0,0,0.7)'
                                 })
                               }) :

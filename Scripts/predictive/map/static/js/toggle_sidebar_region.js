@@ -64,7 +64,9 @@
 
 $("#link-alerts").click(function(){
   $.ajax({
+
                              url : "/map/marker/",
+
                               dataType : 'html',
                               success : function (data) {
                                     if(!ACTIVE){
@@ -78,9 +80,11 @@ $("#link-alerts").click(function(){
 
                                  report_status.innerHTML= false;
 
+
                                     }
                         });        
      
+
 
         
       }); 

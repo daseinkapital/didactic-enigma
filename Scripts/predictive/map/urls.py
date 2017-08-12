@@ -22,8 +22,10 @@ urlpatterns = [
         url(r'blog', views.blog, name='blog'),
         url(r'service', views.service, name='service'),
         url(r'hosp_overview', views.hosp_overview, name='hosp_overview'),
+
         url(r'dist_charts', views.dist_charts, name='dist_charts'),
         url(r'downloads', views.downloads, name='downloads'),
         url(r'reports', views.reports, name='reports'),
         url(r'country_charts', views.country_charts, name='country_charts')
+
     ]
