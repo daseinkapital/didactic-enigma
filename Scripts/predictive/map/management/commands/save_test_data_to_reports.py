@@ -13,7 +13,7 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         HeadReports.objects.all().delete()
         DeathReports.objects.all().delete()
-        os.chdir(os.getcwd() + '\\testdata')
+        os.chdir(os.getcwd() + '/testdata')
         for root, dirs, files in os.walk(os.getcwd()):
             for file in files:
                 with open(file, 'r') as data:
