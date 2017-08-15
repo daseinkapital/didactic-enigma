@@ -1,0 +1,16 @@
+<ul style="color: #fff; position: absolute; bottom: 15%; top: 26%; overflow-y: scroll; margin: 0; width: 100%;">
+    <a>Area: {{hosp_code}}</a><br>
+    <a>Total Case Counts: {{total_counts}}</a><br>
+    <a><b>Disease Breakdown:</b></a>
+    <br>
+    {% for disease in diseases %}
+        <li><a>Disease: {{disease.name}}</a></li>
+        <li><a>Case Count: {{disease.count}}</a></li>
+        <br>
+    {% endfor %}
+    <br>
+    <a><b>Points of Contact:</b></a>
+    {% for phone in numbers %}
+        <li><a>{{phone}}</a></li>
+    {% endfor %}
+</ul>

@@ -32,6 +32,7 @@
     <link rel="stylesheet" href="{% static 'paneltransitions/demo.css' %}">
     <link rel="stylesheet" href="{% static 'paneltransitions/style3.css' %}">
     <link rel="stylesheet" href="https://openlayers.org/en/v4.2.0/css/ol.css" type="text/css">
+    <link rel="stylesheet" href="{% static 'demo/css/preloader.css' %}">
 
 
      <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" rel="stylesheet">
@@ -50,26 +51,42 @@
 
 
 <body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript">
+function graph(){
+        $.ajax({
+            url : "/demo/graph/",
+            success : function(data) {
+                    $("#chart-div").empty();
+                    $("#chart-div").append(data);
+                }
+            });
+        }
 
+function back_to_map(){
+            $("#chart-div").empty();
+            $("#chart-div").append('<div class="wrapper"><div class="line line1"><span class="circle circle-top"></span><div class="dotted"><span class="dot dot-top"></span><span class="dot dot-middle-top"></span><span class="dot dot-middle-bottom"></span><span class="dot dot-bottom"></span></div><span class="circle circle-bottom"></span></div><div class="line line2"><span class="circle circle-top"></span><div class="dotted"><span class="dot dot-top"></span><span class="dot dot-middle-top"></span><span class="dot dot-middle-bottom"></span><span class="dot dot-bottom"></span></div><span class="circle circle-bottom"></span></div><div class="line line3"><span class="circle circle-top"></span><div class="dotted"><span class="dot dot-top"></span><span class="dot dot-middle-top"></span><span class="dot dot-middle-bottom"></span><span class="dot dot-bottom"></span></div><span class="circle circle-bottom"></span></div><div class="line line4"><span class="circle circle-top"></span><div class="dotted"><span class="dot dot-top"></span><span class="dot dot-middle-top"></span><span class="dot dot-middle-bottom"></span><span class="dot dot-bottom"></span></div><span class="circle circle-bottom"></span></div><div class="line line5"><span class="circle circle-top"></span><div class="dotted"><span class="dot dot-top"></span><span class="dot dot-middle-top"></span><span class="dot dot-middle-bottom"></span><span class="dot dot-bottom"></span></div><span class="circle circle-bottom"></span></div><div class="line line6"><span class="circle circle-top"></span><div class="dotted"><span class="dot dot-top"></span><span class="dot dot-middle-top"></span><span class="dot dot-middle-bottom"></span><span class="dot dot-bottom"></span></div><span class="circle circle-bottom"></span></div><div class="line line7"><span class="circle circle-top"></span><div class="dotted"><span class="dot dot-top"></span><span class="dot dot-middle-top"></span><span class="dot dot-middle-bottom"></span><span class="dot dot-bottom"></span></div><span class="circle circle-bottom"></span></div><div class="line line8"><span class="circle circle-top"></span><div class="dotted"><span class="dot dot-top"></span><span class="dot dot-middle-top"></span><span class="dot dot-middle-bottom"></span><span class="dot dot-bottom"></span></div><span class="circle circle-bottom"></span></div><div class="line line9"><span class="circle circle-top"></span><div class="dotted"><span class="dot dot-top"></span><span class="dot dot-middle-top"></span><span class="dot dot-middle-bottom"></span><span class="dot dot-bottom"></span></div><span class="circle circle-bottom"></span></div><div class="line line10"><span class="circle circle-top"></span><div class="dotted"><span class="dot dot-top"></span><span class="dot dot-middle-top"></span><span class="dot dot-middle-bottom"></span><span class="dot dot-bottom"></span></div><span class="circle circle-bottom"></span></div><div class="line line11"><span class="circle circle-top"></span><div class="dotted"><span class="dot dot-top"></span><span class="dot dot-middle-top"></span><span class="dot dot-middle-bottom"></span><span class="dot dot-bottom"></span></div><span class="circle circle-bottom"></span></div></div>');
+        }  
+</script>
 
 
 <div id="sidebar">
-    <div id="mySidenav" class="sidenav">
-        <strong><p style="color: #fff;">(571)200-4949</p></strong>
-            <p id="area_name" style="color: #fff;"></p>
-            <p id="count" style="color: #fff;"></p>    
-    
+    <div id="mySidenav" class="sidenav" style="padding:0;">
+        <strong><h1 style="color: #355c7d;">Text: (571)-200-4949</h1></strong>
+        <strong><h1 style="color: #355c7d;">Disease, # Cases</h1></strong>      
         <strong><p style="color: #fff;">Report Info:</p></strong>
-            <p id="area_name" style="color: #fff;"></p>
-            <p id="count" style="color: #fff;"></p>
+        <div id="reports">
+        </div>
+            <p id="area_name" style="color: #fff;" hidden></p>
+            <p id="count" style="color: #fff;" hidden></p>
             
        <div class="pt-triggers" style="position: fixed; bottom: 10%; width: 100%;">
-               <button id="iterateEffects" type="button" class="btn btn-default pt-touch-button">
+               <button id="iterateEffects" type="button" class="btn btn-default pt-touch-button" onclick="back_to_map()">
             <span class="glyphicon glyphicon-map-marker"></span> MapView
               </button>
             
 
-              <button id="iterateEffects2" type="button" class="btn btn-default pt-touch-button">
+              <button id="iterateEffects2" type="button" class="btn btn-default pt-touch-button" onclick="graph()">
             <span  class="glyphicon glyphicon-tasks"></span> GraphView
             </button>
            
@@ -86,15 +103,17 @@
         <div class="pt-page pt-page-2">
             <div class="graphs">
                 <div class="main-chart-container">
-                    <div id="chart-1" class="chart"><!--{ output_2dcol|safe }--></div>
+                    <div id="chart-div">
+                        <div id="chart-1" class="chart">
+                         {% include 'demo/preloader.html' %}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
 	 </div>
 </div>
 
- 
-  
 
   
     <!--PageTransitions JS-->

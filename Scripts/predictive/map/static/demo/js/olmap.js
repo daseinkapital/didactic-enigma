@@ -190,14 +190,14 @@
                 if (info.innerHTML !== "undefined"){
                     areaName.innerHTML = "Location: " + document.getElementById('name').innerHTML;
                     count.innerHTML = "Total Case Count: " + document.getElementById('cases').innerHTML;
-//                    $.ajax({
-//                              url : "/map/hosp_overview/",
-//                              data : {"code" : document.getElementById('name').innerHTML},
-//                              dataType : 'html',
-//                              success : function (data) {
-//                                  $("#overview").empty().append(data);
-//                              }
-//                        });
+                    $.ajax({
+                              url : "/demo/reports/",
+                              data : {'area' : document.getElementById('name').innerHTML},
+                              dataType : 'html',
+                              success : function (data) {
+                                  $("#reports").empty().append(data);
+                              }
+                        });
                     }
                 
         }
