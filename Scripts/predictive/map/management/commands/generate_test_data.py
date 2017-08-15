@@ -84,8 +84,7 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
             #save test data to a testdata folder
             if not options['no-dir-change']:
-                os.chdir(os.getcwd() + '\\testdata')
-            
+                os.chdir(os.getcwd() + '/testdata')            
             #if dates are specified, override any day/single date option
             if options['dates']:
                 options['days'] = None
