@@ -69,6 +69,9 @@
               'World_Imagery/MapServer/tile/{z}/{y}/{x}'
         })
       });
+
+      var feature = vectorSource.getFeatures();
+                        
       var districtLayer = new ol.layer.Image({
             source: new ol.source.ImageVector({
               source: new ol.source.Vector({
@@ -76,17 +79,46 @@
                 format: new ol.format.GeoJSON()
               }),
 
-              style: new ol.style.Style({
-                fill: new ol.style.Fill({
-                  color: 'rgba(255, 255, 255, 0.6)'
-                }),
-                stroke: new ol.style.Stroke({
-                  color: '#319FD3',
-                  width: 1
-                })
-            })
-        }) 
+              style: function(feature, res){
+    
+                      return  feature.get('ADM2_NAME') == "Kambia" || feature.get('ADM2_NAME')== "Koinadugu" || feature.get('ADM2_NAME')== "Western Area Rural" || feature.get('ADM2_NAME')== "Kono" || feature.get('ADM2_NAME')== "Bonthe" || feature.get('ADM2_NAME')== "Kalihun"? 
+
+                              new ol.style.Style({
+                                  stroke: new ol.style.Stroke({
+                                  color: '#319FD3',
+                                  width: 1
+                                }),
+                                  fill: new ol.style.Fill({
+
+                                    color: 'rgba(255,255,0, 0.7)'
+                                })
+                              }) :
+                      
+                              feature.get('ADM2_NAME') == "Pujehun" || feature.get('ADM2_NAME')== "Tonkolli" || feature.get('ADM2_NAME')== "Kenema" || feature.get('ADM2_NAME')== "Bo" ? 
+
+                              new ol.style.Style({
+                                  stroke: new ol.style.Stroke({
+                                  color: '#319FD3',
+                                  width: 1
+                                }),
+                                  fill: new ol.style.Fill({
+
+                                    color: 'rgba(255,0,0,0.7)'
+                                })
+                              }) :
+                              new ol.style.Style({
+                                  stroke: new ol.style.Stroke({
+                                  color: '#319FD3',
+                                  width: 1
+                                }),
+                                  fill: new ol.style.Fill({
+                                    color: 'rgba(255, 153, 0, 0.7)'
+                                })
+                              });
+          
+        }}) 
          });
+
                         
        var sierraView = new ol.View({
           center:  [-1354603.7697028217, 950826.8771984349],
@@ -102,10 +134,15 @@
         center: [-5117927.337785828, 3053247.0740952375],
         zoom: 4
       });
-                        
+    
+    var circlesource = new ol.source.Vector({wrapX: false});
+
+     var Circlevector = new ol.layer.Vector({
+        source: circlesource
+      });             
 
       var map = new ol.Map({
-        layers: [rasterLayer, vectorLayer, districtLayer],
+        layers: [rasterLayer, vectorLayer, districtLayer, Circlevector],
         
         target: document.getElementById('mapol'),
         view: viewOut
@@ -224,17 +261,32 @@ flyTo(sierraCord, function() {})}, 4000
       map.on('click', function(evt) {
         displayFeatureInfo(evt.pixel);
         if(document.getElementById("info").innerHTML != "none") {
+                document.getElementById("name").innerHTML = document.getElementById("info").innerHTML;
+                if(document.getElementById("active").innerHTML != false){
         $.ajax({
-                              url : "/map/marker/",
-                              data : {"name" : document.getElementById("info").innerHTML, "date" : "2017-07-27"},
-                              dataType : 'html',
+                              url : "/map/reports/",
+                    
+                              data : {"name" : document.getElementById("name").innerHTML, "date" : "2017-07-27"},
+                              dataType: "html",
                               success : function (data) {
-                                  $("#mySidenav").empty().append(data);
-                              }
-                        });        
+                                  side1Width =$('#slide-1').css("transform");
+                                 
+                                  if (side1Width === "matrix(1, 0, 0, 1, 0, 0)"){
 
-        }
-      });   
+                                  
+                                  $("#slide-1").empty().append(data);
+                                  }
+                                  else
+                                  {
+                            
+                                   $("#slide-2").empty().append(data);
+                                          }
+                              }
+                        }); 
+          
+        };
+        };
+      });
           
      map.on('dblclick', function(evt) {
         displayLinkInfo(evt.pixel);
@@ -244,6 +296,31 @@ flyTo(sierraCord, function() {})}, 4000
         }
       });  
           
-     
+    var typeSelect = document.getElementById('type');
+
+     var draw; // global so we can remove it later
+      function addInteraction() {
+        var value = typeSelect.innerHTML;
+        if (value == 'Circle') {
+          draw = new ol.interaction.Draw({
+            source: circlesource,
+            type: "Circle"
+          });
+          map.addInteraction(draw);
+        
+          
+        }
+      }
+    
+              
+   $('#type').change(function(){
+        map.removeInteraction(draw);
+        addInteraction();
+        circlesource.clear();
+       
+      
+});
+
+      addInteraction();     
           
        

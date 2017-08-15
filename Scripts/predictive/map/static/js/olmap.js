@@ -70,6 +70,7 @@
         })
       });
       var feature = vectorSource.getFeatures();
+      
       var districtLayer = new ol.layer.Image({
             source: new ol.source.ImageVector({
               source: new ol.source.Vector({
