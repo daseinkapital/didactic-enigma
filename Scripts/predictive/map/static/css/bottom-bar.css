@@ -18,7 +18,7 @@ HS{
    }
 .padsidebar2 {
     position: relative;
-    padding-top: 100%;
+    top: 43%;
     padding-left: 15%;
     padding-bottom: 25%;
 }

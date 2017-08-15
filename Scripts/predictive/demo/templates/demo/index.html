@@ -62,17 +62,23 @@
         <strong><p style="color: #fff;">Report Info:</p></strong>
             <p id="area_name" style="color: #fff;"></p>
             <p id="count" style="color: #fff;"></p>
+            
+       <div class="pt-triggers" style="position: fixed; bottom: 10%; width: 100%;">
+               <button id="iterateEffects" type="button" class="btn btn-default pt-touch-button">
+            <span class="glyphicon glyphicon-map-marker"></span> MapView
+              </button>
+            
+
+              <button id="iterateEffects2" type="button" class="btn btn-default pt-touch-button">
+            <span  class="glyphicon glyphicon-tasks"></span> GraphView
+            </button>
+           
+        </div>
     </div>
-    <div id="mySidenav"></div>
     <div id="info" hidden></div>
     <div id="name" hidden></div>
     <div id="cases" hidden></div>
-<!--
-    <div class="pt-triggers">
-        <button id="iterateEffects" class="pt-touch-button">Map</button>
-        <button id="iterateEffects2" class="pt-touch-button">Graph</button>
-    </div><!-- /triggers -->
--->
+
 	 <div id="pt-main" class="pt-perspective">
         <div class="pt-page pt-page-1">
             <div id="mapol" class="mapol"></div>
@@ -80,8 +86,7 @@
         <div class="pt-page pt-page-2">
             <div class="graphs">
                 <div class="main-chart-container">
-                    <div id="chart-1" class="chart"><!--{ output_zoom_line|safe }--></div>
-                    <div id="chart-2" class="chart"><!--{ output_2dcol|safe }--></div>
+                    <div id="chart-1" class="chart"><!--{ output_2dcol|safe }--></div>
                 </div>
             </div>
         </div>

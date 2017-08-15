@@ -1,9 +1,11 @@
 .padsidebar {
-
-    padding-top: 340px;
+    position: relative;
+    height: 59%;
+    top: 41%;
     padding-right: 30px;
-    padding-bottom: 50px;
+    bottom: 50px;
     padding-left: 90px;
+    overflow: scroll;
 }
 
 .paddedtitle {
