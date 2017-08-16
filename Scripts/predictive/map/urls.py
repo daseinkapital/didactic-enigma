@@ -4,7 +4,7 @@ from django.conf.urls import url
 from . import views
 
 urlpatterns = [
-        url(r'index', views.index, name='index'),
+        url(r'^$', views.index, name='index'),
         url(r'marker', views.marker, name='marker'),
         url(r'product', views.product, name='product'),
         url(r'init_main', views.init_main, name='init_main'),
@@ -22,9 +22,8 @@ urlpatterns = [
         url(r'blog', views.blog, name='blog'),
         url(r'service', views.service, name='service'),
         url(r'hosp_overview', views.hosp_overview, name='hosp_overview'),
-
         url(r'dist_charts', views.dist_charts, name='dist_charts'),
-        url(r'downloads', views.downloads, name='downloads'),
+        url(r'download', views.download_csv, name='download_csv'),
         url(r'reports', views.reports, name='reports'),
         url(r'country_charts', views.country_charts, name='country_charts')
 

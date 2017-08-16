@@ -5,6 +5,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.db.models import Avg, Sum
 from .fusioncharts import FusionCharts
 import json
+import csv
 
 from datetime import datetime as dt
 from .models import Districts, HeadReports, DeathReports, Diseases, Phones
@@ -444,4 +445,43 @@ def country_charts(request):
     
     html = render(request, 'map/graph_country_view.html', context)
     return HttpResponse(html)
+
+def download_csv(request):
+#    hosp_code = request.GET.get('code')
+#    date_start = request.GET.get('dateStart')
+#    date_end = request.GET.get('dateEnd')
+#    disease_types = request.GET.get('diseases')
+    district_name = request.GET.get('name')
+        
+#    if hosp_code:
+#        reports = HeadReports.objects.filter(phone_number__hospital__name=hosp_code)
+    if district_name:
+        reports = HeadReports.objects.filter(phone_number__hospital__district__name=district_name)
+    else:
+        reports = HeadReports.objects.all()
+#    if date_start and date_end:
+#        reports = reports.filter(date__lte=date_end, date__gte=date_start)
+#        if disease_types:
+#            if len(disease_types) > 1:
+#                for disease in disease_types:
+#                    reports = reports.filter(disease__name=disease)
+#            elif len(disease_types) == 1:
+#                reports = reports.filter(disease__name=disease_types[0])
+#    else:
+#        if len(disease_types) >1:
+#            for disease in disease_types:
+#                reports = reports.filter(disease__name=disease)
+#        elif len(disease_types) == 1:
+#            reports = reports.filter(disease__name=disease_types[0])
+
+    reports.order_by('date')
     
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="reports_data.csv"'
+    
+    writer = csv.writer(response)
+    writer.writerow(['Report Number', 'Report Date', 'Hospital Name', 'Case Count', 'Disease', 'Reporting Phone Number', 'Longitude', 'Latitude'])
+    for report in reports:
+        writer.writerow([report.report_num, report.date, report.phone_number.hospital.name, report.count, report.disease.name, report.phone_number.number, report.phone_number.hospital.lng, report.phone_number.hospital.lat])
+    
+    return response   

@@ -13,5 +13,20 @@
 				<li><a id="link-reports" href="#reports" class="wrapper nav-toggler"><img src="{% static 'icons/SVG/info.svg' %}"></img><div class="tooltip1">REPORTS</div></a></li>
 				<li><a id="link-alerts" href="#alerts" class="wrapper nav-toggler"><img src="{% static 'icons/SVG/bubbles4.svg' %}"></img><div class="tooltip1">ALERTS</div></a></li>
 
-            <li><a id="link-download" href="#downloads" class="wrapper nav-toggler"><img src="{% static 'icons/SVG/download3.svg' %}"></img><div class="tooltip1">DOWNLOAD</div></a></li>
+            <li><a id="link-download" class="wrapper nav-toggler"><img src="{% static 'icons/SVG/download3.svg' %}"></img><div class="tooltip1">DOWNLOAD</div></a></li>
 			</ul></div>
+<!--
+<script type="text/javascript">
+$(document.ready(function() {
+	alert('Document is ready');	
+	$('#link-download').click(function(){
+		var name = document.title
+		$.ajax({
+			url: "/map/download_csv/,
+			data: {'name':name},
+			success: function(data){}
+		});
+	});
+});
+</script>
+-->

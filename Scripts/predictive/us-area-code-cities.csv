@@ -1514,21 +1514,6 @@
 650,San Carlos,California,US,37.50716,-122.26052
 650,San Mateo,California,US,37.56299,-122.32553
 650,South San Francisco,California,US,37.65466,-122.40775
-651,Apple Valley,Minnesota,US,44.73191,-93.21772
-651,Cottage Grove,Minnesota,US,44.82774,-92.94382
-651,Eagan,Minnesota,US,44.80413,-93.16689
-651,Inver Grove Heights,Minnesota,US,44.84802,-93.04272
-651,Lakeville,Minnesota,US,44.64969,-93.24272
-651,Maplewood,Minnesota,US,44.95302,-92.99522
-651,New Brighton,Minnesota,US,45.06552,-93.20189
-651,Oakdale,Minnesota,US,44.96302,-92.96494
-651,Roseville,Minnesota,US,45.00608,-93.15661
-651,Shoreview,Minnesota,US,45.07913,-93.14717
-651,South Saint Paul,Minnesota,US,44.89274,-93.03494
-651,Saint Paul,Minnesota,US,44.94441,-93.09327
-651,White Bear Lake,Minnesota,US,45.08469,-93.00994
-651,Woodbury,Minnesota,US,44.92386,-92.95938
-657,Anaheim,California,US,33.83529,-117.9145
 657,Brea,California,US,33.91668,-117.90006
 657,Buena Park,California,US,33.86751,-117.99812
 657,Cypress,California,US,33.81696,-118.03729
@@ -1762,7 +1747,6 @@
 715,Wausau,Wisconsin,US,44.95914,-89.63012
 716,Buffalo,New York,US,42.88645,-78.87837
 716,Cheektowaga,New York,US,42.90339,-78.75475
-716,Jamestown,New York,US,42.097,-79.23533
 716,South Lockport,New York,US,43.15006,-78.6967
 716,Niagara Falls,New York,US,43.0945,-79.05671
 716,North Tonawanda,New York,US,43.03867,-78.8642
@@ -1787,57 +1771,7 @@
 720,Broomfield,Colorado,US,39.92054,-105.08665
 720,Castle Rock,Colorado,US,39.37221,-104.85609
 720,Castlewood,Colorado,US,39.58471,-104.90109
-720,Columbine,Colorado,US,39.58777,-105.06943
-720,Commerce City,Colorado,US,39.80832,-104.93387
-720,Denver,Colorado,US,39.73915,-104.9847
-720,Englewood,Colorado,US,39.64777,-104.98776
-720,Highlands Ranch,Colorado,US,39.55388,-104.96943
-720,Ken Caryl,Colorado,US,39.57582,-105.11221
-720,Lafayette,Colorado,US,39.9936,-105.08971
-720,Lakewood,Colorado,US,39.70471,-105.08137
-720,Littleton,Colorado,US,39.61332,-105.01665
-720,Longmont,Colorado,US,40.16721,-105.10193
-720,Loveland,Colorado,US,40.39776,-105.07498
-720,Northglenn,Colorado,US,39.88554,-104.9872
-720,Parker,Colorado,US,39.5186,-104.76136
-720,Southglenn,Colorado,US,39.58721,-104.95276
-720,Thornton,Colorado,US,39.86804,-104.97192
-720,Westminster,Colorado,US,39.83665,-105.0372
-720,Wheat Ridge,Colorado,US,39.7661,-105.07721
-724,Monroeville,Pennsylvania,US,40.42118,-79.7881
-724,New Castle,Pennsylvania,US,41.00367,-80.34701
-724,Plum,Pennsylvania,US,40.50035,-79.74949
-724,Upper Saint Clair,Pennsylvania,US,40.3359,-80.08339
-725,Henderson,Nevada,US,36.0397,-114.98194
-725,North Las Vegas,Nevada,US,36.19886,-115.1175
-725,North Las Vegas,Nevada,US,36.19886,-115.1175
-725,Paradise,Nevada,US,36.09719,-115.14666
-725,Spring Valley,Nevada,US,36.10803,-115.245
-725,Sunrise Manor,Nevada,US,36.21108,-115.07306
-725,Winchester,Nevada,US,36.12997,-115.11889
-727,Bayonet Point,Florida,US,28.32667,-82.68343
-727,Clearwater,Florida,US,27.96585,-82.8001
-727,Dunedin,Florida,US,28.0199,-82.77323
-727,Holiday,Florida,US,28.18779,-82.73955
-727,Largo,Florida,US,27.90979,-82.78842
-727,Lealman,Florida,US,27.82114,-82.67927
-727,Palm Harbor,Florida,US,28.07807,-82.76371
-727,Pinellas Park,Florida,US,27.8428,-82.69954
-727,Saint Petersburg,Florida,US,27.77086,-82.67927
-727,Tarpon Springs,Florida,US,28.14612,-82.75677
-731,Jackson,Tennessee,US,35.61452,-88.81395
-732,Carteret,New Jersey,US,40.57733,-74.2282
-732,East Brunswick,New Jersey,US,40.42788,-74.41598
-732,Edison,New Jersey,US,40.51872,-74.4121
-732,Lakewood,New Jersey,US,40.09789,-74.21764
-732,West Long Branch,New Jersey,US,40.29039,-74.01764
-732,New Brunswick,New Jersey,US,40.48622,-74.45182
-732,East Brunswick,New Jersey,US,40.42788,-74.41598
-732,North Plainfield,New Jersey,US,40.6301,-74.42737
-732,South Old Bridge,New Jersey,US,40.40816,-74.35432
-732,Perth Amboy,New Jersey,US,40.50677,-74.26542
-732,Rahway,New Jersey,US,40.60816,-74.27765
-732,Sayreville,New Jersey,US,40.45927,-74.36098
+727,Clearwater,Florida,US,27.96585,-82.800
 732,Somerset,New Jersey,US,40.4976,-74.48849
 732,Toms River,New Jersey,US,39.95373,-74.19792
 734,Ann Arbor,Michigan,US,42.27756,-83.74088

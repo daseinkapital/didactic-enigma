@@ -20,6 +20,8 @@ def index(request):
 def sms(request):
     message = request.POST.get('Body')
     from_number = request.POST.get('From')
+    print(from_number)
+    print(message)
     if "," in message:
         if len(message.split(",")) > 2:
             start = message.find(",")
@@ -37,7 +39,7 @@ def sms(request):
         except 'ValueError':
             print("2")
             return HttpResponse('<h1>Bad</h1>')
-        if (count < 200) and (count > 0):
+        if (count < 201) and (count > 0):
             try:
                 management.call_command(
                         'add_phone',

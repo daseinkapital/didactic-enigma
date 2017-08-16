@@ -23,19 +23,23 @@ class Command(BaseCommand):
     #main function control
     def handle(self, *args, **options):
         Cities.objects.all().delete()
-        with open('us-area-code-cities.csv', 'r') as csvfile:
+        with open('us-area-code-cities.csv', 'r', encoding='utf-8', errors='ignore') as csvfile:
             reader = csv.reader(csvfile)
             dbl_check = []
-            for row in reader:
-                print(row)
-                name_state = row[1] + ", " + row[2] + " (" + row[0] + ")"
-                if name_state not in dbl_check:
-                    Cities.objects.create(
-                            name=row[1],
-                            code=row[0],
-                            lat=row[4],
-                            lng=row[5],
-                            state_code=row[2],
-                            name_state=name_state
-                        )
-                dbl_check.append(name_state)
+            try:
+                for row in reader:           
+                    print(row)
+                    name_state = row[1] + ", " + row[2] + " (" + row[0] + ")"
+                    if name_state not in dbl_check:
+                        Cities.objects.create(
+                                name=row[1],
+                                code=row[0],
+                                lat=row[4],
+                                lng=row[5],
+                                state_code=row[2],
+                                name_state=name_state
+                            )
+                    dbl_check.append(name_state)
+            except(UnicodeDecodeError):
+                for row in reader:
+                    print(row)
