@@ -1,7 +1,7 @@
 from django.core.management.base import BaseCommand
 from django.core import management #use management.call_command
-from map.models import LHCP, Phones, Diseases, AltDiseases
-from map.management.commands.generate_test_data import (generate_phone_numbers,
+from simulation.models import LHCP, Phones, Diseases, AltDiseases
+from simulation.management.commands.generate_sim_data import (generate_phone_numbers,
                                                         associate_phone_location,
                                                         get_disease,
                                                         head_count_or_deaths,
@@ -26,6 +26,7 @@ class Command(BaseCommand):
     
     #allow the user to specify switches for the mgmt command
     def add_arguments(self, parser):
+        
         parser.add_argument(
                 '--disease',
                 action = 'store_true',
@@ -115,7 +116,7 @@ class Command(BaseCommand):
     #main function control
     def handle(self, *args, **options):
             #set the working directory to save in the testdata folder
-            os.chdir(os.getcwd() + '\\testdata')
+            os.chdir(os.getcwd() + '\\simtestdata')
             
             if options['all']:
                 options['disease'] = True
@@ -237,7 +238,6 @@ def create_disease_outbreak_epicenter_timeframe(add_options):
     random_num_list = add_options['random_list']
     
     for day in range(add_options['num_days']):
-        print(Phones.objects.all().count())
         date = increment_date(add_options, day)
         
         if not outbreak:
@@ -603,10 +603,10 @@ def write_test_data_outbreak_epicenter_timeframe(count, data_date, shift, outbre
     phone_list = generate_phone_numbers(count)
     hosp_choices = LHCP.objects.all().count() - 1
     disease_list = Diseases.objects.all().count()
-    
+
     for phone_num in phone_list:
         associate_phone_location(phone_num, hosp_choices)
-    
+
     test_phones = phones_for_data(count)
     
     data = []

@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'map',
     'webpack_loader',
     'rest_framework',
-    'demo'
+    'demo',
+    'simulation'
 ]
 
 
