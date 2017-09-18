@@ -6,6 +6,9 @@ from django.db.models import Avg, Sum
 from .fusioncharts import FusionCharts
 import json
 import csv
+import socket
+import smtplib
+
 
 from datetime import datetime as dt
 from .models import Districts, HeadReports, DeathReports, Diseases, Phones
@@ -37,7 +40,24 @@ def reports(request):
 def downloads(request):
     return render(request, 'map/downloads.html')
 
+def sendmail(request):
+    name, email, subject, message = request.GET.get('name'), request.GET.get('email'), request.GET.get('subject'), request.GET.get('message')
+    frm = 'senderofthenotification@gmail.com'
+    to = 'gimmillaro_caroline@bah.com'
+    to2 = 'weinberger_adam@bah.com'
+    test = 'drewbaer@vt.edu'
+    msg = """Hello Adam and Caroline,
+        You have a received a message from the Predictive26 website. The message is from """ + str(name) + " (" + str(email) + ").\nThe message says:\n\nSUBJECT: " + str(subject) + "\n\n" + str(message)
+    user = frm
+    pswd = 'notesandboats'
+    server = smtplib.SMTP('smtp.gmail.com:587')
 
+    server.ehlo()
+    server.starttls()
+    server.login(user,pswd)
+    server.sendmail(frm, [to, to2], msg)
+    server.quit()
+    return 'Success'
 
 
 def marker(request):

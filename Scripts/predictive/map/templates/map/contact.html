@@ -68,7 +68,7 @@
                             <h2>Contact</h2>
                             <ol class="breadcrumb">
                                 <li>
-                                    <a href="/map/index">
+                                    <a href="/map">
                                         <i class="ion-ios-home"></i>
                                         Home
                                     </a>
@@ -96,8 +96,6 @@
                                 We would love to hear your input!
                             </p>
                             <div class="contact-form">
-                                <form id="contact-form" method="post" action="sendmail.php" role="form">
-                        
                                     <div class="form-group wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".6s">
                                         <input type="text" placeholder="Your Name" class="form-control" name="name" id="name">
                                     </div>
@@ -116,10 +114,9 @@
                                     
                                     
                                     <div id="submit" class="wow fadeInDown" data-wow-duration="500ms" data-wow-delay="1.4s">
-                                        <input type="submit" id="contact-submit" class="btn btn-default btn-send" value="Send Message">
+                                       	<button onclick='sendemail()'>Submit</button>
                                     </div>                      
                                     
-                                </form>
                             </div>
                         </div>
                     </div>
@@ -128,7 +125,29 @@
                 </div>
             </div>
         </section>
-        
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>        
+<script type="text/javascript">
+function sendemail() {
+	name = document.getElementById('name').value;
+	email = document.getElementById('email').value;
+	subject = document.getElementById('subject').value;
+	message = document.getElementById('message').value;
+//	document.getElementById('name').value = "";
+//	document.getElementById('email').value = "";
+//	document.getElementById('subject').value = "";
+//	document.getElementById('message').value = "";
+	$.ajax({
+		url: "/map/sendmail",
+		data: {'name':name, 'email':email, 'subject':subject,'message':message}
+	});
+	document.getElementById('name').value = "";
+	document.getElementById('email').value = "";
+	document.getElementById('subject').value = "";
+	document.getElementById('message').value = "";
+	alert("Thank you, " + name + ". Your message has been sent!");
+}
+</script>
+
 <!--
 section id="blacklogo" style="overflow-x: hidden; background-attachment: scroll;">
             <div class="container">

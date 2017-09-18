@@ -120,23 +120,6 @@
         view: distView
        });
 
-// WE NEED TO FIX THE BOUNDS OF ZOOM AND HOW THE GEOJSON DISPLAYS
-//    for (i=0; i < features.length; i++) {
-//            alert(features[i]);
-//            if (features[i].get('ADM2_NAME') === document.title){
-//                          map.setView(new ol.View({
-//                              center: map.getView().getCenter(),
-//                              boundingExtent: features[i].getGeometry().A,
-//                              zoom: map.getView().getZoom(),
-//                              minZoom: map.getView().getZoom()
-//                            })); 
-//                        alert('Found'); 
-//                    } else {
-//                            alert('Not Found');
-//                            features[i].style = { display: 'none' };
-//                    }
-//            };
-
               
        map.setView(new ol.View({
           center: map.getView().getCenter(),
@@ -245,16 +228,7 @@
                 
         }
       });   
-          
-     map.on('dblclick', function(evt) {
-        displayLinkInfo(evt.pixel);
-        if(link != "none") {
-            window.location.href = link;  
-
-        }
-      });   
-          
-        
+                  
     var typeSelect = document.getElementById('type');
 
      var draw; // global so we can remove it later

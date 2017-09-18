@@ -25,6 +25,7 @@ urlpatterns = [
         url(r'dist_charts', views.dist_charts, name='dist_charts'),
         url(r'download', views.download_csv, name='download_csv'),
         url(r'reports', views.reports, name='reports'),
-        url(r'country_charts', views.country_charts, name='country_charts')
+        url(r'country_charts', views.country_charts, name='country_charts'),
+        url(r'sendmail', views.sendmail, name='sendmail'),
 
     ]
